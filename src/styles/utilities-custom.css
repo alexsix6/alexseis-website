@@ -1,0 +1,14 @@
+
+/* CSS Scroll Timeline (Conceptual - browser support varies) */
+/* This is a placeholder as direct CSS scroll-timeline is still experimental */
+/* For actual scroll-triggered animations, Framer Motion is more reliable */
+@scroll-timeline scroll-progress {
+  source: scroll(root);
+  orientation: block;
+}
+
+.animate-on-scroll {
+  animation: fade-in-up auto linear;
+  animation-timeline: scroll-progress;
+  /* Define ranges if needed, e.g., animation-range: entry 0% exit 100%; */
+}

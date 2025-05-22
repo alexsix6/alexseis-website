@@ -1,0 +1,57 @@
+
+:root {
+  --primary-rgb: 139, 92, 246; /* #8B5CF6 */
+  --secondary-rgb: 236, 72, 153; /* #EC4899 */
+  --accent-rgb: 6, 255, 165; /* #06FFA5 */
+  --bg-dark-rgb: 15, 15, 35; /* #0F0F23 */
+  
+  --primary: #8B5CF6;
+  --secondary: #EC4899;
+  --accent: #06FFA5;
+  --bg-dark: #0F0F23;
+  --text-light: #E5E7EB; /* gray-200 */
+  --text-dark: #1F2937; /* gray-800 */
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.15);
+
+  --foreground: var(--text-light);
+  --background: var(--bg-dark-rgb); /* For shadcn compatibility */
+  
+  --card: var(--bg-dark-rgb);
+  --card-foreground: var(--text-light);
+  --popover: var(--bg-dark-rgb);
+  --popover-foreground: var(--text-light);
+  --primary-foreground: var(--text-light); /* Text on primary bg */
+  --secondary-foreground: var(--text-light); /* Text on secondary bg */
+  --muted: 55 55 70; /* A darker muted for dark mode */
+  --muted-foreground: 156 163 175; /* gray-400 */
+  --accent-foreground: var(--bg-dark); /* Text on accent bg */
+  --destructive: 220 38 38; /* red-600 */
+  --destructive-foreground: var(--text-light);
+  --border: 55 65 81; /* gray-700 */
+  --input: 55 65 81; /* gray-700 */
+  --ring: var(--primary-rgb);
+  --radius: 1rem; /* Increased default radius for modern feel */
+
+  /* Spacing system */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+
+  /* Typography */
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Lora', serif; /* Example serif for headings if desired */
+
+  --fs-h1: 48px;
+  --fs-h2: 36px;
+  --fs-h3: 24px;
+  --fs-body: 16px;
+  --fs-sm: 14px;
+  --fs-xs: 12px;
+
+  /* Custom cursor */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewport='0 0 100 100' style='fill:black;font-size:16px;'><circle cx='10' cy='10' r='5' fill='%2306FFA5' stroke='%23FFFFFF' stroke-width='1' /></svg>") 10 10, auto;
+}

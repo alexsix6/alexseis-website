@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('@/styles/variables.css');
+@import url('@/styles/base.css');
+@import url('@/styles/components.css');
+@import url('@/styles/animations.css');
+@import url('@/styles/utilities-custom.css');
+
+/* Custom scrollbar for a more modern look */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius);
+  border: 2px solid var(--bg-dark);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

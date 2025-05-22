@@ -1,0 +1,100 @@
+
+@layer components {
+  .glass-card {
+    @apply p-6 rounded-2xl shadow-xl; /* Increased padding and radius */
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center font-semibold transition-all duration-300 ease-in-out;
+    padding: var(--space-2) var(--space-4); /* 16px 32px */
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .btn-primary {
+    @apply bg-primary text-[color:var(--primary-foreground)] hover:bg-opacity-80;
+    box-shadow: 0 6px 18px rgba(var(--primary-rgb), 0.3);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(var(--primary-rgb), 0.4);
+  }
+  .btn-secondary {
+    @apply bg-secondary text-[color:var(--secondary-foreground)] hover:bg-opacity-80;
+    box-shadow: 0 6px 18px rgba(var(--secondary-rgb), 0.3);
+  }
+   .btn-secondary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(var(--secondary-rgb), 0.4);
+  }
+  .btn-outline {
+    @apply border-2 border-accent text-accent hover:bg-accent hover:text-bg-dark;
+  }
+   .btn-outline:hover {
+    transform: translateY(-2px);
+   }
+
+  .floating-label-input {
+    @apply relative;
+  }
+  .floating-label-input input,
+  .floating-label-input textarea {
+    @apply block w-full px-4 py-3 border border-gray-700 rounded-lg bg-transparent text-text-light placeholder-transparent;
+    padding-top: var(--space-3); /* Make space for label */
+  }
+  .floating-label-input label {
+    @apply absolute left-4 top-3 text-gray-400 text-sm transition-all duration-200 pointer-events-none;
+    transform-origin: 0 0;
+  }
+  .floating-label-input input:focus ~ label,
+  .floating-label-input input:not(:placeholder-shown) ~ label,
+  .floating-label-input textarea:focus ~ label,
+  .floating-label-input textarea:not(:placeholder-shown) ~ label {
+    @apply transform scale-75 -translate-y-2.5 text-accent;
+    top: 6px; /* Adjust fine-tuning */
+  }
+  .floating-label-input input:focus,
+  .floating-label-input textarea:focus {
+    @apply outline-none border-accent ring-2 ring-accent ring-opacity-50;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  }
+
+  /* Loading spinner */
+  .loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--glass-border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: var(--space-4) auto;
+  }
+
+  /* Skeleton Loader */
+  .skeleton-loader {
+    background-color: rgba(255, 255, 255, 0.1); /* var(--glass) but slightly different */
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .skeleton-loader::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    animation: shimmer 1.5s infinite;
+  }
+
+  .skeleton-text { height: 1em; margin-bottom: 0.5em; }
+  .skeleton-title { height: 1.5em; margin-bottom: 0.75em; width: 60%; }
+  .skeleton-avatar { width: 64px; height: 64px; border-radius: 50%; }
+}
