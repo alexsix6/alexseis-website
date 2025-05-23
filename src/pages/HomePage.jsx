@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
     import { Button } from '@/components/ui/button';
     import { ArrowRight, ChevronDown } from 'lucide-react';
     import { NavLink } from 'react-router-dom';
+    import { Agent3D } from '../components/Agent3D';
 
     const headlines = [
       "Agentes de IA Inteligentes",
@@ -118,6 +119,7 @@ import React, { useEffect, useState } from 'react';
                   </NavLink>
                 </Button>
               </motion.div>
+              <Agent3D />
             </div>
           </motion.div>
           

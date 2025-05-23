@@ -2,24 +2,146 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== IMPORTS DE ARCHIVOS CUSTOM ===== */
 @import url('@/styles/variables.css');
 @import url('@/styles/base.css');
 @import url('@/styles/components.css');
 @import url('@/styles/animations.css');
 @import url('@/styles/utilities-custom.css');
 
-/* Custom scrollbar for a more modern look */
+/* ===== SCROLLBAR PERSONALIZADO GLOBAL ===== */
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: var(--radius);
   border: 2px solid var(--bg-dark);
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
+}
+
+/* ===== TIPOGRAFÍA BASE ===== */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #111827;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* ===== ENCABEZADOS ===== */
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #7C3AED 0%, #DB2777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #1f2937;
+}
+
+h3 {
+  font-size: 1.8rem;
+  color: #374151;
+}
+
+p {
+  color: #1f2937;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* ===== OVERRIDE DE COLORES DE TEXTO ===== */
+.text-gray-300 {
+  color: #6b7280 !important;
+}
+
+.text-gray-400 {
+  color: #4b5563 !important;
+}
+
+.text-gray-500 {
+  color: #374151 !important;
+}
+
+.text-gray-600 {
+  color: #1f2937 !important;
+}
+
+.text-gray-700 {
+  color: #111827 !important;
+}
+
+.text-gray-800 {
+  color: #000000 !important;
+}
+
+/* ===== CLASES ESPECÍFICAS DE TEXTO ===== */
+.hero-text {
+  color: #000000;
+  font-weight: 600;
+}
+
+.description-text {
+  color: #1f2937;
+  font-weight: 500;
+  font-size: 1.125rem;
+}
+
+.hero-description,
+.main-description {
+  color: #374151 !important;
+  font-weight: 500 !important;
+  font-size: 1.125rem !important;
+}
+
+.section-subtitle {
+  color: #4b5563 !important;
+  font-weight: 500 !important;
+}
+
+/* ===== UTILIDAD PARA OCULTAR SCROLLBAR ===== */
+/* Usado en el componente Agent3D para los quick actions */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA AGENT3D (OPCIONAL) ===== */
+/* Puedes agregar aquí estilos específicos para mejorar el chat */
+.agent-chat-container {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Mejora la legibilidad en el chat oscuro */
+.agent-chat-container .text-white {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Transiciones suaves para el chat */
+.agent-chat-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
