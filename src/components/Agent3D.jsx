@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { SplineScene } from "./ui/splite"; // Tu import correcto
+import { useAgentChat } from "../hooks/useAgentChat"; // <-- NUEVA LÍNEA
 
 export function Agent3D() {
   const [isMinimized, setIsMinimized] = useState(true);
@@ -7,6 +8,7 @@ export function Agent3D() {
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const textareaRef = useRef(null);
+  const { sendMessage, loading: apiLoading, sessionId } = useAgentChat(); // <-- NUEVA LÍNEA
 
   // Auto-resize textarea
   useEffect(() => {
@@ -19,21 +21,28 @@ export function Agent3D() {
   const handleSend = async () => {
     if (message.trim()) {
       // Agregar mensaje del usuario
-      setMessages([...messages, { text: message, sender: 'user' }]);
+      setMessages(prev => [...prev, { text: message, sender: 'user' }]);
       setMessage("");
       setIsTyping(true);
       
       try {
-        // Simulamos respuesta del bot (reemplaza con tu API real)
-        setTimeout(() => {
-          setMessages(prev => [...prev, { 
-            text: "Gracias por tu pregunta. Como especialista en Google Cloud e IA, estoy aquí para ayudarte.", 
-            sender: 'bot' 
-          }]);
-          setIsTyping(false);
-        }, 1500);
+        // Llamar a la API real
+        const { response } = await sendMessage(message);
+        
+        // Agregar respuesta del bot
+        setMessages(prev => [...prev, { 
+          text: response, 
+          sender: 'bot' 
+        }]);
       } catch (error) {
-        console.error('Error:', error);
+        console.error('Error al enviar mensaje:', error);
+        
+        // Mensaje de error para el usuario
+        setMessages(prev => [...prev, { 
+          text: 'Lo siento, hubo un error al procesar tu mensaje. Por favor intenta de nuevo.', 
+          sender: 'bot' 
+        }]);
+      } finally {
         setIsTyping(false);
       }
     }
@@ -170,7 +179,7 @@ export function Agent3D() {
                   
                   <button 
                     onClick={handleSend}
-                    disabled={!message.trim()}
+                    disabled={!message.trim() || apiLoading} // <-- ACTUALIZAR ESTA LÍNEA
                     aria-label="Enviar mensaje" // Buena práctica para accesibilidad cuando solo hay un ícono
                     className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-700 text-white hover:text-white rounded-lg p-1.5 transition-all duration-300 hover:scale-110 disabled:hover:scale-100 shadow-lg hover:shadow-purple-500/25 disabled:shadow-none flex items-center justify-center disabled:opacity-50" 
                     // CAMBIOS EN LAS CLASES DEL BOTÓN:

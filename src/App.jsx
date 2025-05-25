@@ -2,6 +2,7 @@ import React from 'react';
     import { BrowserRouter as Router, Route, Routes, NavLink } from 'react-router-dom';
     import { motion } from 'framer-motion';
     import { Home, Briefcase, Target, Users, Mail, Bot, Cloud, Puzzle, Code } from 'lucide-react';
+    import logo from '@/assets/Logoweb.png'; // <-- AGREGAR ESTA LÍNEA
 
     import HomePage from '@/pages/HomePage';
     import ServicesPage from '@/pages/ServicesPage';
@@ -24,19 +25,20 @@ import React from 'react';
           <div className="flex flex-col min-h-screen bg-bg-dark text-text-light">
             <header className="sticky top-0 z-50 shadow-strong backdrop-blur-lg bg-bg-dark/80">
               <nav className="container-max h-20 flex justify-between items-center"> {/* Navbar height 80px (h-20) */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-3xl font-bold tracking-tight"
-                >
-                  <NavLink to="/" className="flex items-center gap-2">
-                    <Code size={32} className="text-accent"/>
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent">
-                      AI Solutions Corp
-                    </span>
-                  </NavLink>
-                </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center"
+              >
+                <NavLink to="/" className="flex items-center">
+                  <img 
+                    src={logo} 
+                    alt="AI Solutions Corp" 
+                    className="h-12 md:h-20 w-auto object-contain transition-all duration-300 hover:scale-105" 
+                  />
+                </NavLink>
+              </motion.div>
                 <ul className="flex space-x-3 items-center"> {/* Reduced space for more items if needed */}
                   {navItems.map((item) => (
                     <motion.li key={item.path} whileHover={{ y: -2 }} whileTap={{ scale: 0.95 }}>

@@ -106,18 +106,40 @@ const ContactPage = () => {
       });
       return;
     }
+    
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log('Form data submitted:', formData);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al enviar');
+      }
+  
       toast({
         title: "Mensaje Enviado Exitosamente",
         description: "Gracias por contactarnos. Nos pondremos en contacto contigo pronto.",
         className: "bg-accent text-bg-dark border-accent",
       });
+      
       setFormData({ name: '', email: '', company: '', interest: '', message: '' });
       setErrors({});
+    } catch (error) {
+      console.error('Error:', error);
+      toast({
+        title: "Error",
+        description: error.message || "Hubo un error al enviar el mensaje",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [
