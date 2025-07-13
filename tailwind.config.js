@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ['class'],
+  darkMode: 'class', // ← NUEVA LÍNEA: Habilita dark mode por clase
   content: [
     './pages/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
@@ -22,6 +22,7 @@ module.exports = {
     },
     extend: {
       colors: {
+        // ===== COLORES EXISTENTES (sin cambios) =====
         primary: 'var(--primary)',
         secondary: 'var(--secondary)',
         accent: 'var(--accent)',
@@ -31,13 +32,14 @@ module.exports = {
         glass: 'var(--glass)',
         'glass-border': 'var(--glass-border)',
         
+        // ===== COLORES SHADCN (sin cambios) =====
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))', /* Should be var(--bg-dark-rgb) for shadcn */
-        foreground: 'hsl(var(--foreground))', /* Should be var(--text-light) for shadcn */
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         
-        'primary-shadcn': { /* Renaming for clarity if shadcn uses 'primary' */
+        'primary-shadcn': {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
@@ -105,6 +107,10 @@ module.exports = {
         'hero-gradient': 'linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%)',
         'conic-gradient': 'conic-gradient(from 180deg at 50% 50%, var(--primary) 0deg, var(--secondary) 180deg, var(--accent) 360deg)',
         'radial-gradient': 'radial-gradient(circle, var(--primary), var(--secondary), var(--bg-dark) 70%)',
+        // ===== NUEVOS FONDOS ESPACIALES =====
+        'space-gradient': 'radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 25%, #0f0f23 50%, #000000 100%)',
+        'galaxy-gradient': 'radial-gradient(ellipse at top, #1e3c72 0%, #2a5298 50%, #0f0f23 100%)',
+        'nebula-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #2a1b3d 100%)',
       },
       keyframes: {
         'accordion-down': {
@@ -141,7 +147,18 @@ module.exports = {
         'shimmer': {
           '0%': { left: '-100%' },
           '100%': { left: '100%' },
-        }
+        },
+        // ===== NUEVAS ANIMACIONES ESPACIALES =====
+        'twinkle': {
+          '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+          '50%': { opacity: '1', transform: 'scale(1.2)' },
+        },
+        'drift': {
+          '0%': { transform: 'translateY(0px) translateX(0px)' },
+          '33%': { transform: 'translateY(-30px) translateX(20px)' },
+          '66%': { transform: 'translateY(20px) translateX(-15px)' },
+          '100%': { transform: 'translateY(0px) translateX(0px)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -151,6 +168,9 @@ module.exports = {
         'particle-float': 'float 20s infinite ease-in-out',
         'spin': 'spin 1s linear infinite',
         'shimmer': 'shimmer 1.5s infinite',
+        // ===== NUEVAS ANIMACIONES ESPACIALES =====
+        'twinkle': 'twinkle 3s ease-in-out infinite',
+        'drift': 'drift 8s ease-in-out infinite',
       },
     },
   },

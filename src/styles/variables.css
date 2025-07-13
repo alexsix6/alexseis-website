@@ -1,4 +1,4 @@
-
+/* ===== VARIABLES BASE (MANTIENE COMPATIBILIDAD) ===== */
 :root {
   --primary-rgb: 139, 92, 246; /* #8B5CF6 */
   --secondary-rgb: 236, 72, 153; /* #EC4899 */
@@ -13,7 +13,6 @@
   --text-dark: #1F2937; /* gray-800 */
   --glass: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.15);
-
   --foreground: var(--text-light);
   --background: var(--bg-dark-rgb); /* For shadcn compatibility */
   
@@ -32,7 +31,7 @@
   --input: 55 65 81; /* gray-700 */
   --ring: var(--primary-rgb);
   --radius: 1rem; /* Increased default radius for modern feel */
-
+  
   /* Spacing system */
   --space-1: 8px;
   --space-2: 16px;
@@ -40,18 +39,130 @@
   --space-4: 32px;
   --space-5: 48px;
   --space-6: 64px;
-
+  
   /* Typography */
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Lora', serif; /* Example serif for headings if desired */
-
   --fs-h1: 48px;
   --fs-h2: 36px;
   --fs-h3: 24px;
   --fs-body: 16px;
   --fs-sm: 14px;
   --fs-xs: 12px;
-
+  
   /* Custom cursor */
   cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewport='0 0 100 100' style='fill:black;font-size:16px;'><circle cx='10' cy='10' r='5' fill='%2306FFA5' stroke='%23FFFFFF' stroke-width='1' /></svg>") 10 10, auto;
+}
+
+/* ===== LIGHT MODE (NUEVO) ===== */
+:root {
+  /* Fondos Light Mode */
+  --theme-bg-primary: #FFFFFF;
+  --theme-bg-secondary: #F8FAFC; /* slate-50 */
+  --theme-bg-tertiary: #F1F5F9; /* slate-100 */
+  
+  /* Textos Light Mode */
+  --theme-text-primary: #0F172A; /* slate-900 */
+  --theme-text-secondary: #334155; /* slate-700 */
+  --theme-text-muted: #64748B; /* slate-500 */
+  
+  /* Efectos Light Mode */
+  --theme-glass: rgba(255, 255, 255, 0.8);
+  --theme-glass-border: rgba(0, 0, 0, 0.1);
+  --theme-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Bordes Light Mode */
+  --theme-border: #E2E8F0; /* slate-200 */
+  --theme-border-hover: #CBD5E1; /* slate-300 */
+  
+  /* Fondo de contenido */
+  --theme-surface: #FFFFFF;
+  --theme-surface-hover: #F8FAFC;
+
+  /* ===== VARIABLES DINÁMICAS LIGHT MODE ===== */
+  --current-bg: var(--theme-bg-primary);
+  --current-bg-secondary: var(--theme-bg-secondary);
+  --current-text: var(--theme-text-primary);
+  --current-text-secondary: var(--theme-text-secondary);
+  --current-text-muted: var(--theme-text-muted);
+  --current-glass: var(--theme-glass);
+  --current-glass-border: var(--theme-glass-border);
+  --current-border: var(--theme-border);
+  --current-surface: var(--theme-surface);
+  --current-shadow: var(--theme-shadow);
+}
+
+/* ===== DARK MODE (MEJORADO) ===== */
+.dark {
+  /* Fondos Dark Mode */
+  --theme-bg-primary: #0F0F23; /* Tu color actual */
+  --theme-bg-secondary: #1A1A2E; /* Más oscuro */
+  --theme-bg-tertiary: #16213E; /* Azul espacial */
+  
+  /* Textos Dark Mode */
+  --theme-text-primary: #E5E7EB; /* gray-200 */
+  --theme-text-secondary: #D1D5DB; /* gray-300 */
+  --theme-text-muted: #9CA3AF; /* gray-400 */
+  
+  /* Efectos Dark Mode */
+  --theme-glass: rgba(255, 255, 255, 0.05);
+  --theme-glass-border: rgba(255, 255, 255, 0.15);
+  --theme-shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Bordes Dark Mode */
+  --theme-border: #374151; /* gray-700 */
+  --theme-border-hover: #4B5563; /* gray-600 */
+  
+  /* Fondo de contenido */
+  --theme-surface: #1F2937; /* gray-800 */
+  --theme-surface-hover: #374151; /* gray-700 */
+  
+  /* ===== FONDO ESPACIAL PARA DARK MODE ===== */
+  --space-bg: radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 25%, #0f0f23 50%, #000000 100%);
+  --galaxy-overlay: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), 
+                    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
+                    radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%);
+  
+  /* Cursor espacial para dark mode */
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewport='0 0 100 100' style='fill:black;font-size:16px;'><circle cx='10' cy='10' r='5' fill='%2306FFA5' stroke='%23FFFFFF' stroke-width='1' opacity='0.8' /></svg>") 10 10, auto;
+
+  /* ===== VARIABLES DINÁMICAS DARK MODE ===== */
+  --current-bg: var(--space-bg);
+  --current-bg-secondary: var(--theme-bg-secondary);
+  --current-text: var(--theme-text-primary);
+  --current-text-secondary: var(--theme-text-secondary);
+  --current-text-muted: var(--theme-text-muted);
+  --current-glass: var(--theme-glass);
+  --current-glass-border: var(--theme-glass-border);
+  --current-border: var(--theme-border);
+  --current-surface: var(--theme-surface);
+  --current-shadow: var(--theme-shadow);
+}
+
+/* ===== COMPATIBILIDAD CON SHADCN (ACTUALIZADA) ===== */
+.dark {
+  --background: 15 15 35; /* Tu bg-dark en formato HSL */
+  --foreground: 229 231 235; /* gray-200 en formato HSL */
+  --card: 31 41 55; /* gray-800 */
+  --card-foreground: 229 231 235;
+  --popover: 31 41 55;
+  --popover-foreground: 229 231 235;
+  --muted: 55 65 81; /* gray-700 */
+  --muted-foreground: 156 163 175;
+  --border: 55 65 81;
+  --input: 55 65 81;
+}
+
+/* Light mode shadcn variables */
+:root {
+  --background: 255 255 255;
+  --foreground: 15 23 42; /* slate-900 */
+  --card: 255 255 255;
+  --card-foreground: 15 23 42;
+  --popover: 255 255 255;
+  --popover-foreground: 15 23 42;
+  --muted: 241 245 249; /* slate-100 */
+  --muted-foreground: 100 116 139; /* slate-500 */
+  --border: 226 232 240; /* slate-200 */
+  --input: 226 232 240;
 }
