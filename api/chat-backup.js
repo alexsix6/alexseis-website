@@ -1,7 +1,18 @@
 import { OpenAI } from 'openai';
-import { BigQuery } from '@google-cloud/bigquery';
+import { createClient } from '@supabase/supabase-js';
 
 // ===== FUNCIONES AUXILIARES INTEGRADAS =====
+// Integradas directamente para evitar problemas de importación en Vercel Functions
+
+const getServiceSupabase = () => {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error('Faltan variables de entorno de Supabase');
+  }
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY
+  );
+};
 
 const getClientIp = (req) => {
   return req.headers['x-forwarded-for']?.split(',')[0] || 
@@ -15,27 +26,21 @@ const generateSessionId = () => {
   return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 };
 
-// ===== NUEVA FUNCIÓN: BigQuery Rate Limiting =====
-const checkRateLimit = async (bigquery, ip, maxRequests = 10, windowMs = 60000) => {
+const checkRateLimit = async (supabaseAdmin, ip, maxRequests = 10, windowMs = 60000) => {
   try {
     const windowStart = new Date(Date.now() - windowMs);
     
-    const query = `
-      SELECT COUNT(*) as request_count
-      FROM \`cognitivedsai-herramientas.alexseis_web.conversations\`
-      WHERE user_ip = @ip 
-      AND created_at >= @window_start
-    `;
+    const { count, error } = await supabaseAdmin
+      .from('agent_conversations')
+      .select('*', { count: 'exact', head: true })
+      .eq('user_ip', ip)
+      .gte('created_at', windowStart.toISOString());
     
-    const [rows] = await bigquery.query({
-      query: query,
-      params: {
-        ip: ip,
-        window_start: windowStart.toISOString()
-      }
-    });
-    
-    const count = rows[0]?.request_count || 0;
+    if (error) {
+      console.error('Error checking rate limit:', error);
+      // En caso de error, permitir la solicitud
+      return { success: true, remaining: maxRequests };
+    }
     
     return {
       success: count < maxRequests,
@@ -55,28 +60,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Inicializar BigQuery con autenticación para Vercel
-const initBigQuery = () => {
-  const projectId = process.env.GOOGLE_CLOUD_PROJECT_ID || 'cognitivedsai-herramientas';
-  
-  // Para Vercel: usar credenciales base64
-  if (process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64) {
-    const credentials = JSON.parse(
-      Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64, 'base64').toString()
-    );
-    
-    return new BigQuery({
-      projectId,
-      credentials
-    });
-  }
-  
-  // Para local: usar autenticación por defecto
-  return new BigQuery({ projectId });
-};
-
-const bigquery = initBigQuery();
-
 // Prompt del sistema para el agente
 const SYSTEM_PROMPT = `Eres un experto asistente de AI especializado en Google Cloud Platform, BigQuery, Power BI e Inteligencia Artificial. 
 Tu nombre es AI Assistant de Alex Seis Projects. 
@@ -95,13 +78,15 @@ Responde en español a menos que el usuario escriba en otro idioma.`;
 // ===== HANDLER PRINCIPAL =====
 
 export default async function handler(req, res) {
-  // LOGS DE DEBUG
+  // AGREGAR ESTOS LOGS DE DEBUG
   console.log('=== INICIO DE SOLICITUD ===');
   console.log('Método:', req.method);
   console.log('Body:', req.body);
   console.log('ENV Check:', {
     hasOpenAI: !!process.env.OPENAI_API_KEY,
-    hasBigQuery: !!process.env.GOOGLE_CLOUD_PROJECT_ID,
+    hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
+    hasSupabaseAnon: !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    hasSupabaseService: !!process.env.SUPABASE_SERVICE_ROLE_KEY
   });
 
   // Configurar CORS headers
@@ -147,8 +132,19 @@ export default async function handler(req, res) {
     // Obtener IP del cliente
     const clientIp = getClientIp(req);
     
-    // Verificar rate limit con BigQuery
-    const rateLimitCheck = await checkRateLimit(bigquery, clientIp);
+    // Inicializar Supabase Admin
+    let supabaseAdmin;
+    try {
+      supabaseAdmin = getServiceSupabase();
+    } catch (error) {
+      console.error('Error inicializando Supabase:', error);
+      return res.status(503).json({ 
+        error: 'Error de configuración del servicio' 
+      });
+    }
+    
+    // Verificar rate limit
+    const rateLimitCheck = await checkRateLimit(supabaseAdmin, clientIp);
     if (!rateLimitCheck.success) {
       return res.status(429).json({ 
         error: 'Demasiadas solicitudes. Por favor espera un momento antes de intentar de nuevo.',
@@ -178,30 +174,23 @@ export default async function handler(req, res) {
     const responseTime = Date.now() - startTime;
     const tokensUsed = completion.usage?.total_tokens || 0;
 
-    // ===== GUARDAR EN BIGQUERY (NUEVO) =====
-    console.log('Guardando conversación en BigQuery...');
-    
-    const conversationData = {
-      session_id: sessionId,
-      user_message: message,
-      agent_response: aiResponse,
-      model_used: 'gpt-4o',
-      tokens_used: tokensUsed,
-      response_time_ms: responseTime,
-      user_ip: clientIp,
-      user_agent: req.headers['user-agent'] || 'unknown',
-      created_at: new Date().toISOString()
-    };
+    // Guardar en Supabase
+    console.log('Guardando conversación en base de datos...');
+    const { error: dbError } = await supabaseAdmin
+      .from('agent_conversations')
+      .insert({
+        session_id: sessionId,
+        user_message: message,
+        agent_response: aiResponse,
+        model_used: 'gpt-3.5-turbo',
+        tokens_used: tokensUsed,
+        response_time_ms: responseTime,
+        user_ip: clientIp,
+        user_agent: req.headers['user-agent'] || 'unknown'
+      });
 
-    try {
-      await bigquery
-        .dataset('alexseis_web')
-        .table('conversations')
-        .insert([conversationData]);
-      
-      console.log('✅ Conversación guardada en BigQuery');
-    } catch (dbError) {
-      console.error('❌ Error al guardar en BigQuery:', dbError);
+    if (dbError) {
+      console.error('Error al guardar en base de datos:', dbError);
       // No fallar la respuesta por error de BD
     }
 
