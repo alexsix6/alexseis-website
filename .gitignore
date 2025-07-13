@@ -1,3 +1,10 @@
 node_modules
 .vercel
 .env.local
+
+# Credentials y archivos sensibles
+alexseis-website-credentials.json
+credentials-base64.txt
+*.key
+*.pem
+test-bigquery.js
