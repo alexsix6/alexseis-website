@@ -4,8 +4,20 @@ import { Button } from '@/components/ui/button';
 import { useToast } from "@/components/ui/use-toast";
 import { 
     Mail, Phone, MapPin, Send, Briefcase, MessageCircle, User, 
-    Linkedin, Instagram, Twitter, Github, FileText // Usando FileText como placeholder para TikTok
+    Linkedin, Instagram, Twitter, Github
 } from 'lucide-react';
+
+// Componente TikTok Icon personalizado
+const TikTokIcon = ({ className, ...props }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    className={className}
+    {...props}
+  >
+    <path d="M19.321 5.562a5.124 5.124 0 0 1-.443-.258 6.228 6.228 0 0 1-1.137-.966c-.849-.849-1.204-1.924-1.204-2.338C16.537 1.434 16.21 1 15.644 1h-3.497c-.566 0-1.02.434-1.02 1v11.587a2.896 2.896 0 1 1-1.84-2.706V7.548a6.27 6.27 0 0 0-.84-.057C4.347 7.491 1 10.838 1 15.938S4.347 24.385 8.447 24.385s7.447-3.347 7.447-7.447V9.133a9.524 9.524 0 0 0 5.606 1.791V7.427a5.923 5.923 0 0 1-2.179-1.865Z"/>
+  </svg>
+);
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -143,18 +155,19 @@ const ContactPage = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, text: "info@alexseis.com", href: "mailto:info@alexseis.com", label: "Correo Electrónico" },
-    { icon: Phone, text: "+593 987654321", href: "tel:+593987654321", label: "Teléfono" },
+    { icon: Mail, text: "ai@alexseis.com", href: "mailto:ai@alexseis.com", label: "Correo Electrónico" },
+    { icon: Phone, text: "+593 983391240", href: "tel:+593983391240", label: "Teléfono" },
     // La información de MapPin se elimina ya que no queremos la sección de ubicación
     // { icon: MapPin, text: "Quito, Ecuador (Presencia Global)", href: "#", label: "Ubicación" }, 
   ];
 
+  // URLs reales actualizadas basadas en los perfiles confirmados
   const socialLinks = [
-    { icon: Linkedin, href: "https://linkedin.com/in/tu-perfil", label: "LinkedIn" },
-    { icon: Github, href: "https://github.com/tu-usuario", label: "GitHub" },
-    { icon: Twitter, href: "https://twitter.com/tu-usuario", label: "X (Twitter)" },
-    { icon: Instagram, href: "https://instagram.com/tu-usuario", label: "Instagram" },
-    { icon: FileText, href: "https://tiktok.com/@tu-usuario", label: "TikTok" }, // Reemplaza FileText con un SVG de TikTok si lo tienes
+    { icon: Linkedin, href: "https://www.linkedin.com/in/alex-patricio-seis-espinosa-09402578", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/alexsix6", label: "GitHub" },
+    { icon: Twitter, href: "https://x.com/AlexSeis0204", label: "X (Twitter)" },
+    { icon: Instagram, href: "https://instagram.com/alexseis81", label: "Instagram" },
+    { icon: TikTokIcon, href: "https://tiktok.com/@alex.seis", label: "TikTok" },
   ];
 
   return (
@@ -166,10 +179,10 @@ const ContactPage = () => {
     >
       <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
         <h1 className="text-h1 font-extrabold mb-4">
-          Ponte en <span className="text-accent">Contacto</span>
+          Hablemos de Tu <span className="text-accent">Situación</span>
         </h1>
         <p className="text-h3 text-gray-300 max-w-3xl mx-auto font-normal">
-          ¿Listo para transformar tu negocio con IA? Hablemos de tus ideas y proyectos. Estamos aquí para ayudarte.
+          ¿Tus datos están dispersos? ¿Pierdes tiempo en procesos manuales? ¿Necesitas información clara para tomar mejores decisiones? Analicemos tu situación específica.
         </p>
       </motion.div>
 
@@ -199,12 +212,12 @@ const ContactPage = () => {
                                   ${errors.interest ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
                                                   : 'border-gray-700 focus:border-accent focus:ring-accent'}`}
                     >
-                      <option value="" className="bg-bg-dark text-gray-400">Selecciona un área de interés...</option>
-                      <option value="agentes-ia" className="bg-bg-dark">Desarrollo de Agentes de IA</option>
-                      <option value="google-cloud" className="bg-bg-dark">Soluciones Google Cloud</option>
-                      <option value="gpts-claude" className="bg-bg-dark">GPTs y Claude</option>
-                      <option value="consultoria" className="bg-bg-dark">Consultoría General</option>
-                      <option value="otro" className="bg-bg-dark">Otro</option>
+                      <option value="auditoria-datos" className="bg-bg-dark">Auditoría de Datos y Procesos</option>
+                      <option value="dashboard-analytics" className="bg-bg-dark">Dashboards y Analytics</option>
+                      <option value="automatizacion" className="bg-bg-dark">Automatización de Procesos</option>
+                      <option value="optimizacion-rrhh" className="bg-bg-dark">Optimización RRHH</option>
+                      <option value="seguridad-fisica" className="bg-bg-dark">Sistemas de Seguridad</option>
+                      <option value="consultoria-general" className="bg-bg-dark">Consultoría General</option>
                     </select>
                 </div>
                 {errors.interest && <p className="text-red-500 text-xs mt-1">{errors.interest}</p>}
@@ -237,8 +250,8 @@ const ContactPage = () => {
               ))}
             </div>
             <div className="mt-6 pt-6 border-t border-gray-700/50">
-                 <h4 className="text-lg font-semibold text-gray-200 mb-4">Síguenos</h4> {/* Título más corto */}
-                 <div className="flex flex-wrap gap-3"> {/* Reducido gap para acomodar más iconos si es necesario */}
+                 <h4 className="text-lg font-semibold text-gray-200 mb-4">Síguenos</h4>
+                 <div className="flex flex-wrap gap-3">
                     {socialLinks.map(social => (
                         <a 
                             key={social.label} 
@@ -246,28 +259,27 @@ const ContactPage = () => {
                             target="_blank" 
                             rel="noopener noreferrer" 
                             aria-label={social.label}
-                            className="text-gray-400 hover:text-accent transition-colors p-2.5 bg-gray-800/50 hover:bg-gray-700/70 rounded-full" // Ajustado padding
+                            className="text-gray-400 hover:text-accent transition-colors p-2.5 bg-gray-800/50 hover:bg-gray-700/70 rounded-full"
                         >
-                            <social.icon className="h-5 w-5" /> {/* Tamaño de ícono ligeramente reducido */}
+                            <social.icon className="h-5 w-5" />
                         </a>
                     ))}
                  </div>
             </div>
           </div>
           
-          {/* SECCIÓN MODIFICADA: "¿Listo para Innovar?" */}
+          {/* SECCIÓN: "Mi Filosofía" */}
           <div className="glass-card p-6 md:p-8 border-accent/30">
-            <h3 className="text-h3 font-semibold text-accent mb-4 italic">Un Pensamiento...</h3> {/* Título modificado y en cursiva */}
-            <p className="text-gray-300 text-center text-md leading-relaxed italic"> {/* Texto modificado, centrado y en cursiva */}
-              "A veces lo más valioso no esta escondido, simplemente, nadie lo esta mirando."
-            </p>
-            {/* Se eliminó la imagen/logo de Google Cloud y el texto anterior */}
+            <h3 className="text-h3 font-semibold text-accent mb-4 italic">Mi Filosofía</h3>
+            <p className="text-gray-300 text-center text-md leading-relaxed italic">
+              "Lo que se mide, se mejora. Lo que no se mide, se deteriora."
+              </p>
+              <p className="text-gray-400 text-center text-sm mt-2">
+                — Cada proyecto debe generar métricas concretas de mejora
+              </p>
           </div>
         </motion.div>
       </div>
-
-      {/* LA SECCIÓN DE MAPA HA SIDO ELIMINADA */}
-
     </motion.div>
   );
 };

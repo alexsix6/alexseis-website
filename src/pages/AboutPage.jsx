@@ -9,42 +9,44 @@ import {
     Award, 
     BarChartHorizontalBig, 
     CloudCog,
-    HeartHandshake, // Ejemplo de ícono para un valor
-    Zap,            // Ejemplo de ícono para un valor
-    Puzzle        // Ejemplo de ícono para un valor
+    HeartHandshake,
+    Zap,
+    Puzzle,
+    BarChart2, // Nuevo icono necesario
+    Clock,     // Nuevo icono necesario
+    Database,  // Nuevo icono necesario
+    Target     // Nuevo icono necesario
 } from 'lucide-react';
 import CountUp from 'react-countup';
 
-// El array 'teamMembers' ha sido eliminado.
-
+// Nuevas estadísticas con métricas reales de Alex
 const stats = [
-  { value: 50, label: 'Proyectos Completados', icon: Award, suffix: '+' },
-  { value: 98, label: 'Satisfacción del Cliente', icon: Users, suffix: '%' },
-  { value: 10, label: 'Años de Experiencia en IA', icon: Brain, suffix: '+' },
+  { value: 700, label: 'Mejora en Mi Productividad Personal', icon: TrendingUp, suffix: '%' },
+  { value: 95, label: 'Reducción Promedio en Tiempos', icon: Clock, suffix: '%' },
+  { value: 15, label: 'Años Optimizando Procesos', icon: Award, suffix: '+' },
 ];
 
-// Ejemplo de datos para la nueva sección de Valores
+// Nuevos valores enfocados en la metodología "Lo que se mide, se mejora"
 const values = [
   { 
-    icon: Lightbulb, // Reutilizando Lightbulb o puedes elegir otro más específico
-    title: 'Innovación Constante', 
-    description: 'Abrazamos el cambio y la experimentación para estar siempre a la vanguardia tecnológica, ofreciendo soluciones creativas y efectivas.',
-    color: 'primary' // Usará el color primario definido en tu CSS/Tailwind
+    icon: BarChart2,
+    title: 'Resultados Medibles', 
+    description: 'Cada proyecto debe generar métricas concretas de mejora. Si no se puede medir, no se puede mejorar.',
+    color: 'primary'
   },
   { 
-    icon: HeartHandshake, 
-    title: 'Compromiso con el Cliente', 
-    description: 'Construimos relaciones sólidas basadas en la confianza, la transparencia y la dedicación para superar las expectativas de nuestros socios.',
-    color: 'secondary' // Usará el color secundario
+    icon: ShieldCheck, 
+    title: 'Transparencia Total', 
+    description: 'Muestro exactamente cómo obtuve cada resultado. Casos reales, datos reales, impacto real.',
+    color: 'secondary'
   },
   { 
-    icon: ShieldCheck, // Reutilizando ShieldCheck o puedes elegir otro
-    title: 'Ética e Integridad', 
-    description: 'Operamos con los más altos estándares éticos, asegurando un desarrollo y aplicación responsable de la inteligencia artificial.',
-    color: 'accent' // Usará el color de acento
+    icon: Zap, 
+    title: 'Eficiencia Comprobada', 
+    description: 'Mi propia productividad aumentó 700%: lo que hacía en una semana, ahora lo resuelvo en un día.',
+    color: 'accent'
   },
 ];
-
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -59,41 +61,47 @@ const itemVariants = {
 const cardHoverEffect = {
   y: -8,
   scale: 1.03,
-  boxShadow: "0 12px 32px rgba(var(--primary-rgb), 0.3)", // Asegúrate que --primary-rgb esté definido
+  boxShadow: "0 12px 32px rgba(var(--primary-rgb), 0.3)",
   transition: { duration: 0.3, type: "spring", stiffness: 200 }
 };
 
 const AboutPage = () => {
   return (
     <motion.div 
-      className="py-12 md:py-20 container-max" // Asumo container-max definido
+      className="py-12 md:py-20 container-max"
       variants={pageVariants}
       initial="initial"
       animate="animate"
     >
-      {/* Sección de Introducción */}
+      {/* Sección de Introducción - TRANSFORMADA */}
       <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
         <h1 className="text-h1 font-extrabold mb-4">
-          Conoce a <span className="text-primary">AI Solutions Corp</span>
+          Conoce a <span className="text-primary">Alex Seis</span>
         </h1>
         <p className="text-h3 text-gray-300 max-w-3xl mx-auto font-normal">
-          Somos un equipo apasionado de expertos en Inteligencia Artificial, dedicados a transformar negocios con tecnología de vanguardia y un profundo conocimiento del ecosistema Google Cloud.
+          Arquitecto de Sistemas de Decisión con experiencia comprobada transformando procesos caóticos en operaciones medibles. Especializado en RRHH y Seguridad Física, he desarrollado una metodología única que convierte datos dispersos en inteligencia empresarial accionable.
         </p>
       </motion.div>
 
-      {/* Sección: Misión */}
+      {/* Sección: Mi Historia - TRANSFORMADA */}
       <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20 items-center">
         <div className="order-1">
           <h2 className="text-h2 font-bold text-primary mb-4 flex items-center">
-            <Lightbulb className="mr-3 h-10 w-10" /> Nuestra Misión
+            <Lightbulb className="mr-3 h-10 w-10" /> Mi Historia
           </h2>
           <p className="text-lg text-gray-300 leading-relaxed">
-            Empoderar a las empresas con soluciones de IA personalizadas que impulsen la innovación, optimicen la eficiencia y generen un crecimiento sostenible. Creemos en el poder transformador de la IA para resolver los desafíos más complejos y crear un futuro más inteligente.
+            Durante años trabajando en Recursos Humanos y Seguridad Física, me enfrenté constantemente al mismo problema: <strong>excelentes profesionales perdiendo tiempo en procesos manuales ineficientes</strong>.
+          </p>
+          <p className="text-lg text-gray-300 leading-relaxed mt-4">
+            Veía cómo tareas que deberían tomar días se extendían por semanas, cómo datos valiosos se perdían en hojas de cálculo dispersas, y cómo decisiones importantes se tomaban sin la información correcta.
+          </p>
+          <p className="text-lg text-gray-300 leading-relaxed mt-4 font-semibold">
+            Ahí nació mi especialización.
           </p>
           <ul className="mt-6 space-y-2 text-gray-300">
-            <li className="flex items-center"><ShieldCheck size={20} className="text-accent mr-2"/> Soluciones a medida y escalables.</li>
-            <li className="flex items-center"><TrendingUp size={20} className="text-accent mr-2"/> Enfoque en resultados tangibles.</li>
-            <li className="flex items-center"><Brain size={20} className="text-accent mr-2"/> Innovación constante y ética.</li>
+            <li className="flex items-center"><Target size={20} className="text-accent mr-2"/> Enfoque en problemas reales, no tecnología por tecnología</li>
+            <li className="flex items-center"><BarChart2 size={20} className="text-accent mr-2"/> Todo debe ser medible y generar ROI tangible</li>
+            <li className="flex items-center"><Brain size={20} className="text-accent mr-2"/> Experiencia práctica en RRHH y Seguridad Física</li>
           </ul>
         </div>
         <motion.div 
@@ -102,13 +110,13 @@ const AboutPage = () => {
           transition={{ duration: 0.3 }}
         >
             <img  
-            alt="Equipo de IA colaborando en un proyecto innovador con post-its y diagramas"
+            alt="Professional data analyst working with multiple dashboards, clean office setup, person looking at security monitoring systems"
             className="object-cover w-full h-full"
-            src="https://images.unsplash.com/photo-1552664730-d307ca884978" />
+            src="https://publicidad-zaimella.vercel.app/historia-alexseis.png" />
         </motion.div>
       </motion.div>
 
-      {/* Sección: Visión */}
+      {/* Sección: Metodología "Lo que se mide, se mejora" - TRANSFORMADA */}
       <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12 md:mb-20 items-center">
         <motion.div 
           className="order-1 md:order-2 w-full h-80 md:h-96 rounded-xl overflow-hidden shadow-strong"
@@ -116,36 +124,113 @@ const AboutPage = () => {
           transition={{ duration: 0.3 }}
         >
             <img  
-            alt="Visión futurista de una ciudad inteligente conectada por IA"
+            alt="Modern business intelligence dashboard showing real-time metrics, executive reviewing performance charts"
             className="object-cover w-full h-full"
-            src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9" />
+            src="https://publicidad-zaimella.vercel.app/dashboard-hero.png" />
         </motion.div>
         <div className="order-2 md:order-1">
           <h2 className="text-h2 font-bold text-secondary mb-4 flex items-center">
-            <TrendingUp className="mr-3 h-10 w-10" /> Nuestra Visión
+            <TrendingUp className="mr-3 h-10 w-10" /> La Metodología "Lo que se mide, se mejora"
           </h2>
           <p className="text-lg text-gray-300 leading-relaxed">
-            Ser líderes en el desarrollo de agentes de IA y soluciones en la nube, reconocidos por nuestra excelencia técnica, enfoque en el cliente y contribución al avance de la inteligencia artificial aplicada. Aspiramos a ser el socio tecnológico preferido para empresas que buscan la vanguardia.
+            Mi enfoque no es vender tecnología por tecnología. Es simple y probado:
           </p>
-            <p className="mt-4 text-gray-400 leading-relaxed">
-            Nos vemos como catalizadores del cambio, ayudando a las organizaciones a navegar la complejidad de la IA y a cosechar sus beneficios estratégicos.
-          </p>
+          <div className="mt-6 space-y-4">
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-secondary font-bold text-sm">1</span>
+              </div>
+              <div>
+                <p className="text-gray-300"><strong className="text-secondary">Auditar</strong> tus datos actuales (identificar el caos)</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-secondary font-bold text-sm">2</span>
+              </div>
+              <div>
+                <p className="text-gray-300"><strong className="text-secondary">Estructurar</strong> la información crítica</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-secondary font-bold text-sm">3</span>
+              </div>
+              <div>
+                <p className="text-gray-300"><strong className="text-secondary">Automatizar</strong> la recolección y análisis</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-secondary font-bold text-sm">4</span>
+              </div>
+              <div>
+                <p className="text-gray-300"><strong className="text-secondary">Medir</strong> resultados en tiempo real</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="w-8 h-8 bg-secondary/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-secondary font-bold text-sm">5</span>
+              </div>
+              <div>
+                <p className="text-gray-300"><strong className="text-secondary">Optimizar</strong> basado en datos concretos</p>
+              </div>
+            </div>
+          </div>
         </div>
       </motion.div>
 
-      {/* NUEVA SECCIÓN: Nuestros Valores */}
+      {/* NUEVA SECCIÓN: Casos de Impacto Real */}
       <motion.div variants={itemVariants} className="mb-12 md:mb-20">
         <h2 className="text-h2 font-bold text-center mb-8 md:mb-12 text-text-light">
-          Los <span className="text-primary">Principios</span> que nos Definen
+          Casos de <span className="text-accent">Impacto Real</span>
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <motion.div 
+            className="glass-card p-6 border-primary/30"
+            whileHover={cardHoverEffect}
+          >
+            <div className="inline-block p-3 rounded-lg bg-primary/10 mb-4">
+              <ShieldCheck className="h-8 w-8 text-primary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2 text-primary">Controles Clave: De Caos a Control Total</h3>
+            <div className="space-y-2 text-sm text-gray-300">
+              <p><strong>Situación:</strong> Problemas no identificados de fondo</p>
+              <p><strong>Solución:</strong> Reestructuré procesos y datos entre áreas</p>
+              <p><strong>Resultado:</strong> Reducción a 2-6 días máximo (95% mejora)</p>
+            </div>
+          </motion.div>
+          
+          <motion.div 
+            className="glass-card p-6 border-secondary/30"
+            whileHover={cardHoverEffect}
+          >
+            <div className="inline-block p-3 rounded-lg bg-secondary/10 mb-4">
+              <Users className="h-8 w-8 text-secondary" />
+            </div>
+            <h3 className="text-xl font-semibold mb-2 text-secondary">Análisis de Colaboradores: Predicción de Problemas</h3>
+            <div className="space-y-2 text-sm text-gray-300">
+              <p><strong>Situación:</strong> Reincidencias en eventos de seguridad</p>
+              <p><strong>Solución:</strong> Dashboard predictivo con análisis de patrones</p>
+              <p><strong>Resultado:</strong> Identificación proactiva de colaboradores problemáticos</p>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      {/* Sección: Valores - TRANSFORMADA */}
+      <motion.div variants={itemVariants} className="mb-12 md:mb-20">
+        <h2 className="text-h2 font-bold text-center mb-8 md:mb-12 text-text-light">
+          Los <span className="text-primary">Principios</span> que me Definen
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {values.map((value, index) => (
             <motion.div 
               key={index} 
-              className={`glass-card p-6 text-center border-${value.color}/30`} // Asume que glass-card y border-color/30 están definidos
+              className={`glass-card p-6 text-center border-${value.color}/30`}
               whileHover={cardHoverEffect}
             >
-              <div className={`inline-block p-4 rounded-lg bg-${value.color}/10 mb-4`}> {/* Asume bg-color/10 definido */}
+              <div className={`inline-block p-4 rounded-lg bg-${value.color}/10 mb-4`}>
                 <value.icon className={`h-12 w-12 text-${value.color}`} />
               </div>
               <h3 className={`text-xl font-semibold mb-2 text-${value.color}`}>{value.title}</h3>
@@ -155,10 +240,10 @@ const AboutPage = () => {
         </div>
       </motion.div>
 
-      {/* Sección: Stats */}
+      {/* Sección: Stats - TRANSFORMADA */}
       <motion.div variants={itemVariants} className="mb-12 md:mb-20 glass-card p-6 md:p-10">
         <h2 className="text-h2 font-bold text-center mb-8 md:mb-12 text-text-light">
-          Nuestro Impacto en <span className="text-accent">Números</span>
+          Mi Impacto en <span className="text-accent">Números</span>
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {stats.map((stat, index) => (
@@ -177,16 +262,31 @@ const AboutPage = () => {
         </div>
       </motion.div>
       
-      {/* Sección: Expertise */}
+      {/* Sección: Mi Especialización - TRANSFORMADA */}
       <motion.div variants={itemVariants} className="mb-12 md:mb-20">
         <h2 className="text-h2 font-bold text-center mb-8 md:mb-12 text-text-light">
-          Nuestra <span className="text-primary">Expertise</span> Fundamental
+          Mi <span className="text-primary">Especialización</span> Única
         </h2>
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {[
-            { icon: Brain, title: 'IA Avanzada y ML', description: 'Dominio de Machine Learning, Deep Learning, NLP y desarrollo de agentes autónomos.', color: 'primary' },
-            { icon: CloudCog, title: 'Google Cloud Pro', description: 'Expertos en BigQuery, Cloud Run, Vertex AI y arquitecturas seguras en GCP.', color: 'secondary' },
-            { icon: BarChartHorizontalBig, title: 'Soluciones B2B Estratégicas', description: 'Enfoque en la creación de valor tangible para empresas, optimizando procesos y resultados.', color: 'accent' },
+            { 
+              icon: Database, 
+              title: 'Arquitectura de Datos', 
+              description: 'Diseño estructuras de datos optimizadas que soportan análisis profundos y automatización inteligente.', 
+              color: 'primary' 
+            },
+            { 
+              icon: BarChart2, 
+              title: 'Análisis Predictivo', 
+              description: 'Creo dashboards que no solo muestran qué pasó, sino que predicen qué va a pasar.', 
+              color: 'secondary' 
+            },
+            { 
+              icon: Target, 
+              title: 'RRHH y Seguridad Física', 
+              description: 'Experiencia específica en estas áreas me permite identificar oportunidades que otros no ven.', 
+              color: 'accent' 
+            },
           ].map((item, index) => (
             <motion.div 
               key={index} 
@@ -202,8 +302,6 @@ const AboutPage = () => {
           ))}
         </div>
       </motion.div>
-
-      {/* La sección del Equipo Directivo ha sido eliminada. */}
 
     </motion.div>
   );

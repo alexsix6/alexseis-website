@@ -49,10 +49,10 @@ export function Agent3D() {
   };
 
   const quickActions = [
-    { icon: "🚀", text: "Optimización Cloud", action: "¿Cómo puedo optimizar mis costos en Google Cloud?" },
-    { icon: "🤖", text: "Agentes IA", action: "¿Qué son los agentes de IA y cómo implementarlos?" },
-    { icon: "📊", text: "BigQuery", action: "¿Cómo usar BigQuery para análisis de datos?" },
-    { icon: "🔧", text: "Integración", action: "¿Cómo integrar servicios de Google Cloud?" }
+    { icon: "📊", text: "Auditoría de Datos", action: "¿Cómo puedo identificar qué datos están dispersos en mi empresa?" },
+    { icon: "⚡", text: "Optimización", action: "¿Cómo reduzco tiempos de procesos de días a horas?" },
+    { icon: "📈", text: "Dashboards", action: "¿Cómo creo dashboards que generen insights accionables?" },
+    { icon: "🎯", text: "Casos Reales", action: "¿Puedes mostrarme casos específicos con resultados medibles?" }
   ];
 
   const handleQuickAction = (action) => {
@@ -110,10 +110,10 @@ export function Agent3D() {
                       <span className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '150ms'}}></span>
                       <span className="w-2 h-2 bg-purple-400 rounded-full animate-bounce" style={{animationDelay: '300ms'}}></span>
                     </span>
-                    Escribiendo...
+                    Analizando...
                   </span>
                 ) : (
-                  "¡Hola! 👋 Pregúntame sobre IA, Google Cloud o BigQuery"
+                  "¡Hola! 👋 Pregúntame sobre optimización de datos y procesos"
                 )}
               </p>
             </div>
@@ -211,7 +211,7 @@ export function Agent3D() {
             {/* Footer con branding sutil */}
             <div className="text-center pt-1">
               <p className="text-xs text-gray-500">
-                Powered by AI • <span className="text-purple-400">Google Cloud Partner</span>
+                Alex Seis • <span className="text-purple-400">Arquitecto de Sistemas de Decisión</span>
               </p>
             </div>
           </div>

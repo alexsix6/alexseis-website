@@ -7,10 +7,10 @@ import { Agent3D } from '../components/Agent3D'; // Tu componente de chat flotan
 
 // Array de titulares para el efecto de tipeo
 const headlines = [
-  "Agentes de IA Inteligentes",
-  "Soluciones Google Cloud",
-  "Transformación Digital",
-  "Optimización de Procesos"
+  "Datos en Decisiones Inteligentes",
+  "Caos en Sistemas Optimizados", 
+  "Problemas en Soluciones Medibles",
+  "Información en Ventaja Competitiva"
 ];
 
 const HomePage = () => {
@@ -61,6 +61,11 @@ const HomePage = () => {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.3, ease: "easeOut" } },
   };
+
+  const metricsVariants = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.8, delay: 0.6, ease: "easeOut" } },
+  };
   
   // Efectos hover para los botones (ejemplos, puedes personalizarlos más)
   const ctaButtonHover = {
@@ -104,31 +109,66 @@ const HomePage = () => {
         <motion.div className="z-10 container-max" variants={contentVariants}>
           {/* Titular principal con efecto de tipeo */}
           <h1 className="text-h1 font-extrabold mb-6 text-white"> {/* Asumo que text-h1 y text-white vienen de tu CSS/Tailwind config */}
-            Potenciamos Tu Negocio con <br />
+            Transformo Tu Información <br />
             <span className="typing-effect text-accent">{typedText}</span>
             <span className="opacity-0">_</span> {/* Truco para mantener altura consistente durante el tipeo */}
           </h1>
           
           {/* Párrafo descriptivo. Asumo que corregiste el color usando 'main-description' o similar */}
           <p className="text-xl md:text-h3 main-description mb-10 max-w-3xl mx-auto leading-relaxed"> 
-            Creamos soluciones de Inteligencia Artificial a medida, especializadas en el ecosistema Google Cloud, para optimizar tus procesos y desbloquear nuevas oportunidades de crecimiento.
+            Soy Alex Seis, especialista en convertir datos dispersos y procesos caóticos en sistemas de decisión que generan resultados medibles. Mi enfoque proactivo transforma la forma en que trabajas: de reactivo a predictivo, de manual a automatizado, multiplicando tu productividad exponencialmente.
           </p>
+
+          {/* NUEVA SECCIÓN: Métricas de Impacto */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-4xl mx-auto"
+            variants={metricsVariants}
+            initial="initial"
+            animate="animate"
+          >
+            <motion.div 
+              className="glass-card p-6 text-center border-accent/30"
+              whileHover={{ y: -5, scale: 1.02, transition: { duration: 0.3 } }}
+            >
+              <div className="text-2xl md:text-3xl font-bold text-accent mb-2">60 → 2-6</div>
+              <div className="text-sm text-gray-300">Días de resolución</div>
+              <div className="text-xs text-gray-400 mt-1">Sistemas optimizados</div>
+            </motion.div>
+            
+            <motion.div 
+              className="glass-card p-6 text-center border-accent/30"
+              whileHover={{ y: -5, scale: 1.02, transition: { duration: 0.3 } }}
+            >
+              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">98%</div>
+              <div className="text-sm text-gray-300">Precisión en análisis</div>
+              <div className="text-xs text-gray-400 mt-1">Extracción de datos automatizada</div>
+            </motion.div>
+            
+            <motion.div 
+              className="glass-card p-6 text-center border-accent/30"
+              whileHover={{ y: -5, scale: 1.02, transition: { duration: 0.3 } }}
+            >
+              <div className="text-3xl md:text-4xl font-bold text-accent mb-2">700%</div>
+              <div className="text-sm text-gray-300">Mejora personal</div>
+              <div className="text-xs text-gray-400 mt-1">Lo que hacía en 1 semana → 1 día</div>
+            </motion.div>
+          </motion.div>
 
           {/* Contenedor para los botones de Call to Action (CTA) */}
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8 md:mb-12">
-            {/* Botón "Descubre Servicios" */}
+            {/* Botón "Ver Casos Reales" - CORREGIDO: ahora va a /projects */}
             <motion.div whileHover={ctaButtonHover} className="inline-block w-full sm:w-auto">
               <Button asChild size="lg" className="btn btn-primary w-full text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-button">
-                <NavLink to="/services">
-                  Descubre Servicios <ArrowRight className="ml-2 h-5 w-5" />
+                <NavLink to="/projects">
+                  Ver Casos Reales <ArrowRight className="ml-2 h-5 w-5" />
                 </NavLink>
               </Button>
             </motion.div>
-            {/* Botón "Contacta Ahora" */}
+            {/* Botón "Analizar Mi Situación" */}
             <motion.div whileHover={secondaryButtonHover} className="inline-block w-full sm:w-auto">
               <Button asChild size="lg" variant="outline" className="btn btn-outline w-full text-lg py-3 px-6 sm:py-4 sm:px-8 rounded-button border-2 border-gray-400 text-gray-300 hover:text-accent hover:border-accent hover:bg-accent/10">
                 <NavLink to="/contact">
-                  Contacta Ahora
+                  Analizar Mi Situación
                 </NavLink>
               </Button>
             </motion.div>
