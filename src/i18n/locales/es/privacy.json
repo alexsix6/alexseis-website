@@ -1,0 +1,56 @@
+{
+  "title": "Política de Privacidad",
+  "last_updated": "Última actualización",
+  "sections": {
+    "controller": {
+      "title": "Responsable del Tratamiento",
+      "content": "Alex Seis Projects es responsable del tratamiento de los datos personales recopilados a través de este sitio web."
+    },
+    "data_collected": {
+      "title": "Datos Recopilados",
+      "analytics": "Datos de navegación anónimos (Google Analytics 4)",
+      "forms": "Información de formularios de contacto (nombre, email, empresa, mensaje)",
+      "chat": "Conversaciones del chat (procesadas por OpenAI)",
+      "cookies": "Cookies técnicas necesarias para el funcionamiento del sitio"
+    },
+    "purpose": {
+      "title": "Finalidad del Tratamiento",
+      "content": "Los datos se recopilan para responder solicitudes, mejorar nuestros servicios y enviar información relevante sobre IA empresarial."
+    },
+    "legal_basis": {
+      "title": "Base Legal",
+      "content": "Consentimiento del usuario, interés legítimo y ejecución de contrato."
+    },
+    "retention": {
+      "title": "Períodos de Retención",
+      "content": "Los datos se conservan durante el tiempo necesario para cumplir su finalidad, con un máximo de 24 meses."
+    },
+    "third_parties": {
+      "title": "Servicios de Terceros",
+      "ga4": "Google Analytics 4 - Análisis de tráfico",
+      "openai": "OpenAI - Procesamiento de chat",
+      "bigquery": "Google BigQuery - Almacenamiento de datos",
+      "vercel": "Vercel - Hosting y despliegue"
+    },
+    "rights": {
+      "title": "Derechos del Usuario",
+      "access": "Derecho de acceso a tus datos",
+      "rectification": "Derecho de rectificación",
+      "deletion": "Derecho de eliminación",
+      "portability": "Derecho de portabilidad",
+      "content": "Para ejercer estos derechos, contacta a: ai@alexseis.com"
+    },
+    "cookies_policy": {
+      "title": "Política de Cookies",
+      "content": "Este sitio utiliza cookies técnicas necesarias y cookies de análisis (GA4). Puedes gestionar tus preferencias en la configuración de tu navegador."
+    },
+    "contact": {
+      "title": "Contacto",
+      "content": "Para consultas sobre privacidad: ai@alexseis.com"
+    }
+  },
+  "meta": {
+    "title": "Política de Privacidad",
+    "description": "Política de privacidad y protección de datos personales."
+  }
+}

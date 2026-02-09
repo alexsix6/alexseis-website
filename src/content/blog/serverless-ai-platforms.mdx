@@ -1,0 +1,91 @@
+---
+title: "De Excel a IA: Cómo las Empresas Medianas Automatizan"
+date: "2026-01-15"
+description: "Caso práctico de transformación digital: cómo migrar procesos manuales en Excel a plataformas serverless con IA integrada."
+slug: "serverless-ai-platforms"
+tags: ["Serverless", "Automation", "Cloud Run", "Digital Transformation", "SMB"]
+author: "Alex Seis"
+---
+
+# De Excel a IA: Cómo las Empresas Medianas Automatizan
+
+Muchas empresas medianas operan con procesos críticos en Excel. No es un problema de tecnología — es un problema de escala. Cuando un proceso manual funciona para 100 registros al mes pero necesita manejar 10,000, es momento de automatizar.
+
+## El Patrón Común
+
+La historia se repite: un equipo de 5-10 personas gestionando datos en hojas de cálculo compartidas, con macros frágiles y procesos que dependen de que "María" esté disponible porque solo ella sabe cómo funciona el reporte mensual.
+
+## Arquitectura Serverless para Automatización
+
+```
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│   Frontend   │───▶│  Cloud Run   │───▶│   BigQuery   │
+│   React SPA  │    │   API (Go)   │    │   Analytics  │
+└──────────────┘    └──────┬───────┘    └──────────────┘
+                          │
+                    ┌─────▼──────┐
+                    │  OpenAI    │
+                    │  GPT-4o   │
+                    │  Analysis  │
+                    └────────────┘
+```
+
+La clave es que cada componente escala independientemente:
+
+- **Frontend**: SPA estática en CDN, costo casi cero
+- **API**: Cloud Run escala a cero cuando no hay tráfico
+- **Base de datos**: BigQuery cobra por query, no por estar encendido
+- **IA**: OpenAI API cobra por token, solo cuando se usa
+
+## Costos Reales: Before vs After
+
+Un caso real de migración (datos anonimizados):
+
+| Aspecto | Antes (Excel) | Después (Serverless + IA) |
+|---------|--------------|--------------------------|
+| Tiempo de reporte | 3 días | 15 minutos |
+| Errores humanos | ~12% | < 1% |
+| Costo mensual | $4,500 (horas persona) | $180 (infraestructura) |
+| Escalabilidad | Limitada | Ilimitada |
+| Disponibilidad | Horario oficina | 24/7 |
+
+## Los 5 Pasos de la Migración
+
+### Paso 1: Auditoría de Procesos
+Documentar TODOS los procesos manuales, no solo los obvios. Los procesos "informales" son frecuentemente los más críticos.
+
+### Paso 2: Diseño de Data Model
+Antes de escribir código, diseñar el modelo de datos en BigQuery. Las tablas particionadas y clustering correcto son fundamentales para el rendimiento.
+
+### Paso 3: API Serverless
+Cloud Run con Go o Node.js para endpoints REST. Auto-scaling, zero cold start con `min-instances: 1`.
+
+### Paso 4: Integración IA
+OpenAI API para análisis de texto libre, clasificación automática y generación de insights. No intentar reemplazar todo — empezar con los procesos de mayor impacto.
+
+### Paso 5: Dashboard + Alertas
+Visualización en tiempo real con dashboard React + alertas proactivas cuando métricas salen de rango.
+
+## Errores a Evitar
+
+1. **Over-engineering**: No toda automatización necesita IA. A veces una regla simple basta
+2. **Migración Big-Bang**: Migrar proceso por proceso, no todo de golpe
+3. **Ignorar al usuario**: La herramienta más sofisticada falla si nadie la usa
+4. **Sin métricas de éxito**: Definir KPIs antes de empezar
+
+## ROI Esperado
+
+En nuestra experiencia con empresas medianas (50-500 empleados):
+
+- **Break-even**: 2-4 meses después del lanzamiento
+- **ROI año 1**: 300-500% sobre inversión inicial
+- **Reducción de errores**: 85-95%
+- **Tiempo liberado**: 60-80% del tiempo dedicado a procesos manuales
+
+## Conclusión
+
+La automatización serverless con IA no es exclusiva de grandes corporaciones. Las empresas medianas que adoptan estas arquitecturas obtienen ventaja competitiva significativa. La clave es empezar con procesos de alto impacto y escalar progresivamente.
+
+---
+
+*¿Tu empresa sigue operando procesos críticos en Excel? [Agenda una evaluación gratuita](/intake) para identificar oportunidades de automatización.*

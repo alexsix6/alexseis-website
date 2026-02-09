@@ -1,0 +1,16 @@
+{
+  "greeting": "¡Hola! Soy el asistente de Alex Seis. ¿En qué puedo ayudarte hoy?",
+  "placeholder": "Escribe tu mensaje...",
+  "send": "Enviar",
+  "quick_actions": {
+    "services": "¿Qué servicios ofrecen?",
+    "pricing": "¿Cuáles son sus precios?",
+    "contact": "Quiero agendar una reunión",
+    "rag": "¿Qué es RAG Enterprise?"
+  },
+  "email_prompt": "Para enviarte más información, ¿podrías compartirme tu email?",
+  "error": "Lo siento, hubo un error. ¿Puedes intentar de nuevo?",
+  "title": "Asistente IA",
+  "minimize": "Minimizar",
+  "close": "Cerrar chat"
+}

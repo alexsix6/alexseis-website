@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Contacto - Arquitecto IA Enterprise",
+    "description": "Contacta a Alex Seis para implementaciones RAG enterprise, chatbots empresariales y plataformas serverless escalables."
+  },
+  "hero": {
+    "title_1": "Contacto",
+    "title_accent": "Arquitecto IA Enterprise",
+    "title_2": "Implementaciones",
+    "title_primary": "RAG y Serverless",
+    "subtitle": "¿Necesitas <strong>RAG implementation enterprise</strong> o <strong>arquitecturas serverless escalables</strong>? Especialista en OpenAI, Claude y Google Cloud Run. Implementaciones verificables: 99.9% uptime, <2s latencia, 1000+ consultas/min en producción."
+  },
+  "form": {
+    "title": "Evalúa Tu Proyecto IA",
+    "name": "Nombre Completo *",
+    "name_placeholder": "Tu nombre completo",
+    "email": "Correo Electrónico *",
+    "email_placeholder": "ejemplo@dominio.com",
+    "company": "Empresa",
+    "company_placeholder": "Nombre de tu empresa (Opcional)",
+    "interest": "Estoy interesado en...",
+    "message": "Tu Proyecto IA *",
+    "message_placeholder": "Describe tu arquitectura actual, stack tecnológico y objetivos de implementación IA...",
+    "submit": "Evaluar Proyecto IA",
+    "submitting": "Enviando..."
+  },
+  "validation": {
+    "name_required": "El nombre es obligatorio.",
+    "email_required": "El correo electrónico es obligatorio.",
+    "email_invalid": "El correo electrónico no es válido.",
+    "message_required": "El mensaje es obligatorio.",
+    "message_min_length": "El mensaje debe tener al menos 10 caracteres.",
+    "validation_error": "Error de Validación",
+    "fix_errors": "Por favor, corrige los errores en el formulario."
+  },
+  "success": {
+    "title": "Mensaje Enviado Exitosamente",
+    "description": "Gracias por contactarnos. Nos pondremos en contacto contigo pronto."
+  },
+  "error": {
+    "title": "Error",
+    "send_failed": "Hubo un error al enviar el mensaje"
+  },
+  "interests_options": {
+    "rag_implementation": "RAG Implementation Enterprise",
+    "enterprise_chatbots": "Enterprise Chatbot Architecture",
+    "serverless_platforms": "Serverless Platforms Development",
+    "llm_integration": "LLM Integration Consulting",
+    "bigquery_ai": "BigQuery + AI Integration",
+    "consultoria_general": "Consultoría IA General"
+  },
+  "direct_contact": "Contacto Directo",
+  "email_label": "Correo Electrónico",
+  "phone_label": "Teléfono",
+  "follow_us": "Síguenos",
+  "stack": {
+    "title": "Stack Enterprise",
+    "llm_title": "LLM Integration:",
+    "llm_desc": "OpenAI GPT-4, Claude, Cohere API",
+    "cloud_title": "Cloud & Serverless:",
+    "cloud_desc": "Google Cloud Run, Vercel, Docker",
+    "vector_title": "Bases Vectoriales:",
+    "vector_desc": "Qdrant, Pinecone, BigQuery"
+  },
+  "philosophy": {
+    "title": "Mi Filosofía",
+    "quote": "\"Lo que se mide, se mejora. Lo que no se mide, se deteriora.\"",
+    "subtitle": "— Cada implementación IA debe generar métricas específicas de performance"
+  }
+}

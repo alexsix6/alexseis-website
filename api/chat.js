@@ -1,85 +1,34 @@
 import { OpenAI } from 'openai';
 import { BigQuery } from '@google-cloud/bigquery';
+import { applySecurityMiddleware, sanitizeString, getClientIp } from './lib/security.js';
 
-// ===== FUNCIONES AUXILIARES INTEGRADAS =====
-
-const getClientIp = (req) => {
-  return req.headers['x-forwarded-for']?.split(',')[0] || 
-         req.headers['x-real-ip'] || 
-         req.headers['x-client-ip'] ||
-         req.connection?.remoteAddress ||
-         'unknown';
-};
+// ===== CONFIGURATION =====
 
 const generateSessionId = () => {
   return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
 };
 
-// ===== NUEVA FUNCIÓN: BigQuery Rate Limiting =====
-const checkRateLimit = async (bigquery, ip, maxRequests = 10, windowMs = 60000) => {
-  try {
-    const windowStart = new Date(Date.now() - windowMs);
-    
-    const query = `
-      SELECT COUNT(*) as request_count
-      FROM \`cognitivedsai-herramientas.alexseis_web.conversations\`
-      WHERE user_ip = @ip 
-      AND created_at >= @window_start
-    `;
-    
-    const [rows] = await bigquery.query({
-      query: query,
-      params: {
-        ip: ip,
-        window_start: windowStart.toISOString()
-      }
-    });
-    
-    const count = rows[0]?.request_count || 0;
-    
-    return {
-      success: count < maxRequests,
-      remaining: maxRequests - count
-    };
-  } catch (error) {
-    console.error('Rate limit check failed:', error);
-    // En caso de error, permitir la solicitud
-    return { success: true, remaining: maxRequests };
-  }
-};
-
-// ===== CONFIGURACIÓN =====
-
-// Inicializar OpenAI
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Inicializar BigQuery con autenticación para Vercel
 const initBigQuery = () => {
   const projectId = process.env.GOOGLE_CLOUD_PROJECT_ID || 'cognitivedsai-herramientas';
-  
-  // Para Vercel: usar credenciales base64
+
   if (process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64) {
     const credentials = JSON.parse(
       Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS_BASE64, 'base64').toString()
     );
-    
-    return new BigQuery({
-      projectId,
-      credentials
-    });
+    return new BigQuery({ projectId, credentials });
   }
-  
-  // Para local: usar autenticación por defecto
+
   return new BigQuery({ projectId });
 };
 
 const bigquery = initBigQuery();
 
-// Prompt del sistema para el agente
-const SYSTEM_PROMPT = `Eres un experto asistente de AI especializado en Google Cloud Platform, BigQuery, Power BI e Inteligencia Artificial. 
-Tu nombre es AI Assistant de Alex Seis Projects. 
+const SYSTEM_PROMPT = `Eres un experto asistente de AI especializado en Google Cloud Platform, BigQuery, Power BI e Inteligencia Artificial.
+Tu nombre es AI Assistant de Alex Seis Projects.
 
 Tus especialidades incluyen:
 - Google Cloud Platform (GCP): Compute Engine, Cloud Storage, Cloud Functions, etc.
@@ -92,83 +41,38 @@ Tus especialidades incluyen:
 Proporciona respuestas claras, precisas y profesionales. Si no conoces algo, sé honesto al respecto.
 Responde en español a menos que el usuario escriba en otro idioma.`;
 
-// ===== HANDLER PRINCIPAL =====
+// ===== HANDLER =====
 
 export default async function handler(req, res) {
-  // LOGS DE DEBUG
-  console.log('=== INICIO DE SOLICITUD ===');
-  console.log('Método:', req.method);
-  console.log('Body:', req.body);
-  console.log('ENV Check:', {
-    hasOpenAI: !!process.env.OPENAI_API_KEY,
-    hasBigQuery: !!process.env.GOOGLE_CLOUD_PROJECT_ID,
-  });
-
-  // Configurar CORS headers
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
-
-  // Manejar preflight
-  if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
-  }
-
-  // Solo permitir POST
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Método no permitido' });
-  }
+  // Apply shared security middleware (CORS, rate limit, honeypot, headers)
+  const security = applySecurityMiddleware(req, res, 'chat');
+  if (!security.ok) return;
 
   try {
     const { message, sessionId: clientSessionId } = req.body;
-    
-    // Validaciones
-    if (!message || message.trim().length === 0) {
+
+    // Validate and sanitize input
+    const sanitizedMessage = sanitizeString(message, 1000);
+
+    if (!sanitizedMessage || sanitizedMessage.length === 0) {
       return res.status(400).json({ error: 'El mensaje es requerido' });
     }
 
-    if (message.length > 1000) {
-      return res.status(400).json({ error: 'El mensaje es demasiado largo (máximo 1000 caracteres)' });
-    }
-
-    // Verificar API key de OpenAI
     if (!process.env.OPENAI_API_KEY) {
-      console.error('Falta OPENAI_API_KEY');
-      return res.status(503).json({ 
-        error: 'El servicio no está configurado correctamente' 
+      return res.status(503).json({
+        error: 'El servicio no está configurado correctamente'
       });
     }
 
-    // Obtener IP del cliente
-    const clientIp = getClientIp(req);
-    
-    // Verificar rate limit con BigQuery
-    const rateLimitCheck = await checkRateLimit(bigquery, clientIp);
-    if (!rateLimitCheck.success) {
-      return res.status(429).json({ 
-        error: 'Demasiadas solicitudes. Por favor espera un momento antes de intentar de nuevo.',
-        remainingRequests: rateLimitCheck.remaining 
-      });
-    }
-
-    // Generar o usar session ID
     const sessionId = clientSessionId || generateSessionId();
-    
-    // Medir tiempo de respuesta
     const startTime = Date.now();
 
-    // Llamada a OpenAI
-    console.log('Enviando mensaje a OpenAI...');
+    // Call OpenAI
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o",
+      model: 'gpt-4o',
       messages: [
-        { role: "system", content: SYSTEM_PROMPT },
-        { role: "user", content: message }
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: sanitizedMessage }
       ],
       temperature: 0.5,
       max_tokens: 500,
@@ -178,17 +82,15 @@ export default async function handler(req, res) {
     const responseTime = Date.now() - startTime;
     const tokensUsed = completion.usage?.total_tokens || 0;
 
-    // ===== GUARDAR EN BIGQUERY (NUEVO) =====
-    console.log('Guardando conversación en BigQuery...');
-    
+    // Log to BigQuery (non-blocking, errors don't fail the response)
     const conversationData = {
       session_id: sessionId,
-      user_message: message,
+      user_message: sanitizedMessage,
       agent_response: aiResponse,
       model_used: 'gpt-4o',
       tokens_used: tokensUsed,
       response_time_ms: responseTime,
-      user_ip: clientIp,
+      user_ip: security.clientIp,
       user_agent: req.headers['user-agent'] || 'unknown',
       created_at: new Date().toISOString()
     };
@@ -198,14 +100,10 @@ export default async function handler(req, res) {
         .dataset('alexseis_web')
         .table('conversations')
         .insert([conversationData]);
-      
-      console.log('✅ Conversación guardada en BigQuery');
     } catch (dbError) {
-      console.error('❌ Error al guardar en BigQuery:', dbError);
-      // No fallar la respuesta por error de BD
+      console.error('BigQuery insert error (non-fatal):', dbError.message);
     }
 
-    // Responder al cliente
     return res.status(200).json({
       success: true,
       response: aiResponse,
@@ -214,31 +112,28 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error en chat API:', error);
-    
-    // Manejo de errores específicos de OpenAI
+    console.error('Chat API error:', error.message);
+
     if (error?.error?.code === 'insufficient_quota') {
-      return res.status(503).json({ 
-        error: 'El servicio está temporalmente no disponible. Por favor intenta más tarde.' 
+      return res.status(503).json({
+        error: 'El servicio está temporalmente no disponible. Por favor intenta más tarde.'
       });
     }
-    
+
     if (error?.error?.code === 'rate_limit_exceeded') {
-      return res.status(429).json({ 
-        error: 'Límite de velocidad excedido. Por favor intenta en unos segundos.' 
+      return res.status(429).json({
+        error: 'Límite de velocidad excedido. Por favor intenta en unos segundos.'
       });
     }
 
     if (error?.status === 401) {
-      console.error('Error de autenticación con OpenAI');
-      return res.status(503).json({ 
-        error: 'Error de configuración del servicio' 
+      return res.status(503).json({
+        error: 'Error de configuración del servicio'
       });
     }
-    
-    return res.status(500).json({ 
-      error: 'Ocurrió un error procesando tu solicitud.',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+
+    return res.status(500).json({
+      error: 'Ocurrió un error procesando tu solicitud.'
     });
   }
 }

@@ -1,0 +1,54 @@
+{
+  "page_title": "Servicios Especializados",
+  "page_subtitle": "Soluciones de IA empresarial diseñadas para escalar. Cada servicio incluye arquitectura probada en producción con métricas verificables.",
+  "cards": {
+    "rag": {
+      "title": "RAG Enterprise",
+      "description": "Sistemas de Retrieval-Augmented Generation con vectorización inteligente, búsqueda semántica y respuestas contextuales para documentación corporativa."
+    },
+    "chatbots": {
+      "title": "Chatbots Empresariales",
+      "description": "Agentes conversacionales con IA avanzada, integración multicanal y aprendizaje continuo para atención al cliente y procesos internos."
+    },
+    "serverless": {
+      "title": "Plataformas Serverless",
+      "description": "Arquitecturas cloud-native en Google Cloud Run, escalamiento automático y costos optimizados para aplicaciones de alto tráfico."
+    },
+    "data": {
+      "title": "Ingeniería de Datos",
+      "description": "Pipelines de datos con BigQuery, ETL automatizado y dashboards ejecutivos para toma de decisiones basada en datos reales."
+    },
+    "automation": {
+      "title": "Automatización IA",
+      "description": "Flujos de trabajo inteligentes con LLMs, procesamiento de documentos y automatización de procesos empresariales repetitivos."
+    },
+    "consulting": {
+      "title": "Consultoría Estratégica IA",
+      "description": "Evaluación de madurez IA, roadmap de implementación y acompañamiento ejecutivo para transformación digital con inteligencia artificial."
+    }
+  },
+  "process": {
+    "title": "Proceso de Implementación",
+    "step1": {
+      "title": "Diagnóstico",
+      "description": "Evaluación completa de tu stack actual y oportunidades de IA"
+    },
+    "step2": {
+      "title": "Arquitectura",
+      "description": "Diseño de solución personalizada con métricas de éxito claras"
+    },
+    "step3": {
+      "title": "Implementación",
+      "description": "Desarrollo iterativo con sprints de 2 semanas y demos constantes"
+    },
+    "step4": {
+      "title": "Optimización",
+      "description": "Monitoreo continuo, ajustes de performance y soporte enterprise"
+    }
+  },
+  "technologies": "Tecnologías",
+  "meta": {
+    "title": "Servicios Especializados",
+    "description": "Soluciones de IA empresarial diseñadas para escalar con arquitectura probada en producción."
+  }
+}

@@ -1,0 +1,9 @@
+# https://alexseis.com robots.txt
+User-agent: *
+Allow: /
+
+# Disallow API routes
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://alexseis.com/sitemap.xml

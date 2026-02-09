@@ -1,0 +1,16 @@
+{
+  "greeting": "Hi! I'm Alex Seis' assistant. How can I help you today?",
+  "placeholder": "Type your message...",
+  "send": "Send",
+  "quick_actions": {
+    "services": "What services do you offer?",
+    "pricing": "What are your prices?",
+    "contact": "I'd like to schedule a meeting",
+    "rag": "What is Enterprise RAG?"
+  },
+  "email_prompt": "To send you more information, could you share your email?",
+  "error": "Sorry, there was an error. Can you try again?",
+  "title": "AI Assistant",
+  "minimize": "Minimize",
+  "close": "Close chat"
+}

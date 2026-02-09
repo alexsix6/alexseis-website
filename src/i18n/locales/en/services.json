@@ -1,0 +1,54 @@
+{
+  "page_title": "Specialized Services",
+  "page_subtitle": "Enterprise AI solutions designed to scale. Every service includes production-proven architecture with verifiable metrics.",
+  "cards": {
+    "rag": {
+      "title": "Enterprise RAG",
+      "description": "Retrieval-Augmented Generation systems with intelligent vectorization, semantic search, and contextual responses for corporate documentation."
+    },
+    "chatbots": {
+      "title": "Enterprise Chatbots",
+      "description": "Conversational agents with advanced AI, multichannel integration, and continuous learning for customer service and internal processes."
+    },
+    "serverless": {
+      "title": "Serverless Platforms",
+      "description": "Cloud-native architectures on Google Cloud Run, automatic scaling, and optimized costs for high-traffic applications."
+    },
+    "data": {
+      "title": "Data Engineering",
+      "description": "Data pipelines with BigQuery, automated ETL, and executive dashboards for decision-making based on real data."
+    },
+    "automation": {
+      "title": "AI Automation",
+      "description": "Intelligent workflows with LLMs, document processing, and automation of repetitive business processes."
+    },
+    "consulting": {
+      "title": "Strategic AI Consulting",
+      "description": "AI maturity assessment, implementation roadmap, and executive guidance for digital transformation with artificial intelligence."
+    }
+  },
+  "process": {
+    "title": "Implementation Process",
+    "step1": {
+      "title": "Diagnosis",
+      "description": "Complete evaluation of your current stack and AI opportunities"
+    },
+    "step2": {
+      "title": "Architecture",
+      "description": "Custom solution design with clear success metrics"
+    },
+    "step3": {
+      "title": "Implementation",
+      "description": "Iterative development with 2-week sprints and continuous demos"
+    },
+    "step4": {
+      "title": "Optimization",
+      "description": "Continuous monitoring, performance tuning, and enterprise support"
+    }
+  },
+  "technologies": "Technologies",
+  "meta": {
+    "title": "Specialized Services",
+    "description": "Enterprise AI solutions designed to scale with production-proven architecture."
+  }
+}

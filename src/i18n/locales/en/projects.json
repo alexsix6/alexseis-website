@@ -1,0 +1,55 @@
+{
+  "page_title": "Featured Projects",
+  "page_subtitle": "Real implementations with verifiable metrics. Every project demonstrates measurable results in production.",
+  "filter_all": "All",
+  "filter_rag": "RAG",
+  "filter_chatbot": "Chatbots",
+  "filter_serverless": "Serverless",
+  "filter_data": "Data",
+  "results": "Results",
+  "technologies": "Technologies",
+  "before": "Before",
+  "after": "After",
+  "improvement": "Improvement",
+  "projects": {
+    "rag_enterprise": {
+      "title": "Multi-tenant Enterprise RAG",
+      "client": "LATAM Fintech",
+      "description": "Semantic search system over 500K+ corporate documents with contextual responses in <2s."
+    },
+    "chatbot_support": {
+      "title": "24/7 Support Chatbot",
+      "client": "Regional E-commerce",
+      "description": "Conversational agent handling 1000+ daily queries with 94% automatic resolution rate."
+    },
+    "serverless_platform": {
+      "title": "Serverless Platform",
+      "client": "B2B SaaS",
+      "description": "Monolith to serverless microservices migration with 99.9% uptime and 60% cost reduction."
+    },
+    "data_pipeline": {
+      "title": "Data Pipeline",
+      "client": "Multinational Retail",
+      "description": "Automated ETL pipeline processing 10M+ daily records with real-time executive dashboards."
+    }
+  },
+  "differentiators": {
+    "title": "Why Choose Us?",
+    "verified": {
+      "title": "Verifiable Metrics",
+      "description": "Every project includes real performance data"
+    },
+    "production": {
+      "title": "Real Production",
+      "description": "Not prototypes: production systems with real traffic"
+    },
+    "enterprise": {
+      "title": "Enterprise-Grade",
+      "description": "Enterprise-level security, scalability, and support"
+    }
+  },
+  "meta": {
+    "title": "Featured Projects",
+    "description": "Real implementations with verifiable metrics in production."
+  }
+}

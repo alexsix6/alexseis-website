@@ -1,0 +1,55 @@
+{
+  "page_title": "Proyectos Destacados",
+  "page_subtitle": "Implementaciones reales con métricas verificables. Cada proyecto demuestra resultados medibles en producción.",
+  "filter_all": "Todos",
+  "filter_rag": "RAG",
+  "filter_chatbot": "Chatbots",
+  "filter_serverless": "Serverless",
+  "filter_data": "Data",
+  "results": "Resultados",
+  "technologies": "Tecnologías",
+  "before": "Antes",
+  "after": "Después",
+  "improvement": "Mejora",
+  "projects": {
+    "rag_enterprise": {
+      "title": "RAG Enterprise Multi-tenant",
+      "client": "Fintech LATAM",
+      "description": "Sistema de búsqueda semántica sobre 500K+ documentos corporativos con respuestas contextuales en <2s."
+    },
+    "chatbot_support": {
+      "title": "Chatbot Soporte 24/7",
+      "client": "E-commerce Regional",
+      "description": "Agente conversacional que maneja 1000+ consultas diarias con 94% de resolución automática."
+    },
+    "serverless_platform": {
+      "title": "Plataforma Serverless",
+      "client": "SaaS B2B",
+      "description": "Migración de monolito a microservicios serverless con 99.9% uptime y 60% reducción de costos."
+    },
+    "data_pipeline": {
+      "title": "Pipeline de Datos",
+      "client": "Retail Multinacional",
+      "description": "Pipeline ETL automatizado procesando 10M+ registros diarios con dashboards ejecutivos en tiempo real."
+    }
+  },
+  "differentiators": {
+    "title": "¿Por qué Elegirnos?",
+    "verified": {
+      "title": "Métricas Verificables",
+      "description": "Cada proyecto incluye datos de performance reales"
+    },
+    "production": {
+      "title": "Producción Real",
+      "description": "No prototipos: sistemas en producción con tráfico real"
+    },
+    "enterprise": {
+      "title": "Enterprise-Grade",
+      "description": "Seguridad, escalabilidad y soporte de nivel empresarial"
+    }
+  },
+  "meta": {
+    "title": "Proyectos Destacados",
+    "description": "Implementaciones reales con métricas verificables en producción."
+  }
+}

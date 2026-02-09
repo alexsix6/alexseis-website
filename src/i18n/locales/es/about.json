@@ -1,0 +1,46 @@
+{
+  "page_title": "Sobre Alex Seis",
+  "page_subtitle": "Arquitecto de IA Empresarial con experiencia en implementaciones Fortune 500",
+  "bio": {
+    "title": "Mi Historia",
+    "paragraph_1": "Soy Alex Seis, Arquitecto de IA Empresarial especializado en transformar empresas con inteligencia artificial aplicada.",
+    "paragraph_2": "Mi enfoque combina arquitectura de software robusta con las últimas innovaciones en IA para crear soluciones que realmente escalan en producción."
+  },
+  "stats": {
+    "projects": "Proyectos",
+    "uptime": "Uptime",
+    "latency": "Latencia",
+    "satisfaction": "Satisfacción"
+  },
+  "values": {
+    "title": "Valores",
+    "innovation": {
+      "title": "Innovación Aplicada",
+      "description": "Tecnología de punta con resultados medibles"
+    },
+    "transparency": {
+      "title": "Transparencia Total",
+      "description": "Métricas verificables en cada proyecto"
+    },
+    "excellence": {
+      "title": "Excelencia Técnica",
+      "description": "Código limpio, documentado y mantenible"
+    },
+    "impact": {
+      "title": "Impacto Real",
+      "description": "Soluciones que transforman operaciones"
+    }
+  },
+  "specializations": {
+    "title": "Especializaciones",
+    "rag": "RAG Implementation",
+    "chatbots": "Enterprise Chatbots",
+    "serverless": "Serverless Architecture",
+    "bigquery": "BigQuery & Data"
+  },
+  "tech_stack": "Stack Tecnológico",
+  "meta": {
+    "title": "Sobre Alex Seis",
+    "description": "Arquitecto de IA Empresarial con experiencia en implementaciones Fortune 500."
+  }
+}

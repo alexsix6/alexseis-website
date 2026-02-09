@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "cta": {
+    "audit": "Free AI Audit",
+    "audit_short": "Audit",
+    "download": "Download",
+    "send": "Send",
+    "close": "Close"
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "designed_with": "Designed with",
+    "and": "and",
+    "for_innovation": "for innovation.",
+    "privacy_policy": "Privacy Policy"
+  },
+  "loading": "Loading...",
+  "theme": {
+    "toggle_dark": "Switch to dark mode",
+    "toggle_light": "Switch to light mode",
+    "dark_mode": "Dark Mode",
+    "light_mode": "Light Mode",
+    "loading": "Loading..."
+  },
+  "email_capture": {
+    "title": "Free Guide: Enterprise RAG in 2026",
+    "subtitle": "Get the guide + monthly enterprise AI architecture insights.",
+    "placeholder": "you@company.com",
+    "success_title": "Check your email for the free guide",
+    "success_subtitle": "We'll send you monthly enterprise AI insights",
+    "error_invalid": "Please enter a valid email address",
+    "banner_subtitle": "Production-proven architectures with 99.9% uptime"
+  },
+  "logo_alt": "Alex Seis - Enterprise AI Architect"
+}

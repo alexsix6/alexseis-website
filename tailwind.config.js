@@ -2,10 +2,8 @@
 module.exports = {
   darkMode: 'class', // ← NUEVA LÍNEA: Habilita dark mode por clase
   content: [
-    './pages/**/*.{js,jsx}',
-    './components/**/*.{js,jsx}',
-    './app/**/*.{js,jsx}',
-    './src/**/*.{js,jsx}',
+    './index.html',
+    './src/**/*.{js,jsx,ts,tsx,mdx}',
   ],
   theme: {
     container: {

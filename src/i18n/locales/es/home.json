@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "headline_1": "De Datos a Decisiones:",
+    "headline_2": "Arquitecto IA Empresarial",
+    "subtitle": "Transformo empresas con inteligencia artificial: RAG enterprise, chatbots inteligentes y plataformas serverless que escalan.",
+    "cta": "Agenda Auditoría IA Gratuita",
+    "cta_secondary": "Ver Proyectos"
+  },
+  "metrics": {
+    "uptime": "Uptime",
+    "latency": "Latencia",
+    "queries": "Consultas/min",
+    "satisfaction": "Satisfacción"
+  },
+  "sections": {
+    "services_title": "Servicios Especializados",
+    "projects_title": "Proyectos Destacados",
+    "contact_title": "¿Listo para Transformar tu Empresa?"
+  },
+  "meta": {
+    "title": "Arquitecto IA Empresarial",
+    "description": "Especializado en implementaciones RAG empresariales, chatbots enterprise y plataformas serverless que escalan."
+  }
+}

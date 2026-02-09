@@ -1,0 +1,128 @@
+{
+  "landing": {
+    "title": "Enterprise AI Assessment",
+    "subtitle": "Evaluate the potential of Artificial Intelligence in your business",
+    "description": "Answer a few questions to receive a personalized assessment on how AI can transform your business.",
+    "start_button": "Start Assessment",
+    "duration": "5-10 minutes",
+    "free": "100% Free",
+    "confidential": "Confidential"
+  },
+  "progress": {
+    "question": "Question",
+    "of": "of",
+    "completed": "completed"
+  },
+  "questions": {
+    "industry": {
+      "question": "What industry does your company operate in?",
+      "hint": "Select the one that best describes your sector"
+    },
+    "company_size": {
+      "question": "How many employees does your company have?",
+      "hint": "This helps us size the solution"
+    },
+    "ai_maturity": {
+      "question": "What is your company's AI maturity level?",
+      "hint": "Be honest, there's no wrong answer"
+    },
+    "main_challenge": {
+      "question": "What is your main business challenge?",
+      "hint": "Identify the most urgent pain point"
+    },
+    "budget": {
+      "question": "What is your estimated AI budget?",
+      "hint": "Approximate range to size the proposal"
+    },
+    "timeline": {
+      "question": "What is your ideal implementation timeline?",
+      "hint": "When do you need results?"
+    },
+    "additional": {
+      "question": "Anything else we should know?",
+      "placeholder": "Briefly describe your current situation, technologies you use, or any additional context that helps us better understand your case...",
+      "hint": "Optional but very helpful"
+    }
+  },
+  "options": {
+    "industry": {
+      "fintech": "Fintech / Banking",
+      "ecommerce": "E-commerce / Retail",
+      "saas": "SaaS / Technology",
+      "healthcare": "Healthcare / Pharma",
+      "manufacturing": "Manufacturing / Industrial",
+      "education": "Education",
+      "other": "Other sector"
+    },
+    "company_size": {
+      "startup": "1-10 employees",
+      "small": "11-50 employees",
+      "medium": "51-200 employees",
+      "large": "201-1000 employees",
+      "enterprise": "1000+ employees"
+    },
+    "ai_maturity": {
+      "none": "No AI experience",
+      "exploring": "Exploring options",
+      "pilot": "Pilot projects",
+      "production": "AI in production",
+      "advanced": "Advanced/multiple AI"
+    },
+    "main_challenge": {
+      "efficiency": "Automate processes",
+      "customer": "Improve customer service",
+      "data": "Leverage existing data",
+      "costs": "Reduce operational costs",
+      "innovation": "Innovate products/services",
+      "scale": "Scale operations"
+    },
+    "budget": {
+      "under_5k": "Under $5,000",
+      "5k_15k": "$5,000 - $15,000",
+      "15k_50k": "$15,000 - $50,000",
+      "50k_plus": "Over $50,000",
+      "undefined": "To be defined"
+    },
+    "timeline": {
+      "asap": "As soon as possible",
+      "1_3_months": "1-3 months",
+      "3_6_months": "3-6 months",
+      "6_plus": "6+ months",
+      "exploring": "Just exploring"
+    }
+  },
+  "uploads": {
+    "title": "Additional Documents",
+    "subtitle": "Upload documents that help us better understand your case",
+    "drag_drop": "Drag files here or click to select",
+    "formats": "PDF, DOC, DOCX, XLS, XLSX, PNG, JPG (max. 10MB)",
+    "or_record": "Or record a voice message",
+    "record": "Record",
+    "stop": "Stop",
+    "recording": "Recording...",
+    "skip": "Continue without documents",
+    "continue": "Continue"
+  },
+  "agent": {
+    "title": "AI Analysis in Progress",
+    "analyzing": "Analyzing your responses...",
+    "generating": "Generating personalized assessment...",
+    "follow_up": "Follow-up question:",
+    "skip": "Skip",
+    "send": "Send"
+  },
+  "confirmation": {
+    "title": "Assessment Completed!",
+    "subtitle": "Thank you for completing the assessment. Our team will analyze your case and contact you within the next 24 hours.",
+    "summary_title": "Summary of Your Responses",
+    "download": "Download Summary",
+    "new_assessment": "New Assessment",
+    "contact_cta": "Schedule a Call"
+  },
+  "messages": {
+    "error_submit": "Error submitting. Please try again.",
+    "error_upload": "Error uploading file.",
+    "success_upload": "File uploaded successfully.",
+    "max_files": "Maximum number of files reached."
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "title": "Privacy Policy",
+  "last_updated": "Last updated",
+  "sections": {
+    "controller": {
+      "title": "Data Controller",
+      "content": "Alex Seis Projects is responsible for processing personal data collected through this website."
+    },
+    "data_collected": {
+      "title": "Data Collected",
+      "analytics": "Anonymous browsing data (Google Analytics 4)",
+      "forms": "Contact form information (name, email, company, message)",
+      "chat": "Chat conversations (processed by OpenAI)",
+      "cookies": "Technical cookies necessary for website operation"
+    },
+    "purpose": {
+      "title": "Purpose of Processing",
+      "content": "Data is collected to respond to inquiries, improve our services, and send relevant information about enterprise AI."
+    },
+    "legal_basis": {
+      "title": "Legal Basis",
+      "content": "User consent, legitimate interest, and contract performance."
+    },
+    "retention": {
+      "title": "Retention Periods",
+      "content": "Data is retained for the time necessary to fulfill its purpose, with a maximum of 24 months."
+    },
+    "third_parties": {
+      "title": "Third-Party Services",
+      "ga4": "Google Analytics 4 - Traffic analysis",
+      "openai": "OpenAI - Chat processing",
+      "bigquery": "Google BigQuery - Data storage",
+      "vercel": "Vercel - Hosting and deployment"
+    },
+    "rights": {
+      "title": "User Rights",
+      "access": "Right to access your data",
+      "rectification": "Right to rectification",
+      "deletion": "Right to deletion",
+      "portability": "Right to portability",
+      "content": "To exercise these rights, contact: ai@alexseis.com"
+    },
+    "cookies_policy": {
+      "title": "Cookie Policy",
+      "content": "This site uses necessary technical cookies and analytics cookies (GA4). You can manage your preferences in your browser settings."
+    },
+    "contact": {
+      "title": "Contact",
+      "content": "For privacy inquiries: ai@alexseis.com"
+    }
+  },
+  "meta": {
+    "title": "Privacy Policy",
+    "description": "Privacy policy and personal data protection."
+  }
+}

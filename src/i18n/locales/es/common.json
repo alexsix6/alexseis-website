@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "blog": "Blog"
+  },
+  "cta": {
+    "audit": "Auditoría IA Gratuita",
+    "audit_short": "Auditoría",
+    "download": "Descargar",
+    "send": "Enviar",
+    "close": "Cerrar"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados.",
+    "designed_with": "Diseñado con",
+    "and": "y",
+    "for_innovation": "para la innovación.",
+    "privacy_policy": "Política de Privacidad"
+  },
+  "loading": "Cargando...",
+  "theme": {
+    "toggle_dark": "Cambiar a modo oscuro",
+    "toggle_light": "Cambiar a modo claro",
+    "dark_mode": "Modo Oscuro",
+    "light_mode": "Modo Claro",
+    "loading": "Cargando..."
+  },
+  "email_capture": {
+    "title": "Guía Gratuita: RAG Enterprise en 2026",
+    "subtitle": "Recíbe la guía + insights mensuales de arquitectura IA empresarial.",
+    "placeholder": "tu@empresa.com",
+    "success_title": "Revisa tu correo para la guía gratuita",
+    "success_subtitle": "Te enviaremos insights mensuales de IA empresarial",
+    "error_invalid": "Por favor ingresa un email válido",
+    "banner_subtitle": "Arquitecturas probadas en producción con 99.9% uptime"
+  },
+  "logo_alt": "Alex Seis - Arquitecto IA Empresarial"
+}

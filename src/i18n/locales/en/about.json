@@ -1,0 +1,46 @@
+{
+  "page_title": "About Alex Seis",
+  "page_subtitle": "Enterprise AI Architect with experience in Fortune 500 implementations",
+  "bio": {
+    "title": "My Story",
+    "paragraph_1": "I'm Alex Seis, an Enterprise AI Architect specialized in transforming businesses with applied artificial intelligence.",
+    "paragraph_2": "My approach combines robust software architecture with the latest AI innovations to create solutions that truly scale in production."
+  },
+  "stats": {
+    "projects": "Projects",
+    "uptime": "Uptime",
+    "latency": "Latency",
+    "satisfaction": "Satisfaction"
+  },
+  "values": {
+    "title": "Values",
+    "innovation": {
+      "title": "Applied Innovation",
+      "description": "Cutting-edge technology with measurable results"
+    },
+    "transparency": {
+      "title": "Full Transparency",
+      "description": "Verifiable metrics on every project"
+    },
+    "excellence": {
+      "title": "Technical Excellence",
+      "description": "Clean, documented, and maintainable code"
+    },
+    "impact": {
+      "title": "Real Impact",
+      "description": "Solutions that transform operations"
+    }
+  },
+  "specializations": {
+    "title": "Specializations",
+    "rag": "RAG Implementation",
+    "chatbots": "Enterprise Chatbots",
+    "serverless": "Serverless Architecture",
+    "bigquery": "BigQuery & Data"
+  },
+  "tech_stack": "Tech Stack",
+  "meta": {
+    "title": "About Alex Seis",
+    "description": "Enterprise AI Architect with experience in Fortune 500 implementations."
+  }
+}

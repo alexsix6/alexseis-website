@@ -1,0 +1,70 @@
+{
+  "meta": {
+    "title": "Contact - Enterprise AI Architect",
+    "description": "Contact Alex Seis for enterprise RAG implementations, business chatbots, and scalable serverless platforms."
+  },
+  "hero": {
+    "title_1": "Contact",
+    "title_accent": "Enterprise AI Architect",
+    "title_2": "Implementations",
+    "title_primary": "RAG & Serverless",
+    "subtitle": "Need <strong>enterprise RAG implementation</strong> or <strong>scalable serverless architectures</strong>? Specialist in OpenAI, Claude, and Google Cloud Run. Verifiable implementations: 99.9% uptime, <2s latency, 1000+ queries/min in production."
+  },
+  "form": {
+    "title": "Evaluate Your AI Project",
+    "name": "Full Name *",
+    "name_placeholder": "Your full name",
+    "email": "Email Address *",
+    "email_placeholder": "example@domain.com",
+    "company": "Company",
+    "company_placeholder": "Your company name (Optional)",
+    "interest": "I'm interested in...",
+    "message": "Your AI Project *",
+    "message_placeholder": "Describe your current architecture, tech stack, and AI implementation goals...",
+    "submit": "Evaluate AI Project",
+    "submitting": "Sending..."
+  },
+  "validation": {
+    "name_required": "Name is required.",
+    "email_required": "Email is required.",
+    "email_invalid": "Email is not valid.",
+    "message_required": "Message is required.",
+    "message_min_length": "Message must be at least 10 characters.",
+    "validation_error": "Validation Error",
+    "fix_errors": "Please fix the errors in the form."
+  },
+  "success": {
+    "title": "Message Sent Successfully",
+    "description": "Thank you for reaching out. We'll get back to you soon."
+  },
+  "error": {
+    "title": "Error",
+    "send_failed": "There was an error sending the message"
+  },
+  "interests_options": {
+    "rag_implementation": "Enterprise RAG Implementation",
+    "enterprise_chatbots": "Enterprise Chatbot Architecture",
+    "serverless_platforms": "Serverless Platform Development",
+    "llm_integration": "LLM Integration Consulting",
+    "bigquery_ai": "BigQuery + AI Integration",
+    "consultoria_general": "General AI Consulting"
+  },
+  "direct_contact": "Direct Contact",
+  "email_label": "Email",
+  "phone_label": "Phone",
+  "follow_us": "Follow Us",
+  "stack": {
+    "title": "Enterprise Stack",
+    "llm_title": "LLM Integration:",
+    "llm_desc": "OpenAI GPT-4, Claude, Cohere API",
+    "cloud_title": "Cloud & Serverless:",
+    "cloud_desc": "Google Cloud Run, Vercel, Docker",
+    "vector_title": "Vector Databases:",
+    "vector_desc": "Qdrant, Pinecone, BigQuery"
+  },
+  "philosophy": {
+    "title": "My Philosophy",
+    "quote": "\"What gets measured, gets improved. What doesn't get measured, deteriorates.\"",
+    "subtitle": "— Every AI implementation must generate specific performance metrics"
+  }
+}

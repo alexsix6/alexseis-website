@@ -1,0 +1,128 @@
+{
+  "landing": {
+    "title": "Diagnóstico de IA Empresarial",
+    "subtitle": "Evalúa el potencial de la Inteligencia Artificial en tu empresa",
+    "description": "Responde algunas preguntas para recibir un diagnóstico personalizado sobre cómo la IA puede transformar tu negocio.",
+    "start_button": "Comenzar Diagnóstico",
+    "duration": "5-10 minutos",
+    "free": "100% Gratuito",
+    "confidential": "Confidencial"
+  },
+  "progress": {
+    "question": "Pregunta",
+    "of": "de",
+    "completed": "completado"
+  },
+  "questions": {
+    "industry": {
+      "question": "¿En qué industria opera tu empresa?",
+      "hint": "Selecciona la que mejor describa tu sector"
+    },
+    "company_size": {
+      "question": "¿Cuántos empleados tiene tu empresa?",
+      "hint": "Esto nos ayuda a dimensionar la solución"
+    },
+    "ai_maturity": {
+      "question": "¿Cuál es el nivel de madurez en IA de tu empresa?",
+      "hint": "Sé honesto, no hay respuesta incorrecta"
+    },
+    "main_challenge": {
+      "question": "¿Cuál es tu principal desafío empresarial?",
+      "hint": "Identifica el dolor más urgente"
+    },
+    "budget": {
+      "question": "¿Cuál es tu presupuesto estimado para IA?",
+      "hint": "Rango aproximado para dimensionar la propuesta"
+    },
+    "timeline": {
+      "question": "¿Cuál es tu timeline ideal de implementación?",
+      "hint": "¿Cuándo necesitas resultados?"
+    },
+    "additional": {
+      "question": "¿Algo más que debamos saber?",
+      "placeholder": "Describe brevemente tu situación actual, tecnologías que usas, o cualquier contexto adicional que nos ayude a entender mejor tu caso...",
+      "hint": "Opcional pero muy útil"
+    }
+  },
+  "options": {
+    "industry": {
+      "fintech": "Fintech / Banca",
+      "ecommerce": "E-commerce / Retail",
+      "saas": "SaaS / Tecnología",
+      "healthcare": "Salud / Pharma",
+      "manufacturing": "Manufactura / Industrial",
+      "education": "Educación",
+      "other": "Otro sector"
+    },
+    "company_size": {
+      "startup": "1-10 empleados",
+      "small": "11-50 empleados",
+      "medium": "51-200 empleados",
+      "large": "201-1000 empleados",
+      "enterprise": "1000+ empleados"
+    },
+    "ai_maturity": {
+      "none": "Sin experiencia en IA",
+      "exploring": "Explorando opciones",
+      "pilot": "Proyectos piloto",
+      "production": "IA en producción",
+      "advanced": "IA avanzada/múltiple"
+    },
+    "main_challenge": {
+      "efficiency": "Automatizar procesos",
+      "customer": "Mejorar atención al cliente",
+      "data": "Aprovechar datos existentes",
+      "costs": "Reducir costos operativos",
+      "innovation": "Innovar productos/servicios",
+      "scale": "Escalar operaciones"
+    },
+    "budget": {
+      "under_5k": "Menos de $5,000",
+      "5k_15k": "$5,000 - $15,000",
+      "15k_50k": "$15,000 - $50,000",
+      "50k_plus": "Más de $50,000",
+      "undefined": "Por definir"
+    },
+    "timeline": {
+      "asap": "Lo antes posible",
+      "1_3_months": "1-3 meses",
+      "3_6_months": "3-6 meses",
+      "6_plus": "6+ meses",
+      "exploring": "Solo explorando"
+    }
+  },
+  "uploads": {
+    "title": "Documentos Adicionales",
+    "subtitle": "Sube documentos que nos ayuden a entender mejor tu caso",
+    "drag_drop": "Arrastra archivos aquí o haz clic para seleccionar",
+    "formats": "PDF, DOC, DOCX, XLS, XLSX, PNG, JPG (máx. 10MB)",
+    "or_record": "O graba un mensaje de voz",
+    "record": "Grabar",
+    "stop": "Detener",
+    "recording": "Grabando...",
+    "skip": "Continuar sin documentos",
+    "continue": "Continuar"
+  },
+  "agent": {
+    "title": "Análisis IA en Progreso",
+    "analyzing": "Analizando tus respuestas...",
+    "generating": "Generando diagnóstico personalizado...",
+    "follow_up": "Pregunta de seguimiento:",
+    "skip": "Omitir",
+    "send": "Enviar"
+  },
+  "confirmation": {
+    "title": "¡Diagnóstico Completado!",
+    "subtitle": "Gracias por completar el diagnóstico. Nuestro equipo analizará tu caso y te contactará en las próximas 24 horas.",
+    "summary_title": "Resumen de tus Respuestas",
+    "download": "Descargar Resumen",
+    "new_assessment": "Nuevo Diagnóstico",
+    "contact_cta": "Agendar Llamada"
+  },
+  "messages": {
+    "error_submit": "Error al enviar. Intenta de nuevo.",
+    "error_upload": "Error al subir archivo.",
+    "success_upload": "Archivo subido exitosamente.",
+    "max_files": "Máximo de archivos alcanzado."
+  }
+}
