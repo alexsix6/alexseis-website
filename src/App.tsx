@@ -193,6 +193,7 @@ function AppContent(): React.JSX.Element {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/intake" element={<IntakePage />} />
+            <Route path="/roadmap" element={<IntakePage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />

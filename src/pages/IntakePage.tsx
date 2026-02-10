@@ -70,15 +70,19 @@ const IntakePage: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-2"
+          className="flex items-center gap-3"
         >
-          <span
-            className="text-xl font-bold"
-            style={{ color: INNATE_COLORS.cyan }}
-          >
-            INNATE
+          <img
+            src="/brand/innate_logomark_32.png"
+            alt="INNATE.data"
+            width={28}
+            height={28}
+            className="block"
+          />
+          <span className="text-xl">
+            <span className="font-bold" style={{ color: INNATE_COLORS.cyan }}>INNATE</span>
+            <span className="font-light text-white/80">.data</span>
           </span>
-          <span className="text-xl font-light text-white/80">.data</span>
         </motion.div>
 
         {/* Mostrar progreso solo durante las preguntas */}
