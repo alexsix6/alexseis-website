@@ -8,6 +8,7 @@ import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import SpaceEffects from '@/components/SpaceEffects';
 import { Toaster } from "@/components/ui/toaster";
 import EmailCapture from '@/components/EmailCapture';
+import { ErrorBoundary } from '@/components/ui/error-boundary';
 import { useAnalytics } from '@/hooks/useAnalytics';
 
 // INNATE.data logo (WebP optimized: 35KB from 2.5MB PNG)
@@ -207,9 +208,11 @@ function AppContent(): React.JSX.Element {
       </main>
 
       {/* Lazy-loaded 3D Chat Agent */}
-      <Suspense fallback={null}>
-        <Agent3D />
-      </Suspense>
+      <ErrorBoundary fallback={null}>
+        <Suspense fallback={null}>
+          <Agent3D />
+        </Suspense>
+      </ErrorBoundary>
 
       <footer
         className="py-8 mt-auto shadow-inner border-t transition-all duration-300 relative z-10"

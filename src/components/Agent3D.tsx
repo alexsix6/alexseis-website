@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { SplineScene } from "./ui/splite";
+import { ErrorBoundary } from "./ui/error-boundary";
 import { useAgentChat } from "../hooks/useAgentChat";
 import { trackEvent } from "../hooks/useAnalytics";
 import type { ChatMessage } from "@/types";
@@ -203,10 +204,22 @@ export function Agent3D(): JSX.Element {
 
           {/* AREA DEL AGENTE 3D */}
           <div className="relative overflow-hidden transition-all duration-500 h-60 bg-gray-950">
-            <SplineScene
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full"
-            />
+            <ErrorBoundary
+              fallback={
+                <div className="w-full h-full flex items-center justify-center"
+                  style={{ background: 'linear-gradient(135deg, #0a0a1a 0%, #1a365d 50%, #0a0a1a 100%)' }}>
+                  <div className="text-center">
+                    <span className="text-5xl block mb-2">{"🤖"}</span>
+                    <p className="text-cyan-400 text-xs font-medium">INNATE.data Agent</p>
+                  </div>
+                </div>
+              }
+            >
+              <SplineScene
+                scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+                className="w-full h-full"
+              />
+            </ErrorBoundary>
 
             {/* BOTON DE MINIMIZAR */}
             <button
