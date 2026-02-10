@@ -1,0 +1,15 @@
+# Force LF line endings in git (prevents CRLF issues on Windows/WSL)
+* text=auto eol=lf
+
+# Explicitly mark binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.mp4 binary
+*.pdf binary
