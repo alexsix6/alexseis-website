@@ -3,12 +3,14 @@
  */
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { BookOpen } from 'lucide-react';
 import { getAllPosts } from '@/content/blog';
 import BlogCard from '@/components/blog/BlogCard';
 
 const BlogPage: React.FC = () => {
   const posts = getAllPosts();
+  const { t } = useTranslation('common');
 
   return (
     <motion.div
@@ -26,15 +28,14 @@ const BlogPage: React.FC = () => {
               className="text-3xl md:text-4xl font-extrabold"
               style={{ color: 'var(--current-text)' }}
             >
-              Blog — IA Enterprise
+              {t('blog.title')}
             </h1>
           </div>
           <p
             className="text-lg max-w-2xl mx-auto"
             style={{ color: 'var(--current-text-muted)' }}
           >
-            Insights técnicos sobre RAG, arquitecturas serverless, y transformación digital
-            con inteligencia artificial.
+            {t('blog.subtitle')}
           </p>
         </div>
 
@@ -48,7 +49,7 @@ const BlogPage: React.FC = () => {
         ) : (
           <div className="text-center py-16">
             <p style={{ color: 'var(--current-text-muted)' }}>
-              No hay posts publicados aún. ¡Vuelve pronto!
+              {t('blog.no_posts')}
             </p>
           </div>
         )}

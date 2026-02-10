@@ -3,17 +3,18 @@
  */
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Play, ArrowRight, Clock, Shield } from 'lucide-react';
 import { INNATE_COLORS } from '@/lib/intake-constants';
-import type { VideoConfig, IntakeMessages } from '@/lib/intake-constants';
+import type { VideoConfig } from '@/lib/intake-constants';
 
 interface IntakeLandingProps {
   onStart: () => void;
   videoConfig: VideoConfig;
-  messages: IntakeMessages['landing'];
 }
 
-const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, messages }) => {
+const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig }) => {
+  const { t } = useTranslation('intake');
   const hasVideo = videoConfig?.url;
 
   return (
@@ -33,7 +34,7 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, mes
           }}
         >
           <Shield className="w-4 h-4 mr-2" />
-          Zero-Egress Architecture
+          {t('landing.badge')}
         </span>
       </motion.div>
 
@@ -44,10 +45,10 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, mes
         transition={{ delay: 0.2 }}
       >
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          <span style={{ color: INNATE_COLORS.cyan }}>{messages.title}</span>
+          <span style={{ color: INNATE_COLORS.cyan }}>{t('landing.title')}</span>
         </h1>
         <p className="text-lg md:text-xl" style={{ color: INNATE_COLORS.textSecondary }}>
-          {messages.subtitle}
+          {t('landing.subtitle')}
         </p>
       </motion.div>
 
@@ -65,11 +66,10 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, mes
               className="w-full h-full"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              title="INNATE.data Architecture"
+              title={t('video.iframe_title')}
             />
           </div>
         ) : (
-          // Placeholder cuando no hay video
           <div
             className="aspect-video rounded-2xl flex flex-col items-center justify-center border border-white/10"
             style={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
@@ -84,21 +84,20 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, mes
               />
             </div>
             <p className="font-medium mb-1" style={{ color: INNATE_COLORS.textPrimary }}>
-              {videoConfig.placeholder.title}
+              {t('video.title')}
             </p>
             <p className="text-sm flex items-center gap-1" style={{ color: INNATE_COLORS.textMuted }}>
               <Clock className="w-4 h-4" />
-              {videoConfig.placeholder.duration}
+              {t('video.duration')}
             </p>
           </div>
         )}
 
-        {/* Label del video */}
         <p
           className="mt-3 text-sm"
           style={{ color: INNATE_COLORS.textMuted }}
         >
-          {messages.videoLabel}
+          {t('landing.video_label')}
         </p>
       </motion.div>
 
@@ -110,7 +109,7 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, mes
         className="text-lg max-w-md mx-auto"
         style={{ color: INNATE_COLORS.textSecondary }}
       >
-        {messages.description}
+        {t('landing.description')}
       </motion.p>
 
       {/* CTA Button */}
@@ -127,7 +126,7 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, mes
             color: INNATE_COLORS.background,
           }}
         >
-          {messages.cta}
+          {t('landing.start_button')}
           <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
         </button>
       </motion.div>
@@ -142,11 +141,11 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig, mes
       >
         <span className="flex items-center gap-1">
           <Clock className="w-4 h-4" />
-          ~5 minutos
+          {t('landing.duration')}
         </span>
         <span className="flex items-center gap-1">
           <Shield className="w-4 h-4" />
-          Datos encriptados
+          {t('landing.confidential')}
         </span>
       </motion.div>
     </div>

@@ -1,11 +1,13 @@
 /**
  * INNATE.data Intake v3.0 - Intelligent Agent UI Component
  * Displays the AI agent evaluation and clarification interface
+ * v4.5: i18n support
  */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { Bot, Send, ArrowRight, Loader2, MessageCircle, SkipForward } from 'lucide-react';
-import { INNATE_COLORS, INTAKE_MESSAGES, AGENT_CONFIG } from '@/lib/intake-constants';
+import { INNATE_COLORS, AGENT_CONFIG } from '@/lib/intake-constants';
 import type { AgentFollowUp, AgentStatusType } from '@/types';
 
 // ===== Sub-component props =====
@@ -39,15 +41,15 @@ const TypingIndicator: React.FC = () => (
 );
 
 // Loading message component with cycling messages
-const LoadingMessage: React.FC = () => {
+const LoadingMessage: React.FC<{ messages: string[] }> = ({ messages }) => {
   const [messageIndex, setMessageIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setMessageIndex((prev) => (prev + 1) % AGENT_CONFIG.loadingMessages.length);
+      setMessageIndex((prev) => (prev + 1) % messages.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [messages.length]);
 
   return (
     <motion.div
@@ -58,7 +60,7 @@ const LoadingMessage: React.FC = () => {
       className="text-lg"
       style={{ color: INNATE_COLORS.textSecondary }}
     >
-      {AGENT_CONFIG.loadingMessages[messageIndex]}
+      {messages[messageIndex]}
     </motion.div>
   );
 };
@@ -146,8 +148,15 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
   onComplete,
   isSubmitting,
 }) => {
+  const { t } = useTranslation('intake');
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // i18n: get loading messages from locale
+  const loadingMessages = useMemo(() => {
+    const msgs = t('agent.loading_messages', { returnObjects: true });
+    return Array.isArray(msgs) ? msgs as string[] : AGENT_CONFIG.loadingMessages;
+  }, [t]);
 
   // Focus input when asking for response
   useEffect(() => {
@@ -182,10 +191,10 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
           className="text-2xl md:text-3xl font-bold mb-2"
           style={{ color: INNATE_COLORS.textPrimary }}
         >
-          {INTAKE_MESSAGES.agent.title}
+          {t('agent.title')}
         </h2>
         <p style={{ color: INNATE_COLORS.textMuted }}>
-          Nuestro asistente esta revisando tu informacion
+          {t('agent.subtitle')}
         </p>
       </motion.div>
 
@@ -211,7 +220,7 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
               className="flex flex-col items-center justify-center py-12 space-y-6"
             >
               <AgentAvatar size="large" />
-              <LoadingMessage />
+              <LoadingMessage messages={loadingMessages} />
               <TypingIndicator />
             </motion.div>
           )}
@@ -269,7 +278,7 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder={INTAKE_MESSAGES.agent.inputPlaceholder}
+                placeholder={t('agent.input_placeholder')}
                 className="flex-grow p-4 rounded-xl border transition-all duration-200"
                 style={{
                   backgroundColor: 'rgba(255,255,255,0.03)',
@@ -308,7 +317,7 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
             style={{ color: INNATE_COLORS.textMuted }}
           >
             <SkipForward className="w-4 h-4" />
-            {INTAKE_MESSAGES.agent.skipButton}
+            {t('agent.skip_button')}
           </button>
         )}
 
@@ -328,11 +337,11 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                Enviando...
+                {t('buttons.continue')}...
               </>
             ) : (
               <>
-                Finalizar
+                {t('buttons.continue')}
                 <ArrowRight className="w-4 h-4" />
               </>
             )}
@@ -348,7 +357,7 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
           className="text-center text-sm"
           style={{ color: INNATE_COLORS.textMuted }}
         >
-          Clarificacion {agentIterations} de {AGENT_CONFIG.maxIterations}
+          {t('agent.asking_title')} {agentIterations}/{AGENT_CONFIG.maxIterations}
         </motion.p>
       )}
     </div>

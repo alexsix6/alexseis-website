@@ -15,7 +15,7 @@ export function ThemeToggleMinimal({ className = '' }: ThemeToggleMinimalProps):
   if (isLoading) {
     return (
       <div className={`w-6 h-6 ${className}`}>
-        <Loader2 className="w-4 h-4 animate-spin text-gray-400" />
+        <Loader2 className="w-4 h-4 animate-spin" style={{ color: 'var(--current-text-muted)' }} />
       </div>
     );
   }
@@ -107,11 +107,11 @@ export function ThemeToggle({ size = 'default', showLabel = false, className = '
   if (isLoading) {
     return (
       <div className={`flex items-center space-x-2 ${className}`}>
-        <div className={`${config.button} bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center`}>
-          <Loader2 className={`${config.icons} animate-spin text-gray-400`} />
+        <div className={`${config.button} rounded-full flex items-center justify-center`} style={{ backgroundColor: 'var(--current-surface)' }}>
+          <Loader2 className={`${config.icons} animate-spin`} style={{ color: 'var(--current-text-muted)' }} />
         </div>
         {showLabel && (
-          <span className={`${config.text} text-gray-400`}>
+          <span className={`${config.text}`} style={{ color: 'var(--current-text-muted)' }}>
             {t('theme.loading')}
           </span>
         )}
@@ -184,7 +184,7 @@ export function ThemeToggle({ size = 'default', showLabel = false, className = '
 
         <div className="flex items-center justify-between w-full h-full px-1.5">
           <Sun className={`${config.icons} text-yellow-400 opacity-30`} />
-          <Moon className={`${config.icons} text-gray-300 opacity-30`} />
+          <Moon className={`${config.icons} opacity-30`} style={{ color: 'var(--current-text-secondary)' }} />
         </div>
       </motion.button>
 
@@ -192,9 +192,9 @@ export function ThemeToggle({ size = 'default', showLabel = false, className = '
         <motion.span
           className={`
             ${config.text} font-medium
-            text-gray-700 dark:text-gray-300
             transition-colors duration-300
           `}
+          style={{ color: 'var(--current-text-secondary)' }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.1 }}

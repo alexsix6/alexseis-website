@@ -1,9 +1,11 @@
 /**
  * Seccion de uploads multimedia (opcional)
  * v3.0: Audio mejorado (5 min max), preview, transcripcion
+ * v4.5: i18n support
  */
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import {
   FileText, Image, Mic, X, ArrowRight,
   ArrowLeft, Loader2, AlertCircle, Square, Play, Pause, Trash2
@@ -101,10 +103,18 @@ interface AudioRecorderProps {
   onSave: (blob: Blob) => void;
   audioBlob: Blob | null;
   onDelete: () => void;
+  labels: {
+    record: string;
+    recording: string;
+    recorded: string;
+    reRecord: string;
+    recordingHint: string;
+    errorMic: string;
+  };
 }
 
 // v3.0: Componente de grabacion de audio mejorado
-const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDelete }) => {
+const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDelete, labels }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [recordingTime, setRecordingTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -164,14 +174,12 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDele
         stream.getTracks().forEach(track => track.stop());
       };
 
-      // Request data every second for more reliable recording
       mediaRecorderRef.current.start(1000);
       setIsRecording(true);
       setRecordingTime(0);
 
       timerRef.current = setInterval(() => {
         setRecordingTime(prev => {
-          // v3.0: Auto-stop at max duration (5 min)
           if (prev >= AUDIO_CONFIG.maxDuration - 1) {
             stopRecording();
             return prev;
@@ -181,7 +189,7 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDele
       }, 1000);
     } catch (error) {
       console.error('Error accessing microphone:', error);
-      alert('No se pudo acceder al microfono. Verifica los permisos.');
+      alert(labels.errorMic);
     }
   };
 
@@ -255,10 +263,10 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDele
           <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-500 animate-pulse" />
         </div>
         <span className="text-sm font-medium" style={{ color: INNATE_COLORS.warning }}>
-          Grabando... {formatTime(recordingTime)}
+          {labels.recording} {formatTime(recordingTime)}
         </span>
         <span className="text-xs" style={{ color: INNATE_COLORS.textMuted }}>
-          Max: {maxTimeFormatted} - Click para detener
+          {labels.recordingHint.replace('{{time}}', maxTimeFormatted)}
         </span>
       </button>
     );
@@ -295,7 +303,7 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDele
 
           <div className="flex-grow">
             <p className="text-sm font-medium" style={{ color: INNATE_COLORS.green }}>
-              Audio grabado
+              {labels.recorded}
             </p>
             <p className="text-xs" style={{ color: INNATE_COLORS.textMuted }}>
               {(audioBlob.size / 1024).toFixed(0)} KB
@@ -316,7 +324,7 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDele
           className="text-xs underline"
           style={{ color: INNATE_COLORS.textMuted }}
         >
-          Grabar de nuevo
+          {labels.reRecord}
         </button>
       </div>
     );
@@ -333,7 +341,7 @@ const AudioRecorder: React.FC<AudioRecorderProps> = ({ onSave, audioBlob, onDele
       }}
     >
       <Mic className="w-8 h-8" style={{ color: INNATE_COLORS.cyan }} />
-      <span className="text-sm font-medium">Grabar audio</span>
+      <span className="text-sm font-medium">{labels.record}</span>
       <span className="text-xs" style={{ color: INNATE_COLORS.textMuted }}>
         Max {maxTimeFormatted}
       </span>
@@ -370,13 +378,15 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
   error,
   isTranscribing,
 }) => {
+  const { t } = useTranslation('intake');
+
   const handleAddFile = (file: File): void => {
     if (file.size > UPLOAD_CONFIG.maxFileSize) {
-      alert('El archivo es demasiado grande. Maximo 10MB.');
+      alert(t('uploads.error_file_size'));
       return;
     }
     if (uploadedFiles.length >= UPLOAD_CONFIG.maxFiles) {
-      alert(`Maximo ${UPLOAD_CONFIG.maxFiles} archivos permitidos.`);
+      alert(t('uploads.error_max_files', { max: UPLOAD_CONFIG.maxFiles }));
       return;
     }
     onAddFile(file);
@@ -387,7 +397,19 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
   };
 
   const isLoading = isSubmitting || isTranscribing;
-  const loadingText = isTranscribing ? 'Transcribiendo...' : 'Enviando...';
+  const loadingText = isTranscribing
+    ? t('agent.analyzing', { defaultValue: 'Transcribiendo...' })
+    : t('buttons.continue', { defaultValue: 'Enviando...' });
+
+  // Audio recorder labels
+  const audioLabels = {
+    record: t('uploads.record_audio'),
+    recording: t('agent.analyzing', { defaultValue: 'Grabando...' }),
+    recorded: t('uploads.audio_recorded'),
+    reRecord: t('uploads.re_record'),
+    recordingHint: t('uploads.recording_hint'),
+    errorMic: t('uploads.error_mic'),
+  };
 
   return (
     <div className="space-y-8">
@@ -400,10 +422,10 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
           className="text-2xl md:text-3xl font-bold mb-2"
           style={{ color: INNATE_COLORS.textPrimary }}
         >
-          {UPLOAD_CONFIG.question}
+          {t('uploads.question')}
         </h2>
         <p style={{ color: INNATE_COLORS.textMuted }}>
-          {UPLOAD_CONFIG.hint}
+          {t('uploads.hint')}
         </p>
       </motion.div>
 
@@ -416,13 +438,13 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
       >
         <UploadButton
           icon={FileText}
-          label="Documentos"
+          label={t('uploads.documents')}
           onClick={handleAddFile}
           accept={UPLOAD_CONFIG.acceptedDocuments}
         />
         <UploadButton
           icon={Image}
-          label="Imagenes"
+          label={t('uploads.images')}
           onClick={handleAddFile}
           accept={UPLOAD_CONFIG.acceptedImages}
         />
@@ -430,6 +452,7 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
           onSave={onSaveAudio}
           audioBlob={audioRecording}
           onDelete={handleDeleteAudio}
+          labels={audioLabels}
         />
       </motion.div>
 
@@ -441,7 +464,7 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
           className="space-y-2"
         >
           <p className="text-sm font-medium" style={{ color: INNATE_COLORS.textSecondary }}>
-            Archivos subidos ({uploadedFiles.length}/{UPLOAD_CONFIG.maxFiles})
+            {t('uploads.uploaded_files')} ({uploadedFiles.length}/{UPLOAD_CONFIG.maxFiles})
           </p>
           {uploadedFiles.map((file, index) => (
             <UploadedFileItem
@@ -481,7 +504,7 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
           style={{ color: INNATE_COLORS.textSecondary }}
         >
           <ArrowLeft className="w-4 h-4" />
-          Atras
+          {t('uploads.back')}
         </button>
 
         <div className="flex items-center gap-3">
@@ -492,7 +515,7 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
             className="px-4 py-2 rounded-lg transition-colors hover:bg-white/5 disabled:opacity-50"
             style={{ color: INNATE_COLORS.textMuted }}
           >
-            Saltar
+            {t('uploads.skip')}
           </button>
 
           {/* Boton Continuar */}
@@ -512,7 +535,7 @@ const IntakeUploads: React.FC<IntakeUploadsProps> = ({
               </>
             ) : (
               <>
-                Continuar
+                {t('uploads.continue')}
                 <ArrowRight className="w-4 h-4" />
               </>
             )}

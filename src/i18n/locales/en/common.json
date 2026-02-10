@@ -8,18 +8,23 @@
     "blog": "Blog"
   },
   "cta": {
+    "roadmap": "Free Roadmap",
+    "roadmap_full": "Schedule Your Free Roadmap",
     "audit": "Free AI Audit",
     "audit_short": "Audit",
     "download": "Download",
     "send": "Send",
-    "close": "Close"
+    "close": "Close",
+    "see_case_study": "See Case Study",
+    "learn_more": "Learn More"
   },
   "footer": {
     "rights": "All rights reserved.",
     "designed_with": "Designed with",
     "and": "and",
     "for_innovation": "for innovation.",
-    "privacy_policy": "Privacy Policy"
+    "privacy_policy": "Privacy Policy",
+    "brand": "INNATE.data by Alex Seis"
   },
   "loading": "Loading...",
   "theme": {
@@ -30,13 +35,22 @@
     "loading": "Loading..."
   },
   "email_capture": {
-    "title": "Free Guide: Enterprise RAG in 2026",
-    "subtitle": "Get the guide + monthly enterprise AI architecture insights.",
+    "title": "Guide: Zero-Egress Architecture for Enterprise AI",
+    "subtitle": "Get the guide + monthly INNATE.data architecture insights.",
     "placeholder": "you@company.com",
     "success_title": "Check your email for the free guide",
-    "success_subtitle": "We'll send you monthly enterprise AI insights",
+    "success_subtitle": "We'll send you monthly INNATE.data architecture insights",
     "error_invalid": "Please enter a valid email address",
-    "banner_subtitle": "Production-proven architectures with 99.9% uptime"
+    "banner_subtitle": "Zero-egress architecture with 270% verified ROI"
   },
-  "logo_alt": "Alex Seis - Enterprise AI Architect"
+  "logo_alt": "INNATE.data - Intelligence Born from Your Data",
+  "blog": {
+    "title": "Blog — Enterprise AI",
+    "subtitle": "Technical insights on zero-egress architectures, MCP servers, and digital transformation with artificial intelligence.",
+    "no_posts": "No posts published yet. Check back soon!",
+    "read": "Read",
+    "back_to_blog": "Back to blog",
+    "cta_title": "Interested in implementing this in your company?",
+    "cta_description": "Schedule your free roadmap to evaluate your use case."
+  }
 }

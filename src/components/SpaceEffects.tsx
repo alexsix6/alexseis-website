@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTheme } from '../hooks/useTheme';
 
 interface Particle {
@@ -49,23 +49,7 @@ interface ThemeConfig {
 }
 
 export function SpaceEffects(): JSX.Element {
-  const { isDark: initialIsDark } = useTheme();
-  const [isDark, setIsDark] = useState(initialIsDark);
-
-  useEffect(() => {
-    const handleThemeChange = (event: Event): void => {
-      const customEvent = event as CustomEvent<{ theme: string }>;
-      const newTheme = customEvent.detail.theme;
-      const newIsDark = newTheme === 'dark';
-      setIsDark(newIsDark);
-    };
-
-    window.addEventListener('themeChange', handleThemeChange);
-
-    return () => {
-      window.removeEventListener('themeChange', handleThemeChange);
-    };
-  }, []);
+  const { isDark } = useTheme();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -77,57 +61,57 @@ export function SpaceEffects(): JSX.Element {
     if (dark) {
       return {
         background: `
-          radial-gradient(ellipse at 30% 20%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-          radial-gradient(ellipse at 70% 80%, rgba(6, 255, 165, 0.1) 0%, transparent 50%),
-          radial-gradient(ellipse at 10% 90%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+          radial-gradient(ellipse at 30% 20%, rgba(0, 217, 255, 0.15) 0%, transparent 50%),
+          radial-gradient(ellipse at 70% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+          radial-gradient(ellipse at 10% 90%, rgba(237, 137, 54, 0.08) 0%, transparent 50%),
           radial-gradient(ellipse at 90% 10%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
-          linear-gradient(135deg, #0f0f23 0%, #1a1b3a 100%)
+          linear-gradient(135deg, #0f0f1a 0%, #1a1b3a 100%)
         `,
         aurora: {
           background: `
             linear-gradient(45deg,
-              rgba(139, 92, 246, 0.1) 0%,
+              rgba(0, 217, 255, 0.1) 0%,
               transparent 30%,
-              rgba(6, 255, 165, 0.08) 60%,
+              rgba(0, 255, 136, 0.08) 60%,
               transparent 100%
             )
           `,
           opacity: 0.3
         },
         waves: [
-          'rgba(6, 255, 165, 0.3)',
-          'rgba(139, 92, 246, 0.25)',
-          'rgba(236, 72, 153, 0.2)',
+          'rgba(0, 255, 136, 0.3)',
+          'rgba(0, 217, 255, 0.25)',
+          'rgba(237, 137, 54, 0.2)',
           'rgba(59, 130, 246, 0.15)'
         ],
         waveGlow: [
-          'rgba(6, 255, 165, 0.4)',
-          'rgba(139, 92, 246, 0.3)',
-          'rgba(236, 72, 153, 0.3)',
+          'rgba(0, 255, 136, 0.4)',
+          'rgba(0, 217, 255, 0.3)',
+          'rgba(237, 137, 54, 0.3)',
           'rgba(59, 130, 246, 0.2)'
         ],
         particles: {
           white: '#ffffff',
-          colored: ['#06FFA5', '#8B5CF6', '#EC4899']
+          colored: ['#00ff88', '#00d9ff', '#ed8936']
         },
         galaxy: `
           radial-gradient(ellipse 800px 400px at 50% 50%,
-            rgba(139, 92, 246, 0.2) 0%,
-            rgba(6, 255, 165, 0.1) 30%,
-            rgba(236, 72, 153, 0.08) 60%,
+            rgba(0, 217, 255, 0.2) 0%,
+            rgba(0, 255, 136, 0.1) 30%,
+            rgba(237, 137, 54, 0.08) 60%,
             transparent 100%
           )
         `,
         nebula: [
-          'rgba(139, 92, 246, 0.15)',
-          'rgba(6, 255, 165, 0.12)',
-          'rgba(236, 72, 153, 0.1)'
+          'rgba(0, 217, 255, 0.15)',
+          'rgba(0, 255, 136, 0.12)',
+          'rgba(237, 137, 54, 0.1)'
         ],
         meteor: `
           linear-gradient(90deg,
             rgba(255, 255, 255, 0) 0%,
             rgba(255, 255, 255, 0.8) 50%,
-            rgba(6, 255, 165, 0.6) 100%
+            rgba(0, 255, 136, 0.6) 100%
           )
         `,
         particleCount: 35,
@@ -138,57 +122,57 @@ export function SpaceEffects(): JSX.Element {
     } else {
       return {
         background: `
-          radial-gradient(ellipse at 30% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 50%),
-          radial-gradient(ellipse at 70% 80%, rgba(6, 255, 165, 0.03) 0%, transparent 50%),
-          radial-gradient(ellipse at 10% 90%, rgba(236, 72, 153, 0.04) 0%, transparent 50%),
+          radial-gradient(ellipse at 30% 20%, rgba(0, 217, 255, 0.05) 0%, transparent 50%),
+          radial-gradient(ellipse at 70% 80%, rgba(0, 255, 136, 0.03) 0%, transparent 50%),
+          radial-gradient(ellipse at 10% 90%, rgba(237, 137, 54, 0.04) 0%, transparent 50%),
           radial-gradient(ellipse at 90% 10%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
           linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)
         `,
         aurora: {
           background: `
             linear-gradient(45deg,
-              rgba(139, 92, 246, 0.03) 0%,
+              rgba(0, 217, 255, 0.03) 0%,
               transparent 30%,
-              rgba(6, 255, 165, 0.02) 60%,
+              rgba(0, 255, 136, 0.02) 60%,
               transparent 100%
             )
           `,
           opacity: 0.4
         },
         waves: [
-          'rgba(139, 92, 246, 0.15)',
-          'rgba(6, 255, 165, 0.12)',
-          'rgba(236, 72, 153, 0.10)',
+          'rgba(0, 217, 255, 0.15)',
+          'rgba(0, 255, 136, 0.12)',
+          'rgba(237, 137, 54, 0.10)',
           'rgba(59, 130, 246, 0.08)'
         ],
         waveGlow: [
-          'rgba(139, 92, 246, 0.2)',
-          'rgba(6, 255, 165, 0.15)',
-          'rgba(236, 72, 153, 0.15)',
+          'rgba(0, 217, 255, 0.2)',
+          'rgba(0, 255, 136, 0.15)',
+          'rgba(237, 137, 54, 0.15)',
           'rgba(59, 130, 246, 0.1)'
         ],
         particles: {
           white: '#64748b',
-          colored: ['#06FFA5', '#8B5CF6', '#EC4899']
+          colored: ['#00ff88', '#00d9ff', '#ed8936']
         },
         galaxy: `
           radial-gradient(ellipse 800px 400px at 50% 50%,
-            rgba(139, 92, 246, 0.08) 0%,
-            rgba(6, 255, 165, 0.04) 30%,
-            rgba(236, 72, 153, 0.03) 60%,
+            rgba(0, 217, 255, 0.08) 0%,
+            rgba(0, 255, 136, 0.04) 30%,
+            rgba(237, 137, 54, 0.03) 60%,
             transparent 100%
           )
         `,
         nebula: [
-          'rgba(139, 92, 246, 0.08)',
-          'rgba(6, 255, 165, 0.06)',
-          'rgba(236, 72, 153, 0.05)'
+          'rgba(0, 217, 255, 0.08)',
+          'rgba(0, 255, 136, 0.06)',
+          'rgba(237, 137, 54, 0.05)'
         ],
         meteor: `
           linear-gradient(90deg,
             rgba(100, 116, 139, 0) 0%,
             rgba(100, 116, 139, 0.6) 50%,
-            rgba(139, 92, 246, 0.4) 100%
+            rgba(0, 217, 255, 0.4) 100%
           )
         `,
         particleCount: 25,
@@ -503,8 +487,8 @@ export function SpaceEffects(): JSX.Element {
               transform: `rotate(${meteor.angle}deg)`,
               filter: 'blur(0.5px)',
               boxShadow: isDark ?
-                '0 0 10px rgba(6, 255, 165, 0.6)' :
-                '0 0 6px rgba(139, 92, 246, 0.4)',
+                '0 0 10px rgba(0, 255, 136, 0.6)' :
+                '0 0 6px rgba(0, 217, 255, 0.4)',
               transition: 'all 1s ease-in-out',
             }}
           />

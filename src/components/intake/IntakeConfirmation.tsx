@@ -1,30 +1,32 @@
 /**
  * Pagina de confirmacion con resumen de respuestas
+ * v4.5: i18n support - uses intake namespace for all text + VALUE_LABELS from i18n
  */
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { CheckCircle, Mail, ArrowRight, Calendar } from 'lucide-react';
-import { INNATE_COLORS, VALUE_LABELS } from '@/lib/intake-constants';
-import type { IntakeMessages } from '@/lib/intake-constants';
+import { INNATE_COLORS } from '@/lib/intake-constants';
 import type { IntakeSummaryItem } from '@/hooks/useIntakeForm';
-
-// Obtener label legible para un valor
-const getReadableValue = (questionId: string, value: string | boolean | null): string => {
-  if (value === null || value === undefined) return 'No respondido';
-  if (typeof value === 'boolean') return value ? 'Sí' : 'No';
-  if (VALUE_LABELS[questionId] && VALUE_LABELS[questionId][value]) {
-    return VALUE_LABELS[questionId][value];
-  }
-  return value;
-};
 
 interface IntakeConfirmationProps {
   summary: IntakeSummaryItem[];
   sessionId: string;
-  messages: IntakeMessages['confirmation'];
 }
 
-const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessionId, messages }) => {
+const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessionId }) => {
+  const { t } = useTranslation('intake');
+
+  // Obtener label legible para un valor using i18n value_labels
+  const getReadableValue = (questionId: string, value: string | boolean | null): string => {
+    if (value === null || value === undefined) return t('confirmation.not_answered');
+    if (typeof value === 'boolean') return value ? t('confirmation.yes') : t('confirmation.no');
+    // Try i18n value_labels first
+    const translated = t(`value_labels.${questionId}.${value}`, { defaultValue: '' });
+    if (translated) return translated;
+    return value;
+  };
+
   return (
     <div className="space-y-8 text-center">
       {/* Icono de exito */}
@@ -49,7 +51,7 @@ const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessio
         transition={{ delay: 0.2 }}
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-2" style={{ color: INNATE_COLORS.green }}>
-          {messages.title}
+          {t('confirmation.title')}
         </h2>
         <p className="text-sm" style={{ color: INNATE_COLORS.textMuted }}>
           Sesion: {sessionId}
@@ -68,7 +70,7 @@ const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessio
         }}
       >
         <h3 className="font-semibold text-lg" style={{ color: INNATE_COLORS.textPrimary }}>
-          {messages.summary}
+          {t('confirmation.summary')}
         </h3>
 
         <div className="space-y-3">
@@ -91,7 +93,7 @@ const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessio
               </span>
               <div className="flex-grow">
                 <p className="text-sm" style={{ color: INNATE_COLORS.textMuted }}>
-                  {item.question.replace('?', '')}:
+                  {t(`questions.${item.id}.question`, { defaultValue: item.question }).replace('?', '')}:
                 </p>
                 <p className="font-medium" style={{ color: INNATE_COLORS.textPrimary }}>
                   {getReadableValue(item.id, item.answer)}
@@ -122,10 +124,10 @@ const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessio
           </div>
           <div>
             <h3 className="font-semibold text-lg mb-1" style={{ color: INNATE_COLORS.cyan }}>
-              {messages.nextStep}
+              {t('confirmation.next_step')}
             </h3>
             <p style={{ color: INNATE_COLORS.textSecondary }}>
-              {messages.nextStepDescription}
+              {t('confirmation.next_step_description')}
             </p>
           </div>
         </div>
@@ -139,15 +141,15 @@ const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessio
         className="pt-4"
       >
         <p className="text-sm mb-2" style={{ color: INNATE_COLORS.textMuted }}>
-          {messages.contact}
+          {t('confirmation.contact')}
         </p>
         <a
-          href={`mailto:${messages.email}`}
+          href={`mailto:${t('confirmation.email')}`}
           className="inline-flex items-center gap-2 text-lg font-medium transition-colors hover:opacity-80"
           style={{ color: INNATE_COLORS.cyan }}
         >
           <Mail className="w-5 h-5" />
-          {messages.email}
+          {t('confirmation.email')}
         </a>
       </motion.div>
 
@@ -165,7 +167,7 @@ const IntakeConfirmation: React.FC<IntakeConfirmationProps> = ({ summary, sessio
             color: INNATE_COLORS.textSecondary,
           }}
         >
-          Volver al inicio
+          {t('confirmation.return_home')}
           <ArrowRight className="w-4 h-4" />
         </a>
       </motion.div>

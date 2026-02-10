@@ -1,46 +1,82 @@
 {
-  "page_title": "Sobre Alex Seis",
-  "page_subtitle": "Arquitecto de IA Empresarial con experiencia en implementaciones Fortune 500",
-  "bio": {
+  "page_title": "La Historia de INNATE.data",
+  "page_subtitle": "De la frustracion enterprise al descubrimiento de la arquitectura zero-egress.",
+  "story": {
     "title": "Mi Historia",
-    "paragraph_1": "Soy Alex Seis, Arquitecto de IA Empresarial especializado en transformar empresas con inteligencia artificial aplicada.",
-    "paragraph_2": "Mi enfoque combina arquitectura de software robusta con las últimas innovaciones en IA para crear soluciones que realmente escalan en producción."
-  },
-  "stats": {
-    "projects": "Proyectos",
-    "uptime": "Uptime",
-    "latency": "Latencia",
-    "satisfaction": "Satisfacción"
-  },
-  "values": {
-    "title": "Valores",
-    "innovation": {
-      "title": "Innovación Aplicada",
-      "description": "Tecnología de punta con resultados medibles"
+    "backstory": {
+      "title": "El Problema",
+      "text": "Trabajando en operaciones enterprise, vi empresas ahogarse en sus propios datos. Equipos brillantes perdiendo semanas en reportes manuales, datos valiosos atrapados en silos, y decisiones criticas tomadas sin la informacion correcta."
     },
-    "transparency": {
-      "title": "Transparencia Total",
-      "description": "Métricas verificables en cada proyecto"
+    "wall": {
+      "title": "La Pared",
+      "text": "Cada solucion IA que evaluabamos requeria SACAR los datos del warehouse — a APIs externas, a proveedores cloud, a terceros. El resultado: riesgos de compliance, latencia inaceptable, y costos que crecian exponencialmente."
     },
-    "excellence": {
-      "title": "Excelencia Técnica",
-      "description": "Código limpio, documentado y mantenible"
+    "epiphany": {
+      "title": "La Epifania",
+      "text": "Y si la IA va a los datos, en vez de los datos ir a la IA? Esa pregunta simple cambio todo. Nacio la arquitectura zero-egress: la inteligencia artificial se despliega DENTRO del data warehouse del cliente."
     },
-    "impact": {
-      "title": "Impacto Real",
-      "description": "Soluciones que transforman operaciones"
+    "achievement": {
+      "title": "El Resultado",
+      "text": "Proyecto ALBA — 282 millones de registros en 1,046 tablas analizados en segundos, zero egreso de datos, 270% ROI. Proyecto CREATIA — 13 herramientas de ejecucion creativa con IA generativa (Imagen 3, Veo 2) adaptando contenido a 11+ plataformas. La prueba de que el paradigma funciona a escala enterprise."
     }
   },
-  "specializations": {
-    "title": "Especializaciones",
-    "rag": "RAG Implementation",
-    "chatbots": "Enterprise Chatbots",
-    "serverless": "Serverless Architecture",
-    "bigquery": "BigQuery & Data"
+  "values": {
+    "title": "5 Valores INNATE.data",
+    "items": [
+      {
+        "title": "Verdad Nativa",
+        "description": "Las respuestas nacen directamente de TUS datos. Sin intermediarios, sin distorsiones, sin alucinaciones."
+      },
+      {
+        "title": "Soberania",
+        "description": "Tus datos nunca salen de tu infraestructura. Zero-egress no es un feature, es nuestra arquitectura fundamental."
+      },
+      {
+        "title": "Velocidad",
+        "description": "De dias a segundos, verificable. 282M+ registros consultados en segundos. No promesas — metricas reales."
+      },
+      {
+        "title": "Evidencia",
+        "description": "Toda metrica es real y auditable. 270% ROI, 7.7 dias payback, 59,378 perfiles. Datos de produccion, no demos."
+      },
+      {
+        "title": "Arquitectura Viva",
+        "description": "El sistema crece con tu negocio. Nuevos departamentos, nuevas neuronas IA, nueva inteligencia — sin reconstruir."
+      }
+    ]
   },
-  "tech_stack": "Stack Tecnológico",
+  "stats": {
+    "title": "Impacto en Numeros",
+    "items": [
+      { "value": "282M+", "label": "Registros en Produccion" },
+      { "value": "270%", "label": "ROI Verificado" },
+      { "value": "<60s", "label": "Tiempo de Respuesta" },
+      { "value": "15+", "label": "Anos Enterprise" }
+    ]
+  },
+  "stack": {
+    "title": "Stack INNATE.data",
+    "categories": [
+      {
+        "title": "Data Warehouse",
+        "items": ["BigQuery", "17 MCP Servers", "Qdrant", "Redis Cache"]
+      },
+      {
+        "title": "IA & LLMs",
+        "items": ["Claude AI", "Vertex AI", "RAG Pipelines", "Neuronas ALBA/CREATIA"]
+      },
+      {
+        "title": "Cloud & Deploy",
+        "items": ["Google Cloud Run", "Vercel", "Docker", "Serverless"]
+      },
+      {
+        "title": "Monitoreo",
+        "items": ["Prometheus", "Grafana", "Power BI", "Analytics"]
+      }
+    ]
+  },
   "meta": {
-    "title": "Sobre Alex Seis",
-    "description": "Arquitecto de IA Empresarial con experiencia en implementaciones Fortune 500."
+    "title": "Sobre INNATE.data | Alex Seis",
+    "description": "La historia detras de la arquitectura zero-egress. De operaciones enterprise a Proyecto ALBA: 282M+ registros analizados en segundos."
   }
 }

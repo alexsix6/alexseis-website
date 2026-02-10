@@ -29,6 +29,13 @@ module.exports = {
         'text-dark': 'var(--text-dark)',
         glass: 'var(--glass)',
         'glass-border': 'var(--glass-border)',
+
+        // ===== COLORES INNATE.data =====
+        'innate-blue': '#1a365d',
+        'innate-cyan': '#00d9ff',
+        'innate-orange': '#ed8936',
+        'innate-green': '#00ff88',
+        'innate-orange-warm': '#ffaa00',
         
         // ===== COLORES SHADCN (sin cambios) =====
         border: 'hsl(var(--border))',
@@ -106,9 +113,9 @@ module.exports = {
         'conic-gradient': 'conic-gradient(from 180deg at 50% 50%, var(--primary) 0deg, var(--secondary) 180deg, var(--accent) 360deg)',
         'radial-gradient': 'radial-gradient(circle, var(--primary), var(--secondary), var(--bg-dark) 70%)',
         // ===== NUEVOS FONDOS ESPACIALES =====
-        'space-gradient': 'radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 25%, #0f0f23 50%, #000000 100%)',
-        'galaxy-gradient': 'radial-gradient(ellipse at top, #1e3c72 0%, #2a5298 50%, #0f0f23 100%)',
-        'nebula-gradient': 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #2a1b3d 100%)',
+        'space-gradient': 'radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 25%, #0f0f1a 50%, #000000 100%)',
+        'galaxy-gradient': 'radial-gradient(ellipse at top, #1a365d 0%, #16213e 50%, #0f0f1a 100%)',
+        'nebula-gradient': 'linear-gradient(135deg, #00d9ff 0%, #1a365d 50%, #0f0f1a 100%)',
       },
       keyframes: {
         'accordion-down': {

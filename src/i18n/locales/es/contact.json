@@ -1,36 +1,36 @@
 {
   "meta": {
-    "title": "Contacto - Arquitecto IA Enterprise",
-    "description": "Contacta a Alex Seis para implementaciones RAG enterprise, chatbots empresariales y plataformas serverless escalables."
+    "title": "Contacto - Arquitecto Zero-Egress | INNATE.data",
+    "description": "Contacta a INNATE.data para transformar la inteligencia de tu empresa. Arquitectura zero-egress con 282M+ registros, 270% ROI verificado."
   },
   "hero": {
-    "title_1": "Contacto",
-    "title_accent": "Arquitecto IA Enterprise",
-    "title_2": "Implementaciones",
-    "title_primary": "RAG y Serverless",
-    "subtitle": "¿Necesitas <strong>RAG implementation enterprise</strong> o <strong>arquitecturas serverless escalables</strong>? Especialista en OpenAI, Claude y Google Cloud Run. Implementaciones verificables: 99.9% uptime, <2s latencia, 1000+ consultas/min en producción."
+    "title_1": "Transforma la",
+    "title_accent": "Inteligencia de tu Empresa",
+    "title_2": "Arquitectura",
+    "title_primary": "Zero-Egress",
+    "subtitle": "La IA se despliega <strong>dentro de tu data warehouse</strong>. Tus datos nunca salen. Resultados verificados: 282M+ registros en 1,046 tablas, <strong>270% ROI</strong>, respuestas en segundos. La misma arquitectura que transforma empresas financieras lideres."
   },
   "form": {
-    "title": "Evalúa Tu Proyecto IA",
+    "title": "Evalua tu Transformacion",
     "name": "Nombre Completo *",
     "name_placeholder": "Tu nombre completo",
-    "email": "Correo Electrónico *",
+    "email": "Correo Electronico *",
     "email_placeholder": "ejemplo@dominio.com",
     "company": "Empresa",
     "company_placeholder": "Nombre de tu empresa (Opcional)",
-    "interest": "Estoy interesado en...",
-    "message": "Tu Proyecto IA *",
-    "message_placeholder": "Describe tu arquitectura actual, stack tecnológico y objetivos de implementación IA...",
-    "submit": "Evaluar Proyecto IA",
+    "interest": "Me interesa...",
+    "message": "Tu Desafio Actual *",
+    "message_placeholder": "Describe tu infraestructura de datos actual, volumenes que manejas y que desafios quieres resolver con IA...",
+    "submit": "Solicitar Roadmap Gratuito",
     "submitting": "Enviando..."
   },
   "validation": {
     "name_required": "El nombre es obligatorio.",
-    "email_required": "El correo electrónico es obligatorio.",
-    "email_invalid": "El correo electrónico no es válido.",
+    "email_required": "El correo electronico es obligatorio.",
+    "email_invalid": "El correo electronico no es valido.",
     "message_required": "El mensaje es obligatorio.",
     "message_min_length": "El mensaje debe tener al menos 10 caracteres.",
-    "validation_error": "Error de Validación",
+    "validation_error": "Error de Validacion",
     "fix_errors": "Por favor, corrige los errores en el formulario."
   },
   "success": {
@@ -42,29 +42,29 @@
     "send_failed": "Hubo un error al enviar el mensaje"
   },
   "interests_options": {
-    "rag_implementation": "RAG Implementation Enterprise",
-    "enterprise_chatbots": "Enterprise Chatbot Architecture",
-    "serverless_platforms": "Serverless Platforms Development",
-    "llm_integration": "LLM Integration Consulting",
-    "bigquery_ai": "BigQuery + AI Integration",
-    "consultoria_general": "Consultoría IA General"
+    "rag_implementation": "Arquitectura Zero-Egress (INNATE Core)",
+    "enterprise_chatbots": "Ecosistema Multi-Departamento (INNATE Ecosystem)",
+    "serverless_platforms": "Roadmap de Inteligencia Nativa (Gratuito)",
+    "llm_integration": "Integracion MCP + BigQuery",
+    "bigquery_ai": "IA Generativa Enterprise (CREATIA)",
+    "consultoria_general": "Consultoria General IA"
   },
   "direct_contact": "Contacto Directo",
-  "email_label": "Correo Electrónico",
-  "phone_label": "Teléfono",
-  "follow_us": "Síguenos",
+  "email_label": "Correo Electronico",
+  "phone_label": "Telefono",
+  "follow_us": "Siguenos",
   "stack": {
-    "title": "Stack Enterprise",
-    "llm_title": "LLM Integration:",
-    "llm_desc": "OpenAI GPT-4, Claude, Cohere API",
-    "cloud_title": "Cloud & Serverless:",
-    "cloud_desc": "Google Cloud Run, Vercel, Docker",
-    "vector_title": "Bases Vectoriales:",
-    "vector_desc": "Qdrant, Pinecone, BigQuery"
+    "title": "Stack INNATE.data",
+    "llm_title": "IA & LLMs:",
+    "llm_desc": "Claude AI, Vertex AI (Imagen 3, Veo 2), OpenAI GPT-4",
+    "cloud_title": "Infraestructura:",
+    "cloud_desc": "BigQuery, Cloud Run, Redis Cache, 17 MCP Servers",
+    "vector_title": "Data & Knowledge:",
+    "vector_desc": "Qdrant, GraphRAG, RAG Pipelines, 1,046 tablas"
   },
   "philosophy": {
-    "title": "Mi Filosofía",
-    "quote": "\"Lo que se mide, se mejora. Lo que no se mide, se deteriora.\"",
-    "subtitle": "— Cada implementación IA debe generar métricas específicas de performance"
+    "title": "Nuestra Filosofia",
+    "quote": "\"La IA mas poderosa es la que nace de TUS datos, dentro de TU infraestructura. Sin egreso, sin riesgo, sin intermediarios.\"",
+    "subtitle": "— INNATE.data: Inteligencia nativa, soberania total"
   }
 }

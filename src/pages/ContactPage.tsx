@@ -82,12 +82,12 @@ interface InputFieldProps {
 // Componente InputField (etiqueta siempre arriba)
 const InputField: React.FC<InputFieldProps> = ({ id, name, type = "text", placeholder, value, onChange, error, icon: Icon, labelText }) => (
   <div className="space-y-1.5">
-    <label htmlFor={id} className="block text-sm font-medium text-gray-300">
+    <label htmlFor={id} className="block text-sm font-medium" style={{ color: 'var(--current-text-secondary)' }}>
       {labelText || placeholder}
     </label>
     <div className="relative rounded-md shadow-sm">
       {Icon && <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-        <Icon className="h-5 w-5 text-gray-500" aria-hidden="true" />
+        <Icon className="h-5 w-5" style={{ color: 'var(--current-text-muted)' }} aria-hidden="true" />
       </div>}
       <input
         type={type}
@@ -96,10 +96,11 @@ const InputField: React.FC<InputFieldProps> = ({ id, name, type = "text", placeh
         value={value}
         onChange={onChange}
         placeholder={placeholder.endsWith(' *') ? placeholder.substring(0, placeholder.length - 2) : placeholder}
-        className={`block w-full rounded-lg border bg-transparent text-text-light
+        className={`block w-full rounded-lg border bg-transparent
                     px-4 py-3 ${Icon ? 'pl-10' : 'pl-4'}
                     ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                            : 'border-gray-700 focus:border-accent focus:ring-accent'}`}
+                            : 'focus:border-accent focus:ring-accent'}`}
+        style={{ borderColor: error ? undefined : 'var(--current-border)', color: 'var(--current-text)' }}
       />
     </div>
     {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
@@ -120,7 +121,7 @@ interface TextareaFieldProps {
 // Componente TextareaField (etiqueta siempre arriba)
 const TextareaField: React.FC<TextareaFieldProps> = ({ id, name, placeholder, value, onChange, error, labelText }) => (
   <div className="space-y-1.5">
-    <label htmlFor={id} className="block text-sm font-medium text-gray-300">
+    <label htmlFor={id} className="block text-sm font-medium" style={{ color: 'var(--current-text-secondary)' }}>
       {labelText || placeholder}
     </label>
     <textarea
@@ -130,9 +131,10 @@ const TextareaField: React.FC<TextareaFieldProps> = ({ id, name, placeholder, va
       onChange={onChange}
       placeholder={placeholder.endsWith(' *') ? placeholder.substring(0, placeholder.length - 2) : placeholder}
       rows={5}
-      className={`block w-full rounded-lg border bg-transparent text-text-light px-4 py-3
+      className={`block w-full rounded-lg border bg-transparent px-4 py-3
                   ${error ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                          : 'border-gray-700 focus:border-accent focus:ring-accent'}`}
+                          : 'focus:border-accent focus:ring-accent'}`}
+      style={{ borderColor: error ? undefined : 'var(--current-border)', color: 'var(--current-text)' }}
     />
     {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
   </div>
@@ -159,27 +161,27 @@ const ContactPage: React.FC = () => {
       "@type": "ContactPage",
       "mainEntity": {
         "@type": "Organization",
-        "name": localizedSchema("Alex Seis - Arquitecto IA Empresarial", "Alex Seis - Enterprise AI Architect"),
-        "description": localizedSchema("Especialista en RAG implementation enterprise, enterprise chatbot architecture y serverless platforms", "Specialist in enterprise RAG implementation, enterprise chatbot architecture and serverless platforms"),
+        "name": localizedSchema("INNATE.data - Arquitectura Zero-Egress", "INNATE.data - Zero-Egress Architecture"),
+        "description": localizedSchema("Arquitectura zero-egress de IA empresarial. La IA se despliega dentro del data warehouse del cliente. 282M+ registros, 270% ROI verificado.", "Zero-egress enterprise AI architecture. AI deploys inside the client's data warehouse. 282M+ records, 270% verified ROI."),
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+593-983391240",
           "email": "ai@alexseis.com",
-          "contactType": localizedSchema("Arquitecto IA Empresarial", "AI Enterprise Architect"),
+          "contactType": localizedSchema("Arquitecto Zero-Egress", "Zero-Egress Architect"),
           "areaServed": "Global",
           "availableLanguage": ["Spanish", "English"],
           "serviceType": [
-            localizedSchema("Implementación RAG Enterprise", "RAG Implementation Enterprise"),
-            localizedSchema("Arquitectura Chatbot Enterprise", "Enterprise Chatbot Architecture"),
-            localizedSchema("Desarrollo Plataformas Serverless", "Serverless Platforms Development"),
-            localizedSchema("Consultoría Integración LLM", "LLM Integration Consulting")
+            localizedSchema("Arquitectura Zero-Egress (INNATE Core)", "Zero-Egress Architecture (INNATE Core)"),
+            localizedSchema("Ecosistema Multi-Departamento (ALBA + CREATIA + AUTO)", "Multi-Department Ecosystem (ALBA + CREATIA + AUTO)"),
+            localizedSchema("MCP Servers + BigQuery Integration", "MCP Servers + BigQuery Integration"),
+            localizedSchema("IA Generativa Enterprise con Vertex AI", "Enterprise Generative AI with Vertex AI")
           ]
         },
         "founder": {
           "@type": "Person",
           "name": "Alex Seis",
-          "jobTitle": localizedSchema("Arquitecto de IA Empresarial", "Enterprise AI Architect"),
-          "expertise": ["RAG Implementation", "Enterprise AI", "Serverless Architecture"]
+          "jobTitle": localizedSchema("Arquitecto Zero-Egress | INNATE.data", "Zero-Egress Architect | INNATE.data"),
+          "expertise": ["Zero-Egress Architecture", "MCP Servers", "Enterprise AI", "BigQuery"]
         },
         "address": {
           "@type": "PostalAddress",
@@ -307,7 +309,8 @@ const ContactPage: React.FC = () => {
           {t('hero.title_2')} <span className="text-primary">{t('hero.title_primary')}</span>
         </h1>
         <p
-          className="text-h3 text-gray-300 max-w-3xl mx-auto font-normal"
+          className="text-h3 max-w-3xl mx-auto font-normal"
+          style={{ color: 'var(--current-text-secondary)' }}
           dangerouslySetInnerHTML={{ __html: t('hero.subtitle') }}
         />
       </motion.div>
@@ -327,23 +330,24 @@ const ContactPage: React.FC = () => {
               <InputField id="company" name="company" labelText={t('form.company')} placeholder={t('form.company_placeholder')} value={formData.company} onChange={handleChange} error={errors.company} icon={Briefcase} />
 
               <div className="space-y-1.5">
-                <label htmlFor="interest" className="block text-sm font-medium text-gray-300">{t('form.interest')}</label>
+                <label htmlFor="interest" className="block text-sm font-medium" style={{ color: 'var(--current-text-secondary)' }}>{t('form.interest')}</label>
                 <div className="relative rounded-md shadow-sm">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <MessageCircle className="h-5 w-5 text-gray-500" aria-hidden="true" />
+                        <MessageCircle className="h-5 w-5" style={{ color: 'var(--current-text-muted)' }} aria-hidden="true" />
                     </div>
                     <select
                       id="interest" name="interest" value={formData.interest} onChange={handleChange}
-                      className={`block w-full pl-10 pr-4 py-3 border rounded-lg bg-transparent text-text-light appearance-none focus:outline-none
+                      className={`block w-full pl-10 pr-4 py-3 border rounded-lg bg-transparent appearance-none focus:outline-none
                                   ${errors.interest ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                                  : 'border-gray-700 focus:border-accent focus:ring-accent'}`}
+                                                  : 'focus:border-accent focus:ring-accent'}`}
+                      style={{ borderColor: errors.interest ? undefined : 'var(--current-border)', color: 'var(--current-text)' }}
                     >
-                      <option value="rag-implementation" className="bg-bg-dark">{t('interests_options.rag_implementation')}</option>
-                      <option value="enterprise-chatbots" className="bg-bg-dark">{t('interests_options.enterprise_chatbots')}</option>
-                      <option value="serverless-platforms" className="bg-bg-dark">{t('interests_options.serverless_platforms')}</option>
-                      <option value="llm-integration" className="bg-bg-dark">{t('interests_options.llm_integration')}</option>
-                      <option value="bigquery-ai" className="bg-bg-dark">{t('interests_options.bigquery_ai')}</option>
-                      <option value="consultoria-general" className="bg-bg-dark">{t('interests_options.consultoria_general')}</option>
+                      <option value="rag-implementation" style={{ backgroundColor: 'var(--current-surface)' }}>{t('interests_options.rag_implementation')}</option>
+                      <option value="enterprise-chatbots" style={{ backgroundColor: 'var(--current-surface)' }}>{t('interests_options.enterprise_chatbots')}</option>
+                      <option value="serverless-platforms" style={{ backgroundColor: 'var(--current-surface)' }}>{t('interests_options.serverless_platforms')}</option>
+                      <option value="llm-integration" style={{ backgroundColor: 'var(--current-surface)' }}>{t('interests_options.llm_integration')}</option>
+                      <option value="bigquery-ai" style={{ backgroundColor: 'var(--current-surface)' }}>{t('interests_options.bigquery_ai')}</option>
+                      <option value="consultoria-general" style={{ backgroundColor: 'var(--current-surface)' }}>{t('interests_options.consultoria_general')}</option>
                     </select>
                 </div>
                 {errors.interest && <p className="text-red-500 text-xs mt-1">{errors.interest}</p>}
@@ -383,14 +387,14 @@ const ContactPage: React.FC = () => {
             <h3 className="text-h3 font-semibold text-secondary mb-4 md:mb-6">{t('direct_contact')}</h3>
             <div className="space-y-4">
               {contactInfo.map((item) => (
-                <a key={item.labelKey} href={item.href} className="flex items-center text-gray-300 hover:text-secondary transition-colors group">
+                <a key={item.labelKey} href={item.href} className="flex items-center hover:text-secondary transition-colors group" style={{ color: 'var(--current-text-secondary)' }}>
                   <item.icon className="h-5 w-5 mr-3 text-secondary flex-shrink-0 group-hover:scale-110 transition-transform" />
                   <span>{item.text}</span>
                 </a>
               ))}
             </div>
-            <div className="mt-6 pt-6 border-t border-gray-700/50">
-                 <h4 className="text-lg font-semibold text-gray-200 mb-4">{t('follow_us')}</h4>
+            <div className="mt-6 pt-6 border-t" style={{ borderColor: 'var(--current-border)' }}>
+                 <h4 className="text-lg font-semibold mb-4" style={{ color: 'var(--current-text-secondary)' }}>{t('follow_us')}</h4>
                  <div className="flex flex-wrap gap-3">
                     {socialLinks.map((social) => (
                         <a
@@ -399,7 +403,8 @@ const ContactPage: React.FC = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={social.label}
-                            className="text-gray-400 hover:text-accent transition-colors p-2.5 bg-gray-800/50 hover:bg-gray-700/70 rounded-full"
+                            className="hover:text-accent transition-colors p-2.5 rounded-full"
+                            style={{ color: 'var(--current-text-muted)', backgroundColor: 'var(--current-surface)' }}
                         >
                             <social.icon className="h-5 w-5" />
                         </a>
@@ -413,16 +418,16 @@ const ContactPage: React.FC = () => {
             <h3 className="text-h3 font-semibold text-accent mb-4">{t('stack.title')}</h3>
             <div className="space-y-3">
               <div>
-                <h4 className="text-sm font-semibold text-gray-300 mb-1">{t('stack.llm_title')}</h4>
-                <p className="text-xs text-gray-400">{t('stack.llm_desc')}</p>
+                <h4 className="text-sm font-semibold mb-1" style={{ color: 'var(--current-text-secondary)' }}>{t('stack.llm_title')}</h4>
+                <p className="text-xs" style={{ color: 'var(--current-text-muted)' }}>{t('stack.llm_desc')}</p>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-gray-300 mb-1">{t('stack.cloud_title')}</h4>
-                <p className="text-xs text-gray-400">{t('stack.cloud_desc')}</p>
+                <h4 className="text-sm font-semibold mb-1" style={{ color: 'var(--current-text-secondary)' }}>{t('stack.cloud_title')}</h4>
+                <p className="text-xs" style={{ color: 'var(--current-text-muted)' }}>{t('stack.cloud_desc')}</p>
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-gray-300 mb-1">{t('stack.vector_title')}</h4>
-                <p className="text-xs text-gray-400">{t('stack.vector_desc')}</p>
+                <h4 className="text-sm font-semibold mb-1" style={{ color: 'var(--current-text-secondary)' }}>{t('stack.vector_title')}</h4>
+                <p className="text-xs" style={{ color: 'var(--current-text-muted)' }}>{t('stack.vector_desc')}</p>
               </div>
             </div>
           </div>
@@ -430,10 +435,10 @@ const ContactPage: React.FC = () => {
           {/* SECCIÓN: "Mi Filosofía" */}
           <div className="glass-card p-6 md:p-8 border-accent/30">
             <h3 className="text-h3 font-semibold text-accent mb-4 italic">{t('philosophy.title')}</h3>
-            <p className="text-gray-300 text-center text-md leading-relaxed italic">
+            <p className="text-center text-md leading-relaxed italic" style={{ color: 'var(--current-text-secondary)' }}>
               {t('philosophy.quote')}
               </p>
-              <p className="text-gray-400 text-center text-sm mt-2">
+              <p className="text-center text-sm mt-2" style={{ color: 'var(--current-text-muted)' }}>
                 {t('philosophy.subtitle')}
               </p>
           </div>

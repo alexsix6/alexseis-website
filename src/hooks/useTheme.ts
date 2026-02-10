@@ -20,49 +20,19 @@ export function useTheme(): UseThemeReturn {
   const [theme, setThemeState] = useState<Theme>('light');
   const [isLoading, setIsLoading] = useState(true);
 
-  // Aplicar tema al DOM - CORREGIDO para compatibilidad con SpaceEffects
+  // Aplicar tema al DOM — variables.css maneja colores via .dark class
   const applyTheme = (newTheme: Theme): void => {
     try {
       const htmlElement = document.documentElement;
 
       if (newTheme === 'dark') {
         htmlElement.classList.add('dark');
-
-        // SpaceEffects se encarga del fondo espacial
-        document.body.style.backgroundColor = 'transparent';
-        document.body.style.backgroundImage = 'none';
-
-        // Aplicar solo variables CSS necesarias si existen
-        htmlElement.style.setProperty('--current-bg', '#0f0f23');
-        htmlElement.style.setProperty('--current-text', '#ffffff');
-        htmlElement.style.setProperty('--current-text-secondary', '#e2e8f0');
-        htmlElement.style.setProperty('--current-surface-hover', 'rgba(255, 255, 255, 0.1)');
-        htmlElement.style.setProperty('--current-glass', 'rgba(15, 15, 35, 0.8)');
-        htmlElement.style.setProperty('--current-border', 'rgba(6, 255, 165, 0.3)');
-        htmlElement.style.setProperty('--current-shadow', 'rgba(0, 0, 0, 0.3)');
-        htmlElement.style.setProperty('--current-bg-secondary', 'rgba(26, 27, 58, 0.9)');
-        htmlElement.style.setProperty('--current-text-muted', 'rgba(226, 232, 240, 0.7)');
-
       } else {
         htmlElement.classList.remove('dark');
-
-        // SpaceEffects se encarga del fondo claro
-        document.body.style.backgroundColor = 'transparent';
-        document.body.style.backgroundImage = 'none';
-
-        // Aplicar variables CSS para light mode
-        htmlElement.style.setProperty('--current-bg', '#ffffff');
-        htmlElement.style.setProperty('--current-text', '#1f2937');
-        htmlElement.style.setProperty('--current-text-secondary', '#6b7280');
-        htmlElement.style.setProperty('--current-surface-hover', 'rgba(0, 0, 0, 0.05)');
-        htmlElement.style.setProperty('--current-glass', 'rgba(255, 255, 255, 0.8)');
-        htmlElement.style.setProperty('--current-border', 'rgba(229, 231, 235, 0.8)');
-        htmlElement.style.setProperty('--current-shadow', 'rgba(0, 0, 0, 0.1)');
-        htmlElement.style.setProperty('--current-bg-secondary', 'rgba(248, 250, 252, 0.9)');
-        htmlElement.style.setProperty('--current-text-muted', 'rgba(107, 114, 128, 1)');
       }
 
-      console.log(`🎨 Theme applied: ${newTheme}, dark class present: ${htmlElement.classList.contains('dark')}`);
+      // Let CSS handle background (base.css + SpaceEffects)
+      // IMPORTANT: Do NOT set inline body styles — they override CSS variables
 
     } catch (error) {
       console.error('Error applying theme:', error);
@@ -125,8 +95,6 @@ export function useTheme(): UseThemeReturn {
   const toggleTheme = (): void => {
     const newTheme: Theme = theme === 'light' ? 'dark' : 'light';
 
-    console.log(`🎛️ Toggling theme: ${theme} → ${newTheme}`);
-
     setThemeState(newTheme);
     applyTheme(newTheme);
 
@@ -137,15 +105,10 @@ export function useTheme(): UseThemeReturn {
       console.warn('Error saving theme preference:', error);
     }
 
-    // Dispatch evento personalizado para otros componentes
+    // Dispatch evento para componentes que escuchan manualmente
     window.dispatchEvent(new CustomEvent('themeChange', {
       detail: { theme: newTheme }
     }));
-
-    setTimeout(() => {
-      const htmlElement = document.documentElement;
-      console.log(`🔍 Post-toggle check: theme=${newTheme}, dark class=${htmlElement.classList.contains('dark')}`);
-    }, 100);
   };
 
   // Función para establecer tema específico

@@ -1,20 +1,23 @@
 /**
  * INNATE.data - Intelligent Client Intake Page
  * v3.0: Cuestionario conversacional con agente IA
+ * v4.5: i18n support - components use useTranslation('intake') directly
  */
 import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useIntakeForm, INTAKE_STAGES } from '@/hooks/useIntakeForm';
 import type { UseIntakeFormReturn } from '@/hooks/useIntakeForm';
-import { INNATE_COLORS, INTAKE_MESSAGES, VIDEO_CONFIG } from '@/lib/intake-constants';
+import { INNATE_COLORS, VIDEO_CONFIG } from '@/lib/intake-constants';
 import { trackEvent } from '@/hooks/useAnalytics';
+import { usePageMeta } from '@/hooks/usePageMeta';
 
 // Componentes internos
 import IntakeLanding from '@/components/intake/IntakeLanding';
 import IntakeQuestion from '@/components/intake/IntakeQuestion';
 import IntakeUploads from '@/components/intake/IntakeUploads';
-import IntakeAgent from '@/components/intake/IntakeAgent'; // v3.0: New component
+import IntakeAgent from '@/components/intake/IntakeAgent';
 import IntakeConfirmation from '@/components/intake/IntakeConfirmation';
 import IntakeProgress from '@/components/intake/IntakeProgress';
 
@@ -26,8 +29,11 @@ const pageVariants: Variants = {
 };
 
 const IntakePage: React.FC = () => {
+  const { t } = useTranslation('intake');
   const intake: UseIntakeFormReturn = useIntakeForm();
   const hasTrackedStart = useRef<boolean>(false);
+
+  usePageMeta({ titleKey: 'meta.title', descriptionKey: 'meta.description', ns: 'intake', path: '/intake' });
 
   // Track intake stage changes
   useEffect(() => {
@@ -100,7 +106,6 @@ const IntakePage: React.FC = () => {
               <IntakeLanding
                 onStart={intake.startQuestionnaire}
                 videoConfig={VIDEO_CONFIG}
-                messages={INTAKE_MESSAGES.landing}
               />
             </motion.div>
           )}
@@ -194,7 +199,6 @@ const IntakePage: React.FC = () => {
               <IntakeConfirmation
                 summary={intake.summary}
                 sessionId={intake.sessionId}
-                messages={INTAKE_MESSAGES.confirmation}
               />
             </motion.div>
           )}
@@ -204,7 +208,7 @@ const IntakePage: React.FC = () => {
       {/* Footer minimalista */}
       <footer className="py-4 px-6 text-center">
         <p className="text-sm" style={{ color: INNATE_COLORS.textMuted }}>
-          Tus datos estan seguros. Zero-egress architecture.
+          {t('footer.security')}
         </p>
       </footer>
     </div>

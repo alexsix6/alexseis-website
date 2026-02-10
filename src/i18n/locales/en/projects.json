@@ -1,55 +1,93 @@
 {
-  "page_title": "Featured Projects",
-  "page_subtitle": "Real implementations with verifiable metrics. Every project demonstrates measurable results in production.",
-  "filter_all": "All",
-  "filter_rag": "RAG",
-  "filter_chatbot": "Chatbots",
-  "filter_serverless": "Serverless",
-  "filter_data": "Data",
-  "results": "Results",
-  "technologies": "Technologies",
-  "before": "Before",
-  "after": "After",
-  "improvement": "Improvement",
+  "page_title": "Success Story: NEURA System",
+  "page_subtitle": "Real evidence of what INNATE.data architecture can achieve. Verifiable metrics, auditable results.",
+  "hero_case": {
+    "badge": "Main Case Study — NEURA System",
+    "title": "282M Records. 30 MCP Tools. Zero Egress.",
+    "description": "NEURA System: 3 specialized AI neurons (ALBA for strategy with 282M records across 1,046 tables, CREATIA for creative execution with Imagen 3/Veo 2, AUTO for personalization). Architecture: MCP Servers → Cloud Run Backend → Tools → Skills → Claude Desktop. Everything inside the client's warehouse.",
+    "quote": "What took 2 days now takes 30 seconds. Segmenting 59,378 clients went from 3-5 days to 30 seconds.",
+    "quote_author": "Operations Team — Enterprise Client",
+    "metrics": {
+      "transactions": { "value": "282M+", "label": "Records" },
+      "time_reduction": { "value": "99.8%", "label": "Time Reduction" },
+      "roi": { "value": "270%", "label": "Verified ROI" },
+      "payback": { "value": "7.7", "label": "Days to Payback" },
+      "clients": { "value": "59,378", "label": "Profiles Analyzed" },
+      "response": { "value": "30s", "label": "Response Time" }
+    },
+    "stack": ["BigQuery", "Cloud Run", "Redis Cache", "17 MCP Servers", "RAG Pipelines", "Claude AI", "Vertex AI"],
+    "cta": "I Want Similar Results"
+  },
+  "supporting_title": "INNATE.data Components in Action",
+  "supporting_subtitle": "Each project demonstrates a key component of the INNATE.data architecture.",
   "projects": {
-    "rag_enterprise": {
-      "title": "Multi-tenant Enterprise RAG",
-      "client": "LATAM Fintech",
-      "description": "Semantic search system over 500K+ corporate documents with contextual responses in <2s."
+    "creatia": {
+      "title": "CREATIA — AI Creative Execution",
+      "category": "Content Generation",
+      "description": "Creative execution engine with 13 MCP tools: copy generation (Hormozi/Todd Brown frameworks), images with Vertex AI Imagen 3, videos with Veo 2, and automatic adaptation to 11+ platforms with brand compliance scoring.",
+      "results": ["Briefs from 2-3 days to 60 seconds", "Automatic brand compliance scoring 0-100"],
+      "stack": ["Vertex AI Imagen 3", "Veo 2", "Gemini 3 Pro", "11+ Platforms"]
     },
-    "chatbot_support": {
-      "title": "24/7 Support Chatbot",
-      "client": "Regional E-commerce",
-      "description": "Conversational agent handling 1000+ daily queries with 94% automatic resolution rate."
+    "conversational_bi": {
+      "title": "Conversational BI",
+      "category": "Data Analytics + AI",
+      "description": "Automated ETL system + Claude Desktop integration via MCP. Conversational analysis of large volumes with automatic queries across 1,046 tables.",
+      "results": ["Fully automated ETL pipeline", "SQL queries from natural language"],
+      "stack": ["BigQuery", "Claude Desktop", "MCP Protocol", "Redis Cache"]
     },
-    "serverless_platform": {
-      "title": "Serverless Platform",
-      "client": "B2B SaaS",
-      "description": "Monolith to serverless microservices migration with 99.9% uptime and 60% cost reduction."
+    "rag_zero_egress": {
+      "title": "Zero-Egress RAG Pipelines",
+      "category": "Enterprise AI",
+      "description": "Multi-strategy RAG system processing enterprise documents. Sub-second queries with Redis cache, 1000+ queries/min, 99.9% availability.",
+      "results": ["Sub-second latency with Redis cache", "99.9% production availability"],
+      "stack": ["Qdrant", "OpenAI", "Claude API", "Google Cloud Run"]
     },
-    "data_pipeline": {
-      "title": "Data Pipeline",
-      "client": "Multinational Retail",
-      "description": "Automated ETL pipeline processing 10M+ daily records with real-time executive dashboards."
+    "scalable_infra": {
+      "title": "Scalable Infrastructure",
+      "category": "Cloud Platforms",
+      "description": "Hybrid serverless platform: Cloud Run + BigQuery + Redis on GCP (us-east1, ~40-60ms latency). Global CDN and zero-downtime.",
+      "results": ["Global CDN with zero-downtime", "100% scalable serverless architecture"],
+      "stack": ["Cloud Run", "BigQuery", "Redis", "Serverless"]
+    },
+    "enterprise_agent": {
+      "title": "Enterprise Agent",
+      "category": "AI Agents",
+      "description": "Enterprise chatbot with microservices architecture: GPT-4, Whisper, Vision, persistent memory, and Prometheus monitoring.",
+      "results": ["Complete multimedia processing", "Prometheus + Grafana monitoring"],
+      "stack": ["Docker", "GPT-4", "MongoDB", "Prometheus"]
     }
   },
   "differentiators": {
-    "title": "Why Choose Us?",
-    "verified": {
-      "title": "Verifiable Metrics",
-      "description": "Every project includes real performance data"
-    },
-    "production": {
-      "title": "Real Production",
-      "description": "Not prototypes: production systems with real traffic"
-    },
-    "enterprise": {
-      "title": "Enterprise-Grade",
-      "description": "Enterprise-level security, scalability, and support"
-    }
+    "title": "Why INNATE.data is Different",
+    "items": [
+      {
+        "title": "Real Metrics",
+        "description": "282M+ records, 1,046 tables, 270% ROI, 30s response. Not promises — verifiable evidence."
+      },
+      {
+        "title": "Zero-Egress",
+        "description": "Your data never leaves your infrastructure. Full compliance guaranteed."
+      },
+      {
+        "title": "Real Production",
+        "description": "17 MCP tools + 3 AI neurons operating 24/7 with enterprise SLAs."
+      }
+    ]
+  },
+  "cta_section": {
+    "title": "Your Company Can Achieve Similar Results",
+    "description": "Schedule your free roadmap and discover how much ROI INNATE.data can generate for your business.",
+    "button": "Schedule Your Free Roadmap"
+  },
+  "labels": {
+    "results": "Key Results",
+    "stack": "Tech Stack",
+    "before": "Before",
+    "after": "After",
+    "filter_all": "All"
   },
   "meta": {
-    "title": "Featured Projects",
-    "description": "Real implementations with verifiable metrics in production."
+    "title": "NEURA System Success Story | INNATE.data",
+    "description": "282M+ records analyzed in seconds. 270% verified ROI. Real zero-egress architecture case study with INNATE.data."
   }
 }

@@ -31,7 +31,7 @@ export function usePageMeta({ titleKey, descriptionKey, ns = 'common', path }: P
     const lang = i18n.language;
 
     // Page title
-    document.title = `${title} | Alex Seis`;
+    document.title = `${title} | INNATE.data`;
 
     // HTML lang attribute
     document.documentElement.lang = lang;
@@ -53,7 +53,7 @@ export function usePageMeta({ titleKey, descriptionKey, ns = 'common', path }: P
 
     // Cleanup
     return () => {
-      document.title = 'Alex Seis - Enterprise AI Architect';
+      document.title = 'INNATE.data - Intelligence Born from Your Data';
     };
   }, [t, i18n.language, titleKey, descriptionKey, path]);
 }

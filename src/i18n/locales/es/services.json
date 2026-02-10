@@ -1,54 +1,130 @@
 {
-  "page_title": "Servicios Especializados",
-  "page_subtitle": "Soluciones de IA empresarial diseñadas para escalar. Cada servicio incluye arquitectura probada en producción con métricas verificables.",
-  "cards": {
-    "rag": {
-      "title": "RAG Enterprise",
-      "description": "Sistemas de Retrieval-Augmented Generation con vectorización inteligente, búsqueda semántica y respuestas contextuales para documentación corporativa."
+  "page_title": "INNATE.data — Value Ladder",
+  "page_subtitle": "Arquitectura zero-egress de IA que vive dentro de tu data warehouse. Tres niveles de transformacion adaptados a tu realidad.",
+  "mechanism": {
+    "title": "El Mecanismo Unico: Zero-Egress",
+    "subtitle": "La IA va a tus datos. Tus datos nunca salen.",
+    "traditional": {
+      "title": "IA Tradicional",
+      "items": [
+        "Datos enviados a APIs externas",
+        "Riesgo de compliance y fuga de datos",
+        "Latencia alta por transferencia de red",
+        "Costos crecientes por volumen de datos",
+        "Dependencia total del proveedor"
+      ]
     },
-    "chatbots": {
-      "title": "Chatbots Empresariales",
-      "description": "Agentes conversacionales con IA avanzada, integración multicanal y aprendizaje continuo para atención al cliente y procesos internos."
-    },
-    "serverless": {
-      "title": "Plataformas Serverless",
-      "description": "Arquitecturas cloud-native en Google Cloud Run, escalamiento automático y costos optimizados para aplicaciones de alto tráfico."
-    },
-    "data": {
-      "title": "Ingeniería de Datos",
-      "description": "Pipelines de datos con BigQuery, ETL automatizado y dashboards ejecutivos para toma de decisiones basada en datos reales."
-    },
-    "automation": {
-      "title": "Automatización IA",
-      "description": "Flujos de trabajo inteligentes con LLMs, procesamiento de documentos y automatización de procesos empresariales repetitivos."
-    },
-    "consulting": {
-      "title": "Consultoría Estratégica IA",
-      "description": "Evaluación de madurez IA, roadmap de implementación y acompañamiento ejecutivo para transformación digital con inteligencia artificial."
+    "innate": {
+      "title": "INNATE.data Zero-Egress",
+      "items": [
+        "IA ejecuta dentro de tu warehouse",
+        "Compliance total — zero egreso de datos",
+        "Respuestas en segundos desde tu infra",
+        "Costo fijo predecible sin sorpresas",
+        "Tu infraestructura, tu control total"
+      ]
     }
+  },
+  "tiers": {
+    "free": {
+      "badge": "Level 1 — Gratis",
+      "title": "Roadmap de Inteligencia Nativa",
+      "description": "Diagnostico completo de tu infraestructura de datos + mapa de oportunidades IA + estimacion de ROI personalizada.",
+      "price": "Gratis",
+      "includes": [
+        "Diagnostico de infraestructura actual",
+        "Mapa de oportunidades IA en tu negocio",
+        "Estimacion de ROI personalizada",
+        "Recomendaciones de arquitectura zero-egress",
+        "Sesion estrategica de 60 minutos"
+      ],
+      "cta": "Agenda tu Roadmap Gratuito"
+    },
+    "core": {
+      "badge": "Level 2 — INNATE Core",
+      "title": "Implementacion Zero-Egress",
+      "description": "Arquitectura completa INNATE.data desplegada en tu warehouse. 17 herramientas MCP, RAG pipelines con Redis cache, compliance ACODECO y dashboard ejecutivo.",
+      "price": "$25-30K",
+      "includes": [
+        "17 MCP Servers configurados en tu BigQuery",
+        "RAG Pipelines enterprise con Qdrant + Redis cache",
+        "Dashboard ejecutivo con metricas en tiempo real",
+        "Entrenamiento de equipo (hasta 10 personas)",
+        "90 dias de soporte post-implementacion",
+        "Garantia de payback en 30 dias"
+      ],
+      "cta": "Solicitar Propuesta Core"
+    },
+    "ecosystem": {
+      "badge": "Level 3 — INNATE Ecosystem",
+      "title": "Ecosistema Multi-Departamento",
+      "description": "Expansion INNATE.data a multiples departamentos: ALBA (estrategia, 282M+ registros) + CREATIA (ejecucion creativa, Imagen 3/Veo 2) + AUTO (personalizacion). SLA enterprise 24/7.",
+      "price": "$100K+",
+      "includes": [
+        "Neuronas IA especializadas (ALBA + CREATIA + AUTO)",
+        "Integracion con sistemas legacy existentes",
+        "Knowledge graph empresarial con GraphRAG",
+        "SLA 24/7 con soporte enterprise dedicado",
+        "Optimizacion continua y gobernanza de datos",
+        "Expansion ilimitada de MCP servers"
+      ],
+      "cta": "Solicitar Propuesta Ecosystem"
+    }
+  },
+  "guarantees": {
+    "title": "Garantias Verificables",
+    "items": [
+      {
+        "icon": "clock",
+        "title": "Payback en 30 Dias",
+        "description": "Si no recuperas tu inversion en 30 dias, trabajamos gratis hasta lograrlo."
+      },
+      {
+        "icon": "zap",
+        "title": "Respuesta < 60 Segundos",
+        "description": "Consultas sobre millones de registros respondidas en menos de un minuto."
+      },
+      {
+        "icon": "shield",
+        "title": "Zero-Egress Garantizado",
+        "description": "Tus datos nunca abandonan tu infraestructura. Auditoria de seguridad incluida."
+      }
+    ]
   },
   "process": {
-    "title": "Proceso de Implementación",
-    "step1": {
-      "title": "Diagnóstico",
-      "description": "Evaluación completa de tu stack actual y oportunidades de IA"
-    },
-    "step2": {
-      "title": "Arquitectura",
-      "description": "Diseño de solución personalizada con métricas de éxito claras"
-    },
-    "step3": {
-      "title": "Implementación",
-      "description": "Desarrollo iterativo con sprints de 2 semanas y demos constantes"
-    },
-    "step4": {
-      "title": "Optimización",
-      "description": "Monitoreo continuo, ajustes de performance y soporte enterprise"
-    }
+    "title": "Metodologia INNATE.data",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Diagnostico",
+        "description": "Analisis de tu infraestructura de datos, identificacion de oportunidades y estimacion de ROI."
+      },
+      {
+        "step": "02",
+        "title": "Arquitectura",
+        "description": "Diseno zero-egress personalizado. MCP servers, RAG pipelines y dashboard adaptados a tu negocio."
+      },
+      {
+        "step": "03",
+        "title": "Implementacion",
+        "description": "Deploy dentro de tu warehouse. Sprints de 2 semanas con demos en cada iteracion."
+      },
+      {
+        "step": "04",
+        "title": "Optimizacion",
+        "description": "Monitoreo continuo, ajuste de neuronas IA y expansion a nuevos departamentos."
+      }
+    ]
   },
-  "technologies": "Tecnologías",
+  "cta_section": {
+    "title": "Tu Roadmap de Inteligencia Nativa Te Espera",
+    "description": "Descubre cuanto ROI puede generar INNATE.data en tu empresa. Sin compromiso, sin costo.",
+    "button": "Agenda tu Roadmap Gratuito"
+  },
+  "popular_badge": "POPULAR",
+  "technologies": "Stack Tecnologico",
   "meta": {
-    "title": "Servicios Especializados",
-    "description": "Soluciones de IA empresarial diseñadas para escalar con arquitectura probada en producción."
+    "title": "Servicios INNATE.data | Arquitectura Zero-Egress",
+    "description": "Value Ladder INNATE.data: Roadmap gratuito, INNATE Core ($25-30K) e INNATE Ecosystem ($100K+). Arquitectura zero-egress con payback en 30 dias."
   }
 }

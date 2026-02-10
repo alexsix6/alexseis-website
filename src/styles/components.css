@@ -42,11 +42,14 @@
   }
   .floating-label-input input,
   .floating-label-input textarea {
-    @apply block w-full px-4 py-3 border border-gray-700 rounded-lg bg-transparent text-text-light placeholder-transparent;
+    @apply block w-full px-4 py-3 border rounded-lg bg-transparent placeholder-transparent;
+    color: var(--current-text);
+    border-color: var(--current-border);
     padding-top: var(--space-3); /* Make space for label */
   }
   .floating-label-input label {
-    @apply absolute left-4 top-3 text-gray-400 text-sm transition-all duration-200 pointer-events-none;
+    @apply absolute left-4 top-3 text-sm transition-all duration-200 pointer-events-none;
+    color: var(--current-text-muted);
     transform-origin: 0 0;
   }
   .floating-label-input input:focus ~ label,

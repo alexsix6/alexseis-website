@@ -1,17 +1,17 @@
 {
   "meta": {
-    "title": "Contact - Enterprise AI Architect",
-    "description": "Contact Alex Seis for enterprise RAG implementations, business chatbots, and scalable serverless platforms."
+    "title": "Contact - Zero-Egress Architect | INNATE.data",
+    "description": "Contact INNATE.data to transform your enterprise intelligence. Zero-egress architecture with 282M+ records, 270% verified ROI."
   },
   "hero": {
-    "title_1": "Contact",
-    "title_accent": "Enterprise AI Architect",
-    "title_2": "Implementations",
-    "title_primary": "RAG & Serverless",
-    "subtitle": "Need <strong>enterprise RAG implementation</strong> or <strong>scalable serverless architectures</strong>? Specialist in OpenAI, Claude, and Google Cloud Run. Verifiable implementations: 99.9% uptime, <2s latency, 1000+ queries/min in production."
+    "title_1": "Transform Your",
+    "title_accent": "Enterprise Intelligence",
+    "title_2": "Architecture",
+    "title_primary": "Zero-Egress",
+    "subtitle": "AI deploys <strong>inside your data warehouse</strong>. Your data never leaves. Verified results: 282M+ records across 1,046 tables, <strong>270% ROI</strong>, responses in seconds. The same architecture transforming leading financial enterprises."
   },
   "form": {
-    "title": "Evaluate Your AI Project",
+    "title": "Evaluate Your Transformation",
     "name": "Full Name *",
     "name_placeholder": "Your full name",
     "email": "Email Address *",
@@ -19,9 +19,9 @@
     "company": "Company",
     "company_placeholder": "Your company name (Optional)",
     "interest": "I'm interested in...",
-    "message": "Your AI Project *",
-    "message_placeholder": "Describe your current architecture, tech stack, and AI implementation goals...",
-    "submit": "Evaluate AI Project",
+    "message": "Your Current Challenge *",
+    "message_placeholder": "Describe your current data infrastructure, volumes you handle, and what challenges you want to solve with AI...",
+    "submit": "Request Free Roadmap",
     "submitting": "Sending..."
   },
   "validation": {
@@ -42,11 +42,11 @@
     "send_failed": "There was an error sending the message"
   },
   "interests_options": {
-    "rag_implementation": "Enterprise RAG Implementation",
-    "enterprise_chatbots": "Enterprise Chatbot Architecture",
-    "serverless_platforms": "Serverless Platform Development",
-    "llm_integration": "LLM Integration Consulting",
-    "bigquery_ai": "BigQuery + AI Integration",
+    "rag_implementation": "Zero-Egress Architecture (INNATE Core)",
+    "enterprise_chatbots": "Multi-Department Ecosystem (INNATE Ecosystem)",
+    "serverless_platforms": "Native Intelligence Roadmap (Free)",
+    "llm_integration": "MCP + BigQuery Integration",
+    "bigquery_ai": "Enterprise Generative AI (CREATIA)",
     "consultoria_general": "General AI Consulting"
   },
   "direct_contact": "Direct Contact",
@@ -54,17 +54,17 @@
   "phone_label": "Phone",
   "follow_us": "Follow Us",
   "stack": {
-    "title": "Enterprise Stack",
-    "llm_title": "LLM Integration:",
-    "llm_desc": "OpenAI GPT-4, Claude, Cohere API",
-    "cloud_title": "Cloud & Serverless:",
-    "cloud_desc": "Google Cloud Run, Vercel, Docker",
-    "vector_title": "Vector Databases:",
-    "vector_desc": "Qdrant, Pinecone, BigQuery"
+    "title": "INNATE.data Stack",
+    "llm_title": "AI & LLMs:",
+    "llm_desc": "Claude AI, Vertex AI (Imagen 3, Veo 2), OpenAI GPT-4",
+    "cloud_title": "Infrastructure:",
+    "cloud_desc": "BigQuery, Cloud Run, Redis Cache, 17 MCP Servers",
+    "vector_title": "Data & Knowledge:",
+    "vector_desc": "Qdrant, GraphRAG, RAG Pipelines, 1,046 tables"
   },
   "philosophy": {
-    "title": "My Philosophy",
-    "quote": "\"What gets measured, gets improved. What doesn't get measured, deteriorates.\"",
-    "subtitle": "— Every AI implementation must generate specific performance metrics"
+    "title": "Our Philosophy",
+    "quote": "\"The most powerful AI is one that is born from YOUR data, inside YOUR infrastructure. No egress, no risk, no intermediaries.\"",
+    "subtitle": "— INNATE.data: Native intelligence, total sovereignty"
   }
 }

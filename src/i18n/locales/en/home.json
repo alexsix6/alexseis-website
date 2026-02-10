@@ -1,24 +1,83 @@
 {
   "hero": {
-    "headline_1": "From Data to Decisions:",
-    "headline_2": "Enterprise AI Architect",
-    "subtitle": "I transform businesses with applied artificial intelligence: enterprise RAG, intelligent chatbots, and serverless platforms that scale.",
-    "cta": "Schedule Free AI Audit",
-    "cta_secondary": "View Projects"
+    "brand": "INNATE.data",
+    "tagline": "Intelligence Born from Your Data",
+    "headlines": [
+      "Zero-Egress Architecture for Enterprise AI",
+      "282M Records Analyzed in Seconds",
+      "AI That Lives Inside Your Data Warehouse",
+      "From 2-Day Reports to Instant Answers"
+    ],
+    "description": "Native AI architecture that lives inside your data warehouse. Your data never leaves your infrastructure. Verified results: 282M records across 1,046 tables, 270% ROI, payback in 7.7 days.",
+    "cta_primary": "Schedule Your Free Roadmap",
+    "cta_secondary": "See Success Story"
   },
   "metrics": {
-    "uptime": "Uptime",
-    "latency": "Latency",
-    "queries": "Queries/min",
-    "satisfaction": "Satisfaction"
+    "transactions": {
+      "value": "282M+",
+      "label": "Records in Production",
+      "detail": "1,046 BigQuery tables analyzed"
+    },
+    "speed": {
+      "value": "30s",
+      "label": "Response Time",
+      "detail": "Before: 2 days of manual reports"
+    },
+    "roi": {
+      "value": "270%",
+      "label": "Verified ROI",
+      "detail": "Payback in 7.7 days"
+    }
+  },
+  "guarantees": {
+    "title": "INNATE.data Guarantees",
+    "items": [
+      {
+        "icon": "shield",
+        "title": "Zero-Egress",
+        "description": "Your data never leaves your infrastructure. AI goes to the data, not the other way around."
+      },
+      {
+        "icon": "zap",
+        "title": "30-Day Payback",
+        "description": "If you don't recover your investment in 30 days, we work for free until you do."
+      },
+      {
+        "icon": "clock",
+        "title": "Response < 60s",
+        "description": "Queries over millions of records in under a minute. Verifiable."
+      }
+    ]
+  },
+  "mechanism": {
+    "title": "The Unique Mechanism",
+    "subtitle": "Why INNATE.data is Different",
+    "traditional": {
+      "title": "Traditional AI",
+      "points": [
+        "Data leaves to external APIs",
+        "Compliance and security risk",
+        "High latency, growing costs",
+        "Vendor dependency"
+      ]
+    },
+    "innate": {
+      "title": "INNATE.data",
+      "points": [
+        "AI lives inside your warehouse",
+        "Zero egress, full compliance",
+        "Responses in seconds, fixed cost",
+        "Your infrastructure, your control"
+      ]
+    }
   },
   "sections": {
-    "services_title": "Specialized Services",
-    "projects_title": "Featured Projects",
-    "contact_title": "Ready to Transform Your Business?"
+    "services_title": "INNATE.data Value Ladder",
+    "projects_title": "Success Story: NEURA System",
+    "contact_title": "Your Native Intelligence Roadmap"
   },
   "meta": {
-    "title": "Enterprise AI Architect",
-    "description": "Specialized in enterprise RAG implementations, intelligent chatbots, and serverless platforms that scale."
+    "title": "INNATE.data | Intelligence Born from Your Data",
+    "description": "Zero-egress enterprise AI architecture. Your data never leaves. 282M+ records, 30s response, 270% ROI. Schedule your free roadmap."
   }
 }

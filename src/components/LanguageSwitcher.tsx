@@ -26,7 +26,7 @@ export function LanguageSwitcher({ className = '' }: { className?: string }) {
       aria-label={currentLang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
       title={currentLang === 'es' ? 'Switch to English' : 'Cambiar a Español'}
     >
-      {currentLang === 'es' ? 'EN' : 'ES'}
+      {currentLang === 'es' ? 'ES' : 'EN'}
     </motion.button>
   );
 }

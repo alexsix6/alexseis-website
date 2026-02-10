@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { INNATE_COLORS } from '@/lib/intake-constants';
 
 interface IntakeProgressProps {
@@ -11,13 +12,14 @@ interface IntakeProgressProps {
 }
 
 const IntakeProgress: React.FC<IntakeProgressProps> = ({ current, total }) => {
+  const { t } = useTranslation('intake');
   const percentage = (current / total) * 100;
 
   return (
     <div className="flex items-center gap-3">
       {/* Texto de progreso */}
       <span className="text-sm" style={{ color: INNATE_COLORS.textSecondary }}>
-        Pregunta {current} de {total}
+        {t('progress.template', { current, total })}
       </span>
 
       {/* Barra de progreso */}

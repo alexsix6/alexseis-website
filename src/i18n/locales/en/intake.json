@@ -1,128 +1,212 @@
 {
   "landing": {
-    "title": "Enterprise AI Assessment",
-    "subtitle": "Evaluate the potential of Artificial Intelligence in your business",
-    "description": "Answer a few questions to receive a personalized assessment on how AI can transform your business.",
-    "start_button": "Start Assessment",
-    "duration": "5-10 minutes",
+    "title": "Native Intelligence Roadmap",
+    "subtitle": "Discover how much ROI INNATE.data can generate for your business",
+    "description": "Answer a few questions to receive your personalized roadmap with zero-egress architecture, ROI estimation and AI opportunities map.",
+    "start_button": "Start Roadmap",
+    "duration": "~5 minutes",
     "free": "100% Free",
-    "confidential": "Confidential"
+    "confidential": "Encrypted data",
+    "video_label": "First, learn how our architecture works",
+    "badge": "Zero-Egress Architecture"
   },
   "progress": {
+    "template": "Question {{current}} of {{total}}",
     "question": "Question",
     "of": "of",
     "completed": "completed"
   },
   "questions": {
+    "database_location": {
+      "question": "Where does your main database live?",
+      "hint": ""
+    },
     "industry": {
       "question": "What industry does your company operate in?",
       "hint": "Select the one that best describes your sector"
     },
     "company_size": {
-      "question": "How many employees does your company have?",
-      "hint": "This helps us size the solution"
+      "question": "What is your company size?",
+      "hint": ""
     },
-    "ai_maturity": {
-      "question": "What is your company's AI maturity level?",
-      "hint": "Be honest, there's no wrong answer"
+    "main_system": {
+      "question": "What main system do you use to manage the business?",
+      "placeholder": "E.g.: ICG FrontRetail, SAP, Oracle, SQL Server, etc.",
+      "hint": "ERP, management software, or main database"
+    },
+    "has_analytics": {
+      "question": "Do you have any active analytics/BI tool?",
+      "hint": ""
+    },
+    "analytics_tool": {
+      "question": "What analytics tool do you use?",
+      "placeholder": "E.g.: Power BI, Tableau, Looker, Google Analytics, advanced Excel...",
+      "hint": "Mention the main ones you currently use"
+    },
+    "has_vpn": {
+      "question": "Is there remote access (VPN) to the database server?",
+      "hint": ""
+    },
+    "it_management": {
+      "question": "How do you manage the Technology area?",
+      "hint": ""
     },
     "main_challenge": {
-      "question": "What is your main business challenge?",
-      "hint": "Identify the most urgent pain point"
-    },
-    "budget": {
-      "question": "What is your estimated AI budget?",
-      "hint": "Approximate range to size the proposal"
-    },
-    "timeline": {
-      "question": "What is your ideal implementation timeline?",
-      "hint": "When do you need results?"
-    },
-    "additional": {
-      "question": "Anything else we should know?",
-      "placeholder": "Briefly describe your current situation, technologies you use, or any additional context that helps us better understand your case...",
-      "hint": "Optional but very helpful"
+      "question": "What is your main data challenge today?",
+      "placeholder": "E.g.: \"The DB has grown a lot and sometimes gets saturated with certain processes\"",
+      "hint": "Performance, slow reports, saturation, lack of visibility, etc."
     }
   },
   "options": {
+    "database_location": {
+      "on_premise": "Own physical server",
+      "cloud": "Cloud (Azure/AWS/GCP)",
+      "hybrid": "Hybrid",
+      "unknown": "I'm not sure"
+    },
     "industry": {
-      "fintech": "Fintech / Banking",
-      "ecommerce": "E-commerce / Retail",
-      "saas": "SaaS / Technology",
-      "healthcare": "Healthcare / Pharma",
+      "retail": "Retail / E-commerce",
+      "financial": "Financial Services / Fintech",
       "manufacturing": "Manufacturing / Industrial",
-      "education": "Education",
-      "other": "Other sector"
+      "healthcare": "Healthcare / Pharma",
+      "logistics": "Logistics / Supply Chain",
+      "services": "Professional Services",
+      "other": "Other industry"
     },
     "company_size": {
-      "startup": "1-10 employees",
-      "small": "11-50 employees",
+      "small": "1-50 employees",
       "medium": "51-200 employees",
       "large": "201-1000 employees",
       "enterprise": "1000+ employees"
     },
-    "ai_maturity": {
-      "none": "No AI experience",
-      "exploring": "Exploring options",
-      "pilot": "Pilot projects",
-      "production": "AI in production",
-      "advanced": "Advanced/multiple AI"
+    "has_analytics": {
+      "yes": "Yes, we use analytics",
+      "no": "We don't have any",
+      "partial": "Partially"
     },
-    "main_challenge": {
-      "efficiency": "Automate processes",
-      "customer": "Improve customer service",
-      "data": "Leverage existing data",
-      "costs": "Reduce operational costs",
-      "innovation": "Innovate products/services",
-      "scale": "Scale operations"
+    "has_vpn": {
+      "yes": "Yes",
+      "no": "No",
+      "unknown": "I don't know"
     },
-    "budget": {
-      "under_5k": "Under $5,000",
-      "5k_15k": "$5,000 - $15,000",
-      "15k_50k": "$15,000 - $50,000",
-      "50k_plus": "Over $50,000",
-      "undefined": "To be defined"
+    "it_management": {
+      "internal": "Internal team",
+      "external": "External provider",
+      "mixed": "Mixed (internal + provider)"
+    }
+  },
+  "value_labels": {
+    "database_location": {
+      "on_premise": "Own physical server (on-premise)",
+      "cloud": "Cloud (Azure/AWS/GCP)",
+      "hybrid": "Hybrid",
+      "unknown": "To be determined"
     },
-    "timeline": {
-      "asap": "As soon as possible",
-      "1_3_months": "1-3 months",
-      "3_6_months": "3-6 months",
-      "6_plus": "6+ months",
-      "exploring": "Just exploring"
+    "industry": {
+      "retail": "Retail / E-commerce",
+      "financial": "Financial Services / Fintech",
+      "manufacturing": "Manufacturing / Industrial",
+      "healthcare": "Healthcare / Pharma",
+      "logistics": "Logistics / Supply Chain",
+      "services": "Professional Services",
+      "other": "Other industry"
+    },
+    "company_size": {
+      "small": "Small (1-50 employees)",
+      "medium": "Medium (51-200 employees)",
+      "large": "Large (201-1000 employees)",
+      "enterprise": "Enterprise (1000+ employees)"
+    },
+    "has_analytics": {
+      "yes": "Yes, analytics active",
+      "no": "No analytics",
+      "partial": "Partially implemented"
+    },
+    "has_vpn": {
+      "yes": "Yes, VPN available",
+      "no": "No VPN",
+      "unknown": "To be confirmed"
+    },
+    "it_management": {
+      "internal": "Internal team",
+      "external": "External provider",
+      "mixed": "Mixed (internal + provider)"
     }
   },
   "uploads": {
-    "title": "Additional Documents",
-    "subtitle": "Upload documents that help us better understand your case",
-    "drag_drop": "Drag files here or click to select",
-    "formats": "PDF, DOC, DOCX, XLS, XLSX, PNG, JPG (max. 10MB)",
-    "or_record": "Or record a voice message",
-    "record": "Record",
-    "stop": "Stop",
-    "recording": "Recording...",
-    "skip": "Continue without documents",
-    "continue": "Continue"
+    "title": "Additional Info (Optional)",
+    "question": "Do you have anything else to help us understand your situation?",
+    "hint": "Documents, diagrams, screenshots, or explain with audio",
+    "skip": "Skip this step",
+    "continue": "Continue",
+    "back": "Back",
+    "documents": "Documents",
+    "images": "Images",
+    "uploaded_files": "Uploaded files",
+    "record_audio": "Record audio",
+    "audio_recorded": "Audio recorded",
+    "re_record": "Record again",
+    "recording_hint": "Max: {{time}} - Click to stop",
+    "error_mic": "Could not access microphone. Check permissions.",
+    "error_file_size": "File is too large. Maximum 10MB.",
+    "error_max_files": "Maximum {{max}} files allowed."
   },
   "agent": {
-    "title": "AI Analysis in Progress",
+    "title": "Intelligent Review",
+    "subtitle": "Our assistant is reviewing your information",
     "analyzing": "Analyzing your responses...",
-    "generating": "Generating personalized assessment...",
+    "loading_messages": [
+      "Analyzing your responses...",
+      "Reviewing the information...",
+      "Almost ready..."
+    ],
+    "asking_title": "One more question",
+    "input_placeholder": "Write your answer...",
+    "send_button": "Send answer",
+    "skip_button": "Continue without answering",
+    "thank_you": "Thank you for the additional information.",
     "follow_up": "Follow-up question:",
     "skip": "Skip",
     "send": "Send"
   },
   "confirmation": {
-    "title": "Assessment Completed!",
-    "subtitle": "Thank you for completing the assessment. Our team will analyze your case and contact you within the next 24 hours.",
-    "summary_title": "Summary of Your Responses",
+    "title": "Done! We have what we need",
+    "summary": "Summary",
+    "next_step": "Next step",
+    "next_step_description": "I will contact you within the next 24 hours with a preliminary analysis and proposed date for our meeting.",
+    "contact": "Questions?",
+    "email": "alex@innate.data",
+    "return_home": "Return to home",
+    "not_answered": "Not answered",
+    "yes": "Yes",
+    "no": "No",
     "download": "Download Summary",
     "new_assessment": "New Assessment",
     "contact_cta": "Schedule a Call"
+  },
+  "buttons": {
+    "skip": "Skip",
+    "continue": "Continue",
+    "back": "Back",
+    "hint_select": "Select an option to continue"
+  },
+  "video": {
+    "title": "How INNATE.data works",
+    "duration": "90 seconds",
+    "description": "Learn about our AI architecture that lives inside your data warehouse",
+    "iframe_title": "INNATE.data Architecture"
+  },
+  "footer": {
+    "security": "Your data is safe. Zero-egress architecture."
   },
   "messages": {
     "error_submit": "Error submitting. Please try again.",
     "error_upload": "Error uploading file.",
     "success_upload": "File uploaded successfully.",
     "max_files": "Maximum number of files reached."
+  },
+  "meta": {
+    "title": "Native Intelligence Roadmap | INNATE.data",
+    "description": "Answer 8 questions and receive your personalized roadmap with zero-egress architecture, ROI estimation and AI opportunities map."
   }
 }

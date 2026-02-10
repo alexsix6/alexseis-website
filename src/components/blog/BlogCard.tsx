@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowRight, Tag } from 'lucide-react';
 import type { BlogPost } from '@/content/blog';
@@ -13,11 +14,18 @@ interface BlogCardProps {
 
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   const { frontmatter } = post;
-  const formattedDate = new Date(frontmatter.date).toLocaleDateString('es-ES', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const { t, i18n } = useTranslation('common');
+  const isEn = i18n.language?.startsWith('en');
+  const localizedTitle = (isEn && frontmatter.title_en) ? frontmatter.title_en : frontmatter.title;
+  const localizedDescription = (isEn && frontmatter.description_en) ? frontmatter.description_en : frontmatter.description;
+  const formattedDate = new Date(frontmatter.date).toLocaleDateString(
+    isEn ? 'en-US' : 'es-ES',
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+  );
 
   return (
     <motion.article
@@ -56,7 +64,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           className="text-xl font-bold mb-2 group-hover:text-accent transition-colors"
           style={{ color: 'var(--current-text)' }}
         >
-          {frontmatter.title}
+          {localizedTitle}
         </h2>
 
         {/* Description */}
@@ -64,7 +72,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           className="text-sm mb-4 line-clamp-3"
           style={{ color: 'var(--current-text-muted)' }}
         >
-          {frontmatter.description}
+          {localizedDescription}
         </p>
 
         {/* Footer */}
@@ -80,7 +88,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
             )}
           </div>
           <span className="text-accent text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-            Leer <ArrowRight className="h-4 w-4" />
+            {t('blog.read')} <ArrowRight className="h-4 w-4" />
           </span>
         </div>
       </NavLink>

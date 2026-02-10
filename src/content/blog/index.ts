@@ -5,8 +5,10 @@
 
 interface BlogFrontmatter {
   title: string;
+  title_en?: string;
   date: string;
   description: string;
+  description_en?: string;
   slug: string;
   tags?: string[];
   author?: string;

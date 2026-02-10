@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { Calendar, ArrowLeft, Tag, User } from 'lucide-react';
 import { MDXProvider } from '@mdx-js/react';
@@ -15,11 +16,18 @@ interface BlogPostLayoutProps {
 
 const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
   const { frontmatter, Component } = post;
-  const formattedDate = new Date(frontmatter.date).toLocaleDateString('es-ES', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const { t, i18n } = useTranslation('common');
+  const isEn = i18n.language?.startsWith('en');
+  const localizedTitle = (isEn && frontmatter.title_en) ? frontmatter.title_en : frontmatter.title;
+  const localizedDescription = (isEn && frontmatter.description_en) ? frontmatter.description_en : frontmatter.description;
+  const formattedDate = new Date(frontmatter.date).toLocaleDateString(
+    isEn ? 'en-US' : 'es-ES',
+    {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+  );
 
   return (
     <motion.div
@@ -36,7 +44,7 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
           style={{ color: 'var(--current-text-muted)' }}
         >
           <ArrowLeft className="h-4 w-4" />
-          Volver al blog
+          {t('blog.back_to_blog')}
         </NavLink>
 
         {/* Header */}
@@ -64,14 +72,14 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
             className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4"
             style={{ color: 'var(--current-text)' }}
           >
-            {frontmatter.title}
+            {localizedTitle}
           </h1>
 
           <p
             className="text-lg mb-6"
             style={{ color: 'var(--current-text-muted)' }}
           >
-            {frontmatter.description}
+            {localizedDescription}
           </p>
 
           {/* Meta */}
@@ -114,13 +122,13 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
             className="text-lg font-semibold mb-2"
             style={{ color: 'var(--current-text)' }}
           >
-            ¿Te interesa implementar esto en tu empresa?
+            {t('blog.cta_title')}
           </p>
           <p
             className="text-sm mb-4"
             style={{ color: 'var(--current-text-muted)' }}
           >
-            Agenda una auditoría gratuita para evaluar tu caso de uso.
+            {t('blog.cta_description')}
           </p>
           <NavLink
             to="/intake"
@@ -129,7 +137,7 @@ const BlogPostLayout: React.FC<BlogPostLayoutProps> = ({ post }) => {
               background: 'linear-gradient(135deg, var(--primary), var(--accent))',
             }}
           >
-            Auditoría IA Gratuita
+            {t('cta.roadmap')}
           </NavLink>
         </div>
       </div>

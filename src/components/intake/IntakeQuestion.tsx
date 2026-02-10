@@ -1,9 +1,11 @@
 /**
  * Componente de pregunta individual (estilo conversacional)
  * v3.0: Soporte para preguntas condicionales (follow-up)
+ * v4.5: i18n support - translates question/option text via intake namespace
  */
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, ArrowLeft, Check } from 'lucide-react';
 import { INNATE_COLORS } from '@/lib/intake-constants';
 import type { IntakeQuestion as IntakeQuestionType, IntakeOption } from '@/types';
@@ -14,10 +16,11 @@ interface OptionButtonProps {
   option: IntakeOption;
   isSelected: boolean;
   onClick: () => void;
+  translatedLabel: string;
 }
 
 // Boton de opcion
-const OptionButton: React.FC<OptionButtonProps> = ({ option, isSelected, onClick }) => (
+const OptionButton: React.FC<OptionButtonProps> = ({ option, isSelected, onClick, translatedLabel }) => (
   <motion.button
     onClick={onClick}
     whileHover={{ scale: 1.02 }}
@@ -29,7 +32,7 @@ const OptionButton: React.FC<OptionButtonProps> = ({ option, isSelected, onClick
     }}
   >
     <span className="text-2xl">{option.icon}</span>
-    <span className="flex-grow font-medium">{option.label}</span>
+    <span className="flex-grow font-medium">{translatedLabel}</span>
     {isSelected && (
       <motion.div
         initial={{ scale: 0 }}
@@ -104,10 +107,26 @@ interface FollowUpQuestionProps {
   onChange: (value: string) => void;
   onSubmit: () => void;
   onSkip: () => void;
+  translatedQuestion: string;
+  translatedPlaceholder?: string;
+  translatedHint?: string;
+  skipLabel: string;
+  continueLabel: string;
 }
 
 // v3.0: Componente de Follow-up Question
-const FollowUpQuestion: React.FC<FollowUpQuestionProps> = ({ followUpConfig, value, onChange, onSubmit, onSkip }) => {
+const FollowUpQuestion: React.FC<FollowUpQuestionProps> = ({
+  followUpConfig,
+  value,
+  onChange,
+  onSubmit,
+  onSkip,
+  translatedQuestion,
+  translatedPlaceholder,
+  translatedHint,
+  skipLabel,
+  continueLabel,
+}) => {
   const [localValue, setLocalValue] = useState(value || '');
 
   useEffect(() => {
@@ -140,15 +159,15 @@ const FollowUpQuestion: React.FC<FollowUpQuestionProps> = ({ followUpConfig, val
         className="text-lg font-medium"
         style={{ color: INNATE_COLORS.cyan }}
       >
-        {followUpConfig.question.question}
+        {translatedQuestion}
       </motion.p>
 
       <TextInput
         value={localValue}
         onChange={setLocalValue}
         onSubmit={handleSubmit}
-        placeholder={followUpConfig.question.placeholder}
-        hint={followUpConfig.question.hint}
+        placeholder={translatedPlaceholder}
+        hint={translatedHint}
         multiline={followUpConfig.question.type === 'textarea'}
         autoFocus={true}
       />
@@ -159,7 +178,7 @@ const FollowUpQuestion: React.FC<FollowUpQuestionProps> = ({ followUpConfig, val
           className="text-sm px-3 py-1 rounded-lg transition-colors hover:bg-white/5"
           style={{ color: INNATE_COLORS.textMuted }}
         >
-          Saltar
+          {skipLabel}
         </button>
         <button
           onClick={handleSubmit}
@@ -170,7 +189,7 @@ const FollowUpQuestion: React.FC<FollowUpQuestionProps> = ({ followUpConfig, val
             color: localValue.trim() ? INNATE_COLORS.background : INNATE_COLORS.textMuted,
           }}
         >
-          Continuar
+          {continueLabel}
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>
@@ -197,6 +216,7 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
   onFollowUpAnswer,
   onBack
 }) => {
+  const { t } = useTranslation('intake');
   const [localValue, setLocalValue] = useState(answer || '');
   const [showFollowUp, setShowFollowUp] = useState(false);
   const [pendingAnswer, setPendingAnswer] = useState<string | null>(null);
@@ -220,21 +240,25 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
 
   const hasFollowUp = question.followUp && question.followUp.condition;
 
+  // i18n: translate question text using question ID
+  const translatedQuestion = t(`questions.${question.id}.question`, { defaultValue: question.question });
+  const translatedPlaceholder = question.placeholder
+    ? t(`questions.${question.id}.placeholder`, { defaultValue: question.placeholder })
+    : undefined;
+  const translatedHint = question.hint
+    ? t(`questions.${question.id}.hint`, { defaultValue: question.hint })
+    : undefined;
+
   const handleOptionClick = (value: string): void => {
-    // Check if this triggers a follow-up
     if (hasFollowUp && question.followUp!.condition.includes(value)) {
-      // Store the answer but don't advance yet
       setPendingAnswer(value);
       setShowFollowUp(true);
-      // Still call onAnswer to update the main answer
       if (onFollowUpAnswer) {
-        // Use a special handler that doesn't advance
-        onAnswer(value, true); // true = has follow-up, don't advance
+        onAnswer(value, true);
       } else {
         onAnswer(value);
       }
     } else {
-      // No follow-up, proceed normally
       setShowFollowUp(false);
       setPendingAnswer(null);
       onAnswer(value);
@@ -248,12 +272,10 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
   };
 
   const handleFollowUpSubmit = (): void => {
-    // Advance to next question
-    onAnswer(pendingAnswer || answer || '', false); // false = advance now
+    onAnswer(pendingAnswer || answer || '', false);
   };
 
   const handleFollowUpSkip = (): void => {
-    // Clear follow-up answer and advance
     if (onFollowUpAnswer) {
       onFollowUpAnswer(question.followUp!.question.id, '');
     }
@@ -266,6 +288,18 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
     }
   };
 
+  // i18n: translate follow-up question
+  const followUpId = question.followUp?.question.id;
+  const translatedFollowUpQuestion = followUpId
+    ? t(`questions.${followUpId}.question`, { defaultValue: question.followUp!.question.question })
+    : '';
+  const translatedFollowUpPlaceholder = followUpId && question.followUp?.question.placeholder
+    ? t(`questions.${followUpId}.placeholder`, { defaultValue: question.followUp!.question.placeholder })
+    : undefined;
+  const translatedFollowUpHint = followUpId && question.followUp?.question.hint
+    ? t(`questions.${followUpId}.hint`, { defaultValue: question.followUp!.question.hint })
+    : undefined;
+
   return (
     <div className="space-y-8">
       {/* Pregunta */}
@@ -275,7 +309,7 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
         className="text-2xl md:text-3xl font-bold"
         style={{ color: INNATE_COLORS.textPrimary }}
       >
-        {question.question}
+        {translatedQuestion}
       </motion.h2>
 
       {/* Opciones o Input segun tipo */}
@@ -293,6 +327,7 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
                 option={option}
                 isSelected={answer === option.value || pendingAnswer === option.value}
                 onClick={() => handleOptionClick(option.value)}
+                translatedLabel={t(`options.${question.id}.${option.value}`, { defaultValue: option.label })}
               />
             ))}
           </div>
@@ -303,8 +338,8 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
             value={localValue}
             onChange={setLocalValue}
             onSubmit={handleTextSubmit}
-            placeholder={question.placeholder}
-            hint={question.hint}
+            placeholder={translatedPlaceholder}
+            hint={translatedHint}
             multiline={false}
           />
         )}
@@ -314,8 +349,8 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
             value={localValue}
             onChange={setLocalValue}
             onSubmit={handleTextSubmit}
-            placeholder={question.placeholder}
-            hint={question.hint}
+            placeholder={translatedPlaceholder}
+            hint={translatedHint}
             multiline={true}
           />
         )}
@@ -330,6 +365,11 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
             onChange={handleFollowUpChange}
             onSubmit={handleFollowUpSubmit}
             onSkip={handleFollowUpSkip}
+            translatedQuestion={translatedFollowUpQuestion}
+            translatedPlaceholder={translatedFollowUpPlaceholder}
+            translatedHint={translatedFollowUpHint}
+            skipLabel={t('buttons.skip')}
+            continueLabel={t('buttons.continue')}
           />
         )}
       </AnimatePresence>
@@ -342,7 +382,6 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
           transition={{ delay: 0.2 }}
           className="flex items-center justify-between pt-4"
         >
-          {/* Boton Atras */}
           {onBack ? (
             <button
               onClick={onBack}
@@ -350,13 +389,12 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
               style={{ color: INNATE_COLORS.textSecondary }}
             >
               <ArrowLeft className="w-4 h-4" />
-              Atras
+              {t('buttons.back')}
             </button>
           ) : (
             <div />
           )}
 
-          {/* Boton Continuar */}
           <button
             onClick={handleTextSubmit}
             disabled={!localValue.trim()}
@@ -366,13 +404,13 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
               color: localValue.trim() ? INNATE_COLORS.background : INNATE_COLORS.textMuted,
             }}
           >
-            Continuar
+            {t('buttons.continue')}
             <ArrowRight className="w-4 h-4" />
           </button>
         </motion.div>
       )}
 
-      {/* Indicador de teclado para opciones (solo si no hay follow-up activo) */}
+      {/* Indicador de teclado para opciones */}
       {question.type === 'options' && !showFollowUp && (
         <motion.p
           initial={{ opacity: 0 }}
@@ -381,7 +419,7 @@ const IntakeQuestion: React.FC<IntakeQuestionProps> = ({
           className="text-center text-sm"
           style={{ color: INNATE_COLORS.textMuted }}
         >
-          Selecciona una opcion para continuar
+          {t('buttons.hint_select')}
         </motion.p>
       )}
     </div>

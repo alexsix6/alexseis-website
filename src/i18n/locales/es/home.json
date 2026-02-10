@@ -1,24 +1,83 @@
 {
   "hero": {
-    "headline_1": "De Datos a Decisiones:",
-    "headline_2": "Arquitecto IA Empresarial",
-    "subtitle": "Transformo empresas con inteligencia artificial: RAG enterprise, chatbots inteligentes y plataformas serverless que escalan.",
-    "cta": "Agenda Auditoría IA Gratuita",
-    "cta_secondary": "Ver Proyectos"
+    "brand": "INNATE.data",
+    "tagline": "Inteligencia que nace de tus datos",
+    "headlines": [
+      "Arquitectura Zero-Egress para Enterprise AI",
+      "282M registros analizados en segundos",
+      "IA que vive dentro de tu Data Warehouse",
+      "De 2 dias de reportes a respuestas instantaneas"
+    ],
+    "description": "Arquitectura de IA nativa que vive dentro de tu data warehouse. Tus datos nunca salen de tu infraestructura. Resultados verificables: 282M registros en 1,046 tablas, 270% ROI, payback en 7.7 dias.",
+    "cta_primary": "Agenda tu Roadmap Gratuito",
+    "cta_secondary": "Ver Caso de Exito"
   },
   "metrics": {
-    "uptime": "Uptime",
-    "latency": "Latencia",
-    "queries": "Consultas/min",
-    "satisfaction": "Satisfacción"
+    "transactions": {
+      "value": "282M+",
+      "label": "Registros en Produccion",
+      "detail": "1,046 tablas BigQuery analizadas"
+    },
+    "speed": {
+      "value": "30s",
+      "label": "Tiempo de Respuesta",
+      "detail": "Antes: 2 dias de reportes manuales"
+    },
+    "roi": {
+      "value": "270%",
+      "label": "ROI Verificado",
+      "detail": "Payback en 7.7 dias"
+    }
+  },
+  "guarantees": {
+    "title": "Garantias INNATE.data",
+    "items": [
+      {
+        "icon": "shield",
+        "title": "Zero-Egress",
+        "description": "Tus datos nunca salen de tu infraestructura. La IA va a los datos, no al reves."
+      },
+      {
+        "icon": "zap",
+        "title": "Payback en 30 Dias",
+        "description": "Si no recuperas la inversion en 30 dias, trabajamos gratis hasta lograrlo."
+      },
+      {
+        "icon": "clock",
+        "title": "Respuesta < 60s",
+        "description": "Consultas sobre millones de registros en menos de un minuto. Verificable."
+      }
+    ]
+  },
+  "mechanism": {
+    "title": "El Mecanismo Unico",
+    "subtitle": "Por que INNATE.data es diferente",
+    "traditional": {
+      "title": "IA Tradicional",
+      "points": [
+        "Datos salen a APIs externas",
+        "Riesgo de compliance y seguridad",
+        "Latencia alta, costos crecientes",
+        "Dependencia de proveedores"
+      ]
+    },
+    "innate": {
+      "title": "INNATE.data",
+      "points": [
+        "IA vive dentro de tu warehouse",
+        "Zero egreso, compliance total",
+        "Respuestas en segundos, costo fijo",
+        "Tu infraestructura, tu control"
+      ]
+    }
   },
   "sections": {
-    "services_title": "Servicios Especializados",
-    "projects_title": "Proyectos Destacados",
-    "contact_title": "¿Listo para Transformar tu Empresa?"
+    "services_title": "Value Ladder INNATE.data",
+    "projects_title": "Caso de Exito: Sistema NEURA",
+    "contact_title": "Tu Roadmap de Inteligencia Nativa"
   },
   "meta": {
-    "title": "Arquitecto IA Empresarial",
-    "description": "Especializado en implementaciones RAG empresariales, chatbots enterprise y plataformas serverless que escalan."
+    "title": "INNATE.data | Inteligencia que Nace de tus Datos",
+    "description": "Arquitectura zero-egress de IA empresarial. Tus datos nunca salen. 282M+ registros, 30s respuesta, 270% ROI. Agenda tu roadmap gratuito."
   }
 }

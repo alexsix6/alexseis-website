@@ -1,54 +1,130 @@
 {
-  "page_title": "Specialized Services",
-  "page_subtitle": "Enterprise AI solutions designed to scale. Every service includes production-proven architecture with verifiable metrics.",
-  "cards": {
-    "rag": {
-      "title": "Enterprise RAG",
-      "description": "Retrieval-Augmented Generation systems with intelligent vectorization, semantic search, and contextual responses for corporate documentation."
+  "page_title": "INNATE.data — Value Ladder",
+  "page_subtitle": "Zero-egress AI architecture that lives inside your data warehouse. Three transformation tiers adapted to your reality.",
+  "mechanism": {
+    "title": "The Unique Mechanism: Zero-Egress",
+    "subtitle": "AI goes to your data. Your data never leaves.",
+    "traditional": {
+      "title": "Traditional AI",
+      "items": [
+        "Data sent to external APIs",
+        "Compliance risk and data leakage",
+        "High latency from network transfers",
+        "Growing costs with data volume",
+        "Total vendor dependency"
+      ]
     },
-    "chatbots": {
-      "title": "Enterprise Chatbots",
-      "description": "Conversational agents with advanced AI, multichannel integration, and continuous learning for customer service and internal processes."
-    },
-    "serverless": {
-      "title": "Serverless Platforms",
-      "description": "Cloud-native architectures on Google Cloud Run, automatic scaling, and optimized costs for high-traffic applications."
-    },
-    "data": {
-      "title": "Data Engineering",
-      "description": "Data pipelines with BigQuery, automated ETL, and executive dashboards for decision-making based on real data."
-    },
-    "automation": {
-      "title": "AI Automation",
-      "description": "Intelligent workflows with LLMs, document processing, and automation of repetitive business processes."
-    },
-    "consulting": {
-      "title": "Strategic AI Consulting",
-      "description": "AI maturity assessment, implementation roadmap, and executive guidance for digital transformation with artificial intelligence."
+    "innate": {
+      "title": "INNATE.data Zero-Egress",
+      "items": [
+        "AI executes inside your warehouse",
+        "Full compliance — zero data egress",
+        "Responses in seconds from your infra",
+        "Predictable fixed cost with no surprises",
+        "Your infrastructure, your full control"
+      ]
     }
+  },
+  "tiers": {
+    "free": {
+      "badge": "Level 1 — Free",
+      "title": "Native Intelligence Roadmap",
+      "description": "Complete diagnostic of your data infrastructure + AI opportunity map + personalized ROI estimation.",
+      "price": "Free",
+      "includes": [
+        "Current infrastructure diagnostic",
+        "AI opportunities map for your business",
+        "Personalized ROI estimation",
+        "Zero-egress architecture recommendations",
+        "60-minute strategic session"
+      ],
+      "cta": "Schedule Your Free Roadmap"
+    },
+    "core": {
+      "badge": "Level 2 — INNATE Core",
+      "title": "Zero-Egress Implementation",
+      "description": "Complete INNATE.data architecture deployed in your warehouse. 17 MCP tools, RAG pipelines with Redis cache, ACODECO compliance, and executive dashboard.",
+      "price": "$25-30K",
+      "includes": [
+        "17 MCP Servers configured in your BigQuery",
+        "Enterprise RAG Pipelines with Qdrant + Redis cache",
+        "Executive dashboard with real-time metrics",
+        "Team training (up to 10 people)",
+        "90 days post-implementation support",
+        "30-day payback guarantee"
+      ],
+      "cta": "Request Core Proposal"
+    },
+    "ecosystem": {
+      "badge": "Level 3 — INNATE Ecosystem",
+      "title": "Multi-Department Ecosystem",
+      "description": "INNATE.data expansion to multiple departments: ALBA (strategy, 282M+ records) + CREATIA (creative execution, Imagen 3/Veo 2) + AUTO (personalization). 24/7 enterprise SLA.",
+      "price": "$100K+",
+      "includes": [
+        "Specialized AI Neurons (ALBA + CREATIA + AUTO)",
+        "Integration with existing legacy systems",
+        "Enterprise knowledge graph with GraphRAG",
+        "24/7 SLA with dedicated enterprise support",
+        "Continuous optimization and data governance",
+        "Unlimited MCP server expansion"
+      ],
+      "cta": "Request Ecosystem Proposal"
+    }
+  },
+  "guarantees": {
+    "title": "Verifiable Guarantees",
+    "items": [
+      {
+        "icon": "clock",
+        "title": "30-Day Payback",
+        "description": "If you don't recover your investment in 30 days, we work for free until you do."
+      },
+      {
+        "icon": "zap",
+        "title": "Response < 60 Seconds",
+        "description": "Queries over millions of records answered in under a minute."
+      },
+      {
+        "icon": "shield",
+        "title": "Zero-Egress Guaranteed",
+        "description": "Your data never leaves your infrastructure. Security audit included."
+      }
+    ]
   },
   "process": {
-    "title": "Implementation Process",
-    "step1": {
-      "title": "Diagnosis",
-      "description": "Complete evaluation of your current stack and AI opportunities"
-    },
-    "step2": {
-      "title": "Architecture",
-      "description": "Custom solution design with clear success metrics"
-    },
-    "step3": {
-      "title": "Implementation",
-      "description": "Iterative development with 2-week sprints and continuous demos"
-    },
-    "step4": {
-      "title": "Optimization",
-      "description": "Continuous monitoring, performance tuning, and enterprise support"
-    }
+    "title": "INNATE.data Methodology",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Diagnostic",
+        "description": "Analysis of your data infrastructure, opportunity identification, and ROI estimation."
+      },
+      {
+        "step": "02",
+        "title": "Architecture",
+        "description": "Custom zero-egress design. MCP servers, RAG pipelines, and dashboard tailored to your business."
+      },
+      {
+        "step": "03",
+        "title": "Implementation",
+        "description": "Deploy inside your warehouse. 2-week sprints with demos at each iteration."
+      },
+      {
+        "step": "04",
+        "title": "Optimization",
+        "description": "Continuous monitoring, AI neuron tuning, and expansion to new departments."
+      }
+    ]
   },
-  "technologies": "Technologies",
+  "cta_section": {
+    "title": "Your Native Intelligence Roadmap Awaits",
+    "description": "Discover how much ROI INNATE.data can generate for your business. No commitment, no cost.",
+    "button": "Schedule Your Free Roadmap"
+  },
+  "popular_badge": "POPULAR",
+  "technologies": "Tech Stack",
   "meta": {
-    "title": "Specialized Services",
-    "description": "Enterprise AI solutions designed to scale with production-proven architecture."
+    "title": "INNATE.data Services | Zero-Egress Architecture",
+    "description": "INNATE.data Value Ladder: Free roadmap, INNATE Core ($25-30K) and INNATE Ecosystem ($100K+). Zero-egress architecture with 30-day payback."
   }
 }

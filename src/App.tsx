@@ -10,8 +10,8 @@ import { Toaster } from "@/components/ui/toaster";
 import EmailCapture from '@/components/EmailCapture';
 import { useAnalytics } from '@/hooks/useAnalytics';
 
-// WebP logo (optimized: 11KB vs original 1,443KB PNG)
-import logo from '@/assets/Logoweb.webp';
+// INNATE.data logo (WebP optimized: 35KB from 2.5MB PNG)
+import logo from '@/assets/innate-logo.webp';
 
 // ===== LAZY-LOADED PAGES =====
 // Each page becomes its own chunk, loaded on-demand
@@ -80,7 +80,6 @@ function AppContent(): React.JSX.Element {
     <div
       className="flex flex-col min-h-screen transition-all duration-300"
       style={{
-        backgroundColor: 'var(--current-bg)',
         color: 'var(--current-text)'
       }}
     >
@@ -176,8 +175,8 @@ function AppContent(): React.JSX.Element {
                 }}
               >
                 <Zap className="h-4 w-4" />
-                <span className="hidden sm:inline">{t('cta.audit')}</span>
-                <span className="sm:hidden">{t('cta.audit_short')}</span>
+                <span className="hidden sm:inline">{t('cta.roadmap')}</span>
+                <span className="sm:hidden">{t('cta.roadmap')}</span>
               </NavLink>
             </motion.div>
           </div>
@@ -222,7 +221,7 @@ function AppContent(): React.JSX.Element {
 
           {/* Footer content */}
           <div className="text-center flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm mb-2 md:mb-0">&copy; {new Date().getFullYear()} Alex Seis Projects. {t('footer.rights')}</p>
+            <p className="text-sm mb-2 md:mb-0">&copy; {new Date().getFullYear()} {t('footer.brand', { defaultValue: 'INNATE.data by Alex Seis' })}. {t('footer.rights')}</p>
             <div className="flex space-x-4 mb-2 md:mb-0">
               <a
                 href="https://github.com/alexsix6"

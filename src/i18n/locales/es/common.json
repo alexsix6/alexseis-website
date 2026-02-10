@@ -8,18 +8,23 @@
     "blog": "Blog"
   },
   "cta": {
-    "audit": "Auditoría IA Gratuita",
-    "audit_short": "Auditoría",
+    "roadmap": "Roadmap Gratuito",
+    "roadmap_full": "Agenda tu Roadmap Gratuito",
+    "audit": "Auditoria IA Gratuita",
+    "audit_short": "Auditoria",
     "download": "Descargar",
     "send": "Enviar",
-    "close": "Cerrar"
+    "close": "Cerrar",
+    "see_case_study": "Ver Caso de Exito",
+    "learn_more": "Saber Mas"
   },
   "footer": {
     "rights": "Todos los derechos reservados.",
     "designed_with": "Diseñado con",
     "and": "y",
-    "for_innovation": "para la innovación.",
-    "privacy_policy": "Política de Privacidad"
+    "for_innovation": "para la innovacion.",
+    "privacy_policy": "Politica de Privacidad",
+    "brand": "INNATE.data by Alex Seis"
   },
   "loading": "Cargando...",
   "theme": {
@@ -30,13 +35,22 @@
     "loading": "Cargando..."
   },
   "email_capture": {
-    "title": "Guía Gratuita: RAG Enterprise en 2026",
-    "subtitle": "Recíbe la guía + insights mensuales de arquitectura IA empresarial.",
+    "title": "Guia: Arquitectura Zero-Egress para Enterprise AI",
+    "subtitle": "Recibe la guia + insights mensuales de arquitectura INNATE.data.",
     "placeholder": "tu@empresa.com",
-    "success_title": "Revisa tu correo para la guía gratuita",
-    "success_subtitle": "Te enviaremos insights mensuales de IA empresarial",
-    "error_invalid": "Por favor ingresa un email válido",
-    "banner_subtitle": "Arquitecturas probadas en producción con 99.9% uptime"
+    "success_title": "Revisa tu correo para la guia gratuita",
+    "success_subtitle": "Te enviaremos insights mensuales de arquitectura INNATE.data",
+    "error_invalid": "Por favor ingresa un email valido",
+    "banner_subtitle": "Arquitectura zero-egress con 270% ROI verificado"
   },
-  "logo_alt": "Alex Seis - Arquitecto IA Empresarial"
+  "logo_alt": "INNATE.data - Inteligencia que Nace de tus Datos",
+  "blog": {
+    "title": "Blog — IA Enterprise",
+    "subtitle": "Insights tecnicos sobre arquitecturas zero-egress, MCP servers, y transformacion digital con inteligencia artificial.",
+    "no_posts": "No hay posts publicados aun. Vuelve pronto!",
+    "read": "Leer",
+    "back_to_blog": "Volver al blog",
+    "cta_title": "Te interesa implementar esto en tu empresa?",
+    "cta_description": "Agenda tu roadmap gratuito para evaluar tu caso de uso."
+  }
 }
