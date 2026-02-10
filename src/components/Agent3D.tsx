@@ -134,7 +134,7 @@ export function Agent3D(): JSX.Element {
   return (
     <div className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 transition-all duration-500 z-30 ${
       isMinimized
-        ? 'w-16 h-16'
+        ? 'w-16 h-16 animate-bounce hover:animate-none'
         : 'w-[calc(100%-2rem)] h-[75vh] shadow-2xl sm:w-80 sm:h-[480px]'
     }`}>
 
@@ -142,7 +142,7 @@ export function Agent3D(): JSX.Element {
         /* ESTADO MINIMIZADO — INNATE.data LED Ring Bubble */
         <button
           onClick={handleOpen}
-          className="w-full h-full rounded-full flex items-center justify-center group relative"
+          className="w-full h-full rounded-full flex items-center justify-center group relative shadow-2xl"
           style={{ background: 'transparent' }}
           aria-label="Abrir chat IA"
         >
