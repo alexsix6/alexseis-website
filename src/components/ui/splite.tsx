@@ -13,8 +13,8 @@ export function SplineScene({ scene, className }: SplineSceneProps): JSX.Element
   return (
     <Suspense
       fallback={
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-500"></div>
+        <div className="w-full h-full flex items-center justify-center bg-gray-950">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-500"></div>
         </div>
       }
     >

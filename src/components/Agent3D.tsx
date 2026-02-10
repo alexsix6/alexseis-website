@@ -152,7 +152,7 @@ export function Agent3D(): JSX.Element {
         <div className="h-full bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 rounded-2xl shadow-2xl overflow-hidden backdrop-blur-xl flex flex-col" style={{ borderWidth: '1px', borderStyle: 'solid', borderColor: 'rgba(0, 217, 255, 0.2)' }}>
 
           {/* AREA DEL AGENTE 3D */}
-          <div className="relative overflow-hidden transition-all duration-500 h-60">
+          <div className="relative overflow-hidden transition-all duration-500 h-60 bg-gray-950">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"
