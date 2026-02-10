@@ -41,10 +41,15 @@ const PageLoader: React.FC = () => {
   return (
     <div className="flex items-center justify-center min-h-[60vh]">
       <div className="flex flex-col items-center gap-4">
-        <div className="w-10 h-10 border-3 border-t-transparent rounded-full animate-spin"
-          style={{ borderColor: 'var(--primary)', borderTopColor: 'transparent' }}
-        />
-        <p className="text-sm" style={{ color: 'var(--current-text-muted)' }}>{t('loading')}</p>
+        <div className="relative w-12 h-12">
+          <div className="absolute inset-0 rounded-full animate-spin"
+            style={{ border: '3px solid var(--current-border)', borderTopColor: 'var(--primary)' }}
+          />
+          <div className="absolute inset-1 rounded-full animate-spin"
+            style={{ border: '2px solid transparent', borderTopColor: 'var(--accent)', animationDirection: 'reverse', animationDuration: '0.8s' }}
+          />
+        </div>
+        <p className="text-sm font-medium" style={{ color: 'var(--current-text-secondary)' }}>{t('loading')}</p>
       </div>
     </div>
   );

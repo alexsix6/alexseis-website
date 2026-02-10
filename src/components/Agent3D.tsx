@@ -139,13 +139,63 @@ export function Agent3D(): JSX.Element {
     }`}>
 
       {isMinimized ? (
-        /* ESTADO MINIMIZADO */
+        /* ESTADO MINIMIZADO — INNATE.data LED Ring Bubble */
         <button
           onClick={handleOpen}
-          className="w-full h-full rounded-2xl shadow-2xl hover:scale-110 transition-all duration-300 flex items-center justify-center text-3xl animate-bounce hover:animate-none"
-          style={{ background: 'linear-gradient(135deg, #0f0f1a 0%, #1a365d 100%)', boxShadow: '0 0 20px rgba(0, 217, 255, 0.3), 0 0 40px rgba(0, 217, 255, 0.1)' }}
+          className="w-full h-full rounded-full flex items-center justify-center group relative"
+          style={{ background: 'transparent' }}
+          aria-label="Abrir chat IA"
         >
-          <span className="drop-shadow-lg">{"🤖"}</span>
+          {/* Orbital LED ring animation */}
+          <style>{`
+            @keyframes innate-orbit {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+            }
+            @keyframes innate-orbit-reverse {
+              0% { transform: rotate(360deg); }
+              100% { transform: rotate(0deg); }
+            }
+            @keyframes innate-pulse-glow {
+              0%, 100% { opacity: 0.4; transform: scale(1); }
+              50% { opacity: 0.8; transform: scale(1.08); }
+            }
+            @keyframes innate-breathe {
+              0%, 100% { box-shadow: 0 0 15px rgba(0,217,255,0.3), 0 0 30px rgba(0,217,255,0.1); }
+              50% { box-shadow: 0 0 25px rgba(0,217,255,0.5), 0 0 50px rgba(0,217,255,0.2), 0 0 80px rgba(0,255,136,0.1); }
+            }
+          `}</style>
+
+          {/* Outer glow pulse */}
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{ animation: 'innate-pulse-glow 3s ease-in-out infinite', background: 'radial-gradient(circle, rgba(0,217,255,0.15) 0%, transparent 70%)' }}
+          />
+
+          {/* Orbital ring 1 — cyan fast */}
+          <div
+            className="absolute inset-[-3px] rounded-full"
+            style={{ animation: 'innate-orbit 3s linear infinite', background: 'conic-gradient(from 0deg, transparent 0%, #00d9ff 25%, transparent 50%, transparent 100%)', mask: 'radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2px))', WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2.5px), #fff calc(100% - 2px))' }}
+          />
+
+          {/* Orbital ring 2 — orange slow reverse */}
+          <div
+            className="absolute inset-[-6px] rounded-full"
+            style={{ animation: 'innate-orbit-reverse 5s linear infinite', background: 'conic-gradient(from 180deg, transparent 0%, #ed8936 20%, transparent 40%, transparent 100%)', mask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 1.5px))', WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 1.5px))', opacity: 0.7 }}
+          />
+
+          {/* Core bubble */}
+          <div
+            className="w-full h-full rounded-full flex items-center justify-center relative overflow-hidden group-hover:scale-110 transition-transform duration-300"
+            style={{ background: 'linear-gradient(135deg, #0f0f1a 0%, #1a365d 50%, #0f0f1a 100%)', animation: 'innate-breathe 4s ease-in-out infinite' }}
+          >
+            {/* Inner shimmer */}
+            <div
+              className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              style={{ background: 'radial-gradient(circle at 30% 30%, rgba(0,217,255,0.3), transparent 60%)' }}
+            />
+            <span className="text-2xl relative z-10 drop-shadow-lg">{"🤖"}</span>
+          </div>
         </button>
       ) : (
         /* ESTADO NORMAL/EXPANDIDO */
