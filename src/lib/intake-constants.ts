@@ -272,7 +272,7 @@ export const INTAKE_MESSAGES: IntakeMessages = {
     nextStep: 'Proximo paso',
     nextStepDescription: 'Te contactare en las proximas 24 horas con un analisis preliminar y propuesta de fecha para nuestra reunion.',
     contact: '¿Preguntas?',
-    email: 'alex@innate.data',
+    email: 'innate.data@alexseis.com',
   },
   // v3.0: Agent messages
   agent: {

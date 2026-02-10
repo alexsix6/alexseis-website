@@ -166,7 +166,7 @@ const ContactPage: React.FC = () => {
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+593-983391240",
-          "email": "ai@alexseis.com",
+          "email": "innate.data@alexseis.com",
           "contactType": localizedSchema("Arquitecto Zero-Egress", "Zero-Egress Architect"),
           "areaServed": "Global",
           "availableLanguage": ["Spanish", "English"],
@@ -282,7 +282,7 @@ const ContactPage: React.FC = () => {
   };
 
   const contactInfo: ContactInfoItem[] = [
-    { icon: Mail, text: "ai@alexseis.com", href: "mailto:ai@alexseis.com", labelKey: "email_label" },
+    { icon: Mail, text: "innate.data@alexseis.com", href: "mailto:innate.data@alexseis.com", labelKey: "email_label" },
     { icon: Phone, text: "+593 983391240", href: "tel:+593983391240", labelKey: "phone_label" },
   ];
 
