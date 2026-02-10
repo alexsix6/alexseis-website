@@ -15,13 +15,13 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-dark);
+  background: var(--current-bg-secondary, var(--bg-dark));
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary);
   border-radius: var(--radius);
-  border: 2px solid var(--bg-dark);
+  border: 2px solid var(--current-bg-secondary, var(--bg-dark));
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -45,7 +45,17 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3.5rem;
   font-weight: 800;
+}
+
+.dark h1 {
   background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+:root:not(.dark) h1 {
+  background: linear-gradient(135deg, #0066aa 0%, #008855 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

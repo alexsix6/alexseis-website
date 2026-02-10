@@ -85,9 +85,21 @@ export function useTheme(): UseThemeReturn {
 
     mediaQuery.addEventListener('change', handleSystemThemeChange);
 
+    // Listen for theme changes from other useTheme() instances
+    const handleExternalThemeChange = (e: Event): void => {
+      const customEvent = e as CustomEvent;
+      const newTheme = customEvent.detail?.theme;
+      if (newTheme && (newTheme === 'light' || newTheme === 'dark')) {
+        setThemeState(newTheme);
+      }
+    };
+
+    window.addEventListener('themeChange', handleExternalThemeChange);
+
     // Cleanup
     return () => {
       mediaQuery.removeEventListener('change', handleSystemThemeChange);
+      window.removeEventListener('themeChange', handleExternalThemeChange);
     };
   }, []);
 
