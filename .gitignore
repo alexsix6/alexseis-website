@@ -18,3 +18,6 @@ credentials-base64.txt
 *.key
 *.pem
 test-bigquery.js
+
+# Vite temp files
+vite.config.js.timestamp-*
