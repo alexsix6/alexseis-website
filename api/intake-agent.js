@@ -49,7 +49,8 @@ export default async function handler(req, res) {
       answers,
       audioTranscription,
       previousFollowUps,
-      additionalContext
+      additionalContext,
+      fileExtractions
     } = req.body;
 
     if (!answers || Object.keys(answers).length === 0) {
@@ -97,6 +98,18 @@ export default async function handler(req, res) {
 
     if (sanitizedContext) {
       userMessage += `\nRespuesta adicional del cliente:\n"${sanitizedContext}"\n`;
+    }
+
+    // v3.1: Include file extractions
+    if (fileExtractions && Array.isArray(fileExtractions) && fileExtractions.length > 0) {
+      userMessage += `\nDocumentos e imagenes adjuntos por el cliente:\n`;
+      fileExtractions.slice(0, 5).forEach((ext, i) => {
+        const label = ext.type === 'image' ? 'Imagen' : 'Documento';
+        const content = sanitizeString(ext.extraction, 2000);
+        if (content) {
+          userMessage += `${i + 1}. ${label} "${sanitizeString(ext.filename, 200)}": ${content}\n`;
+        }
+      });
     }
 
     userMessage += `\nEvalua y responde en el formato JSON especificado.`;

@@ -182,6 +182,7 @@ const IntakePage: React.FC = () => {
                 agentFollowUps={intake.agentFollowUps}
                 agentIterations={intake.agentIterations}
                 agentClosingMessage={intake.agentClosingMessage}
+                processingSteps={intake.processingSteps}
                 onAnswer={intake.answerAgentQuestion}
                 onSkip={intake.skipAgentQuestion}
                 onComplete={handleAgentComplete}

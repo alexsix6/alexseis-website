@@ -1,6 +1,6 @@
 /**
  * INNATE.data - Hook para el cuestionario inteligente
- * v3.0: Maneja estado, navegacion, follow-ups, transcripcion y agente IA
+ * v3.1: Maneja estado, navegacion, follow-ups, transcripcion, extraccion de archivos y agente IA
  */
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { INTAKE_QUESTIONS, AGENT_CONFIG } from '@/lib/intake-constants';
@@ -12,7 +12,23 @@ import type {
   IntakeStageType,
   IntakeAnswers,
   ClientInfo,
+  FileExtraction,
+  ProcessingStep,
 } from '@/types';
+
+// Helper: Read file as base64 string (without data URL prefix)
+const readFileAsBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      const base64 = result.split(',')[1];
+      resolve(base64);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+};
 
 // Generar ID de sesion unico
 const generateSessionId = (): string => {
@@ -68,6 +84,11 @@ export interface UseIntakeFormReturn {
   audioTranscription: string | null;
   isTranscribing: boolean;
 
+  // v3.1: File extraction
+  fileExtractions: FileExtraction[];
+  isExtractingFiles: boolean;
+  processingSteps: ProcessingStep[];
+
   // v3.0: Agent state
   agentStatus: AgentStatusType;
   agentFollowUps: AgentFollowUp[];
@@ -113,6 +134,16 @@ export function useIntakeForm(): UseIntakeFormReturn {
   // v3.0: Audio transcription state
   const [audioTranscription, setAudioTranscription] = useState<string | null>(null);
   const [isTranscribing, setIsTranscribing] = useState(false);
+
+  // v3.1: File extraction state
+  const [fileExtractions, setFileExtractions] = useState<FileExtraction[]>([]);
+  const [isExtractingFiles, setIsExtractingFiles] = useState(false);
+  const [processingSteps, setProcessingSteps] = useState<ProcessingStep[]>([]);
+
+  // Helper: update a single processing step
+  const updateStep = useCallback((stepId: string, status: ProcessingStep['status']) => {
+    setProcessingSteps(prev => prev.map(s => s.id === stepId ? { ...s, status } : s));
+  }, []);
 
   // v3.0: Agent state
   const [agentStatus, setAgentStatus] = useState<AgentStatusType>('idle');
@@ -254,8 +285,8 @@ export function useIntakeForm(): UseIntakeFormReturn {
     }
   }, []);
 
-  // v3.0: Llamar al agente para evaluacion
-  const callAgent = useCallback(async (additionalContext: string | null = null): Promise<AgentCallResult> => {
+  // v3.1: Llamar al agente para evaluacion (con extracciones de archivos)
+  const callAgent = useCallback(async (additionalContext: string | null = null, extractions?: FileExtraction[]): Promise<AgentCallResult> => {
     setAgentStatus('analyzing');
 
     try {
@@ -264,6 +295,7 @@ export function useIntakeForm(): UseIntakeFormReturn {
         audioTranscription,
         previousFollowUps: agentFollowUps,
         additionalContext,
+        fileExtractions: extractions || fileExtractions,
       };
 
       const response = await fetch('/api/intake-agent', {
@@ -302,7 +334,7 @@ export function useIntakeForm(): UseIntakeFormReturn {
       setAgentClosingMessage('Gracias por tu informacion. Estaremos en contacto pronto.');
       return { complete: true, error: true };
     }
-  }, [answers, audioTranscription, agentFollowUps]);
+  }, [answers, audioTranscription, fileExtractions, agentFollowUps]);
 
   // v3.0: Responder a pregunta del agente
   const answerAgentQuestion = useCallback(async (response: string): Promise<void> => {
@@ -333,17 +365,92 @@ export function useIntakeForm(): UseIntakeFormReturn {
     setAgentClosingMessage('Gracias por tu informacion. Estaremos en contacto pronto.');
   }, []);
 
-  // v3.0: Ir de uploads a agent
+  // v3.1: Extract a single file
+  const extractSingleFile = useCallback(async (file: File): Promise<FileExtraction | null> => {
+    try {
+      const base64 = await readFileAsBase64(file);
+      const response = await fetch('/api/extract-file', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          filename: file.name,
+          mimeType: file.type,
+          data: base64,
+        }),
+      });
+      if (!response.ok) return null;
+      return response.json() as Promise<FileExtraction>;
+    } catch {
+      return null;
+    }
+  }, []);
+
+  // v3.1: Ir de uploads a agent (con procesamiento visual paso a paso)
   const goToAgent = useCallback(async (): Promise<void> => {
-    // Primero transcribir audio si existe
-    if (audioRecording && !audioTranscription) {
-      await transcribeAudio(audioRecording);
+    // 1. Build processing steps based on what data exists
+    const answeredCount = Object.keys(answers).filter(k => INTAKE_QUESTIONS.some(q => q.id === k)).length;
+    const steps: ProcessingStep[] = [
+      { id: 'answers', label: `${answeredCount} respuestas recibidas`, status: 'pending' },
+    ];
+
+    if (audioRecording) {
+      steps.push({ id: 'audio', label: 'Transcribiendo audio', status: 'pending' });
     }
 
+    uploadedFiles.forEach((file, i) => {
+      const isImage = file.type.startsWith('image/');
+      const shortName = file.name.length > 25 ? file.name.substring(0, 22) + '...' : file.name;
+      steps.push({
+        id: `file-${i}`,
+        label: isImage ? `Analizando imagen: ${shortName}` : `Procesando documento: ${shortName}`,
+        status: 'pending',
+      });
+    });
+
+    steps.push({ id: 'agent', label: 'Agente revisando informacion', status: 'pending' });
+
+    setProcessingSteps(steps);
+
+    // 2. Switch to agent UI immediately (shows checklist)
+    setAgentStatus('processing');
     setStage(INTAKE_STAGES.AGENT);
-    // Iniciar evaluacion del agente
-    await callAgent();
-  }, [audioRecording, audioTranscription, transcribeAudio, callAgent]);
+
+    // Small delay so the UI renders before processing starts
+    await new Promise(r => setTimeout(r, 300));
+
+    // 3. Mark answers as done (instant)
+    updateStep('answers', 'done');
+
+    // 4. Transcribe audio if exists
+    if (audioRecording && !audioTranscription) {
+      updateStep('audio', 'processing');
+      await transcribeAudio(audioRecording);
+      updateStep('audio', 'done');
+    } else if (audioRecording) {
+      updateStep('audio', 'done');
+    }
+
+    // 5. Extract files sequentially (so user sees each one complete)
+    const extractions: FileExtraction[] = [];
+    setIsExtractingFiles(true);
+    for (let i = 0; i < uploadedFiles.length; i++) {
+      updateStep(`file-${i}`, 'processing');
+      const result = await extractSingleFile(uploadedFiles[i]);
+      if (result && result.extraction) {
+        extractions.push(result);
+        updateStep(`file-${i}`, 'done');
+      } else {
+        updateStep(`file-${i}`, 'error');
+      }
+    }
+    setFileExtractions(extractions);
+    setIsExtractingFiles(false);
+
+    // 6. Call agent with all context
+    updateStep('agent', 'processing');
+    await callAgent(null, extractions);
+    updateStep('agent', 'done');
+  }, [answers, audioRecording, audioTranscription, transcribeAudio, callAgent, uploadedFiles, extractSingleFile, updateStep]);
 
   // v3.0: Ir de agent a confirmation
   const goToConfirmationFromAgent = useCallback((): void => {
@@ -379,6 +486,8 @@ export function useIntakeForm(): UseIntakeFormReturn {
         completed_at: new Date().toISOString(),
         uploaded_files_metadata: filesMetadata.length > 0 ? filesMetadata : null,
         has_audio_recording: !!audioRecording,
+        // v3.1: file extractions
+        file_extractions: fileExtractions.length > 0 ? fileExtractions : null,
         // v3.0 new fields
         audio_transcription: audioTranscription,
         agent_follow_ups: agentFollowUps.length > 0 ? agentFollowUps : null,
@@ -406,7 +515,7 @@ export function useIntakeForm(): UseIntakeFormReturn {
     } finally {
       setIsSubmitting(false);
     }
-  }, [sessionId, answers, clientInfo, uploadedFiles, audioRecording, audioTranscription, agentFollowUps, agentIterations, getCompletionTime, startTime]);
+  }, [sessionId, answers, clientInfo, uploadedFiles, audioRecording, audioTranscription, fileExtractions, agentFollowUps, agentIterations, getCompletionTime, startTime]);
 
   // Ir directamente a confirmacion (saltando agent)
   const goToConfirmation = useCallback(async (): Promise<void> => {
@@ -487,6 +596,11 @@ export function useIntakeForm(): UseIntakeFormReturn {
     // v3.0: Audio transcription
     audioTranscription,
     isTranscribing,
+
+    // v3.1: File extraction & processing
+    fileExtractions,
+    isExtractingFiles,
+    processingSteps,
 
     // v3.0: Agent state
     agentStatus,

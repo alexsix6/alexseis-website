@@ -87,7 +87,13 @@ export interface AgentFollowUp {
   answer: string;
 }
 
-export type AgentStatusType = 'idle' | 'analyzing' | 'evaluating' | 'asking' | 'complete';
+export type AgentStatusType = 'idle' | 'processing' | 'analyzing' | 'evaluating' | 'asking' | 'complete';
+
+export interface ProcessingStep {
+  id: string;
+  label: string;
+  status: 'pending' | 'processing' | 'done' | 'error';
+}
 
 export interface IntakeAnswers {
   [key: string]: string | boolean | null;
@@ -98,6 +104,12 @@ export interface UploadedFile {
   size: number;
   type: string;
   file: File;
+}
+
+export interface FileExtraction {
+  filename: string;
+  type: 'image' | 'document' | 'unsupported' | 'error';
+  extraction: string | null;
 }
 
 export interface AudioRecording {

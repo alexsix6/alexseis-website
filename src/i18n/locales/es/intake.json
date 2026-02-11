@@ -167,7 +167,15 @@
     "thank_you": "Gracias por la informacion adicional.",
     "follow_up": "Pregunta de seguimiento:",
     "skip": "Omitir",
-    "send": "Enviar"
+    "send": "Enviar",
+    "steps": {
+      "answers": "{{count}} respuestas recibidas",
+      "audio": "Audio transcrito",
+      "document": "Documento procesado: {{name}}",
+      "image": "Imagen analizada: {{name}}",
+      "agent": "Agente revisando informacion",
+      "saved": "Informacion guardada"
+    }
   },
   "confirmation": {
     "title": "¡Listo! Ya tenemos lo que necesitamos",

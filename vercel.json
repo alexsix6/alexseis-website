@@ -1,6 +1,7 @@
 {
   "functions": {
     "api/chat.js": { "maxDuration": 25 },
+    "api/extract-file.js": { "maxDuration": 30 },
     "api/intake-agent.js": { "maxDuration": 30 },
     "api/transcribe.js": { "maxDuration": 30 }
   },

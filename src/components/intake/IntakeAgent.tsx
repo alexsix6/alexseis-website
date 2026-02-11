@@ -3,12 +3,12 @@
  * Displays the AI agent evaluation and clarification interface
  * v4.5: i18n support
  */
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Bot, Send, ArrowRight, Loader2, MessageCircle, SkipForward } from 'lucide-react';
-import { INNATE_COLORS, AGENT_CONFIG } from '@/lib/intake-constants';
-import type { AgentFollowUp, AgentStatusType } from '@/types';
+import { Bot, Send, ArrowRight, Loader2, MessageCircle, SkipForward, Check, Circle, AlertCircle } from 'lucide-react';
+import { INNATE_COLORS } from '@/lib/intake-constants';
+import type { AgentFollowUp, AgentStatusType, ProcessingStep } from '@/types';
 
 // ===== Sub-component props =====
 
@@ -39,31 +39,6 @@ const TypingIndicator: React.FC = () => (
     </div>
   </motion.div>
 );
-
-// Loading message component with cycling messages
-const LoadingMessage: React.FC<{ messages: string[] }> = ({ messages }) => {
-  const [messageIndex, setMessageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMessageIndex((prev) => (prev + 1) % messages.length);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, [messages.length]);
-
-  return (
-    <motion.div
-      key={messageIndex}
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -10 }}
-      className="text-lg"
-      style={{ color: INNATE_COLORS.textSecondary }}
-    >
-      {messages[messageIndex]}
-    </motion.div>
-  );
-};
 
 interface AgentAvatarProps {
   size?: 'large' | 'small';
@@ -123,6 +98,82 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, isAgent = true, delay 
   </motion.div>
 );
 
+// v3.1: Processing checklist with animated checkmarks
+const ProcessingChecklist: React.FC<{ steps: ProcessingStep[] }> = ({ steps }) => {
+  if (steps.length === 0) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="w-full max-w-sm mx-auto space-y-3"
+    >
+      {steps.map((step, i) => (
+        <motion.div
+          key={step.id}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: i * 0.1 }}
+          className="flex items-center gap-3"
+        >
+          {/* Status icon */}
+          {step.status === 'done' && (
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+              className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+              style={{ backgroundColor: INNATE_COLORS.green }}
+            >
+              <Check className="w-4 h-4" style={{ color: INNATE_COLORS.background }} />
+            </motion.div>
+          )}
+          {step.status === 'processing' && (
+            <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              <Loader2
+                className="w-5 h-5 animate-spin"
+                style={{ color: INNATE_COLORS.cyan }}
+              />
+            </div>
+          )}
+          {step.status === 'pending' && (
+            <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              <Circle
+                className="w-5 h-5"
+                style={{ color: 'rgba(255,255,255,0.2)' }}
+              />
+            </div>
+          )}
+          {step.status === 'error' && (
+            <div className="w-6 h-6 flex items-center justify-center flex-shrink-0">
+              <AlertCircle
+                className="w-5 h-5"
+                style={{ color: INNATE_COLORS.warning }}
+              />
+            </div>
+          )}
+
+          {/* Label */}
+          <span
+            className="text-sm"
+            style={{
+              color: step.status === 'done'
+                ? INNATE_COLORS.green
+                : step.status === 'processing'
+                  ? INNATE_COLORS.cyan
+                  : step.status === 'error'
+                    ? INNATE_COLORS.warning
+                    : INNATE_COLORS.textMuted,
+            }}
+          >
+            {step.label}
+          </span>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
+
 // ===== Main component =====
 
 interface IntakeAgentProps {
@@ -131,6 +182,7 @@ interface IntakeAgentProps {
   agentFollowUps: AgentFollowUp[];
   agentIterations: number;
   agentClosingMessage: string | null;
+  processingSteps: ProcessingStep[];
   onAnswer: (response: string) => void;
   onSkip: () => void;
   onComplete: () => void;
@@ -143,6 +195,7 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
   agentFollowUps,
   agentIterations,
   agentClosingMessage,
+  processingSteps,
   onAnswer,
   onSkip,
   onComplete,
@@ -151,12 +204,6 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
   const { t } = useTranslation('intake');
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // i18n: get loading messages from locale
-  const loadingMessages = useMemo(() => {
-    const msgs = t('agent.loading_messages', { returnObjects: true });
-    return Array.isArray(msgs) ? msgs as string[] : AGENT_CONFIG.loadingMessages;
-  }, [t]);
 
   // Focus input when asking for response
   useEffect(() => {
@@ -209,19 +256,27 @@ const IntakeAgent: React.FC<IntakeAgentProps> = ({
           borderColor: 'rgba(255,255,255,0.1)',
         }}
       >
-        {/* Analyzing state */}
+        {/* Processing & Analyzing states */}
         <AnimatePresence mode="wait">
-          {agentStatus === 'analyzing' && (
+          {(agentStatus === 'processing' || agentStatus === 'analyzing') && (
             <motion.div
-              key="analyzing"
+              key="processing"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="flex flex-col items-center justify-center py-12 space-y-6"
+              className="flex flex-col items-center justify-center py-8 space-y-6"
             >
               <AgentAvatar size="large" />
-              <LoadingMessage messages={loadingMessages} />
-              <TypingIndicator />
+              <ProcessingChecklist steps={processingSteps} />
+              {agentStatus === 'analyzing' && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex flex-col items-center gap-3 pt-2"
+                >
+                  <TypingIndicator />
+                </motion.div>
+              )}
             </motion.div>
           )}
 

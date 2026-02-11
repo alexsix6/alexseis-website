@@ -39,6 +39,7 @@ export default async function handler(req, res) {
       started_at,
       completed_at,
       uploaded_files_metadata,
+      file_extractions,
       audio_transcription,
       agent_follow_ups,
       agent_iterations
@@ -70,7 +71,16 @@ export default async function handler(req, res) {
       has_vpn: sanitizeString(parsedAnswers.has_vpn, 500) || null,
       it_management: sanitizeString(parsedAnswers.it_management, 500) || null,
       main_challenge: sanitizeString(parsedAnswers.main_challenge, 2000) || null,
-      uploaded_files: uploaded_files_metadata ? JSON.stringify(uploaded_files_metadata) : null,
+      uploaded_files: uploaded_files_metadata ? JSON.stringify(
+        uploaded_files_metadata.map(meta => {
+          const extraction = file_extractions?.find(e => e.filename === meta.name);
+          return {
+            ...meta,
+            extraction: extraction?.extraction ? sanitizeString(extraction.extraction, 3000) : null,
+            extraction_type: extraction?.type || null,
+          };
+        })
+      ) : null,
       audio_recording_url: null,
       audio_transcription: sanitizeString(audio_transcription, 5000) || null,
       agent_follow_ups: agent_follow_ups ? JSON.stringify(agent_follow_ups) : null,
