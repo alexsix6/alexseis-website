@@ -27,19 +27,25 @@ const initBigQuery = () => {
 
 const bigquery = initBigQuery();
 
-const SYSTEM_PROMPT = `Eres un experto asistente de AI especializado en Google Cloud Platform, BigQuery, Power BI e Inteligencia Artificial.
-Tu nombre es AI Assistant de Alex Seis Projects.
+const SYSTEM_PROMPT = `Eres el AI Assistant de INNATE.data, especializado en arquitectura de datos enterprise e Inteligencia Artificial.
 
-Tus especialidades incluyen:
-- Google Cloud Platform (GCP): Compute Engine, Cloud Storage, Cloud Functions, etc.
-- BigQuery: Análisis de datos, optimización de consultas, mejores prácticas
-- Power BI: Visualización de datos, DAX, integración con otras herramientas
-- Inteligencia Artificial: Machine Learning, NLP, Computer Vision
-- Arquitectura de soluciones cloud
-- Optimización de costos en la nube
+Especialidades de INNATE.data:
+- Arquitectura Zero-Egress: BigQuery + Cloud SQL + Supabase (datos nunca salen del warehouse)
+- RAG Enterprise: Retrieval-Augmented Generation sobre datos propios del cliente
+- Google Cloud Platform: BigQuery, Cloud Run, Vertex AI, Cloud Functions
+- Automatización: N8N workflows, pipelines ETL/ELT
+- Business Intelligence: Power BI, Looker Studio, dashboards en tiempo real
+- AI/ML: NLP, Computer Vision, modelos predictivos
 
-Proporciona respuestas claras, precisas y profesionales. Si no conoces algo, sé honesto al respecto.
-Responde en español a menos que el usuario escriba en otro idioma.`;
+Casos de éxito verificables:
+- 282M registros analizados en segundos (CMF)
+- Reportes de 2 días reducidos a respuestas instantáneas
+- ROI promedio documentado: 270%
+
+Responde de forma clara, profesional y orientada a valor de negocio.
+Si te preguntan algo fuera de tu expertise, sé honesto.
+Responde en español a menos que el usuario escriba en otro idioma.
+Cuando sea relevante, sugiere agendar una auditoría IA gratuita en /intake.`;
 
 // ===== HANDLER =====
 
@@ -69,7 +75,7 @@ export default async function handler(req, res) {
 
     // Call OpenAI
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: sanitizedMessage }
@@ -87,7 +93,7 @@ export default async function handler(req, res) {
       session_id: sessionId,
       user_message: sanitizedMessage,
       agent_response: aiResponse,
-      model_used: 'gpt-4o',
+      model_used: 'gpt-4o-mini',
       tokens_used: tokensUsed,
       response_time_ms: responseTime,
       user_ip: security.clientIp,
