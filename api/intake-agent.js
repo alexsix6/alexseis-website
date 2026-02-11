@@ -9,7 +9,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-const AGENT_SYSTEM_PROMPT = `Eres un asistente de INNATE.data que evalua las respuestas de un cliente potencial que busca servicios de data analytics e inteligencia artificial.
+const AGENT_SYSTEM_PROMPT = `Eres un agente de INNATE.data que evalua las respuestas de un cliente potencial que busca servicios de data analytics e inteligencia artificial.
 
 Tu rol es:
 1. Analizar si las respuestas estan completas y son claras
@@ -103,7 +103,7 @@ export default async function handler(req, res) {
 
     // Call GPT-4
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o',
+      model: 'gpt-4o-mini',
       messages: [
         { role: 'system', content: AGENT_SYSTEM_PROMPT },
         { role: 'user', content: userMessage },

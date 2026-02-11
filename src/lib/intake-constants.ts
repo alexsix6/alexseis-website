@@ -37,8 +37,7 @@ export interface VideoConfig {
 }
 
 export const VIDEO_CONFIG: VideoConfig = {
-  // Placeholder - Actualizar con URL real de YouTube/Loom
-  url: null,
+  url: '/innate_data.mp4',
   placeholder: {
     title: 'Cómo funciona INNATE.data',
     duration: '90 segundos',

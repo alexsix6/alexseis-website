@@ -61,11 +61,12 @@ const IntakeLanding: React.FC<IntakeLandingProps> = ({ onStart, videoConfig }) =
       >
         {hasVideo ? (
           <div className="aspect-video rounded-2xl overflow-hidden border border-white/10">
-            <iframe
+            <video
               src={videoConfig.url!}
               className="w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
+              controls
+              preload="metadata"
+              playsInline
               title={t('video.iframe_title')}
             />
           </div>
