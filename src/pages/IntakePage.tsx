@@ -53,8 +53,14 @@ const IntakePage: React.FC = () => {
 
   // v3.0: Handler for completing from agent stage
   const handleAgentComplete = async (): Promise<void> => {
-    await intake.submitForm();
-    intake.goToConfirmationFromAgent();
+    try {
+      const success = await intake.submitForm();
+      if (success) {
+        intake.goToConfirmationFromAgent();
+      }
+    } catch (err) {
+      console.error('handleAgentComplete error:', err);
+    }
   };
 
   return (
@@ -188,6 +194,11 @@ const IntakePage: React.FC = () => {
                 onComplete={handleAgentComplete}
                 isSubmitting={intake.isSubmitting}
               />
+              {intake.submitError && (
+                <p className="text-center text-sm mt-4" style={{ color: INNATE_COLORS.warning }}>
+                  {intake.submitError}
+                </p>
+              )}
             </motion.div>
           )}
 

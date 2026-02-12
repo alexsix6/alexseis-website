@@ -505,7 +505,6 @@ export function useIntakeForm(): UseIntakeFormReturn {
         throw new Error(errorData.error || 'Error al enviar el formulario');
       }
 
-      setStage(INTAKE_STAGES.CONFIRMATION);
       return true;
     } catch (error) {
       console.error('Error submitting intake form:', error);

@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Bot, Send, ArrowRight, Loader2, MessageCircle, SkipForward, Check, Circle, AlertCircle } from 'lucide-react';
-import { INNATE_COLORS } from '@/lib/intake-constants';
+import { INNATE_COLORS, AGENT_CONFIG } from '@/lib/intake-constants';
 import type { AgentFollowUp, AgentStatusType, ProcessingStep } from '@/types';
 
 // ===== Sub-component props =====
