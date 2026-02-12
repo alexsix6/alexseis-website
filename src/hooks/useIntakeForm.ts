@@ -513,6 +513,7 @@ export function useIntakeForm(): UseIntakeFormReturn {
         audio_transcription: audioTranscription,
         agent_follow_ups: agentFollowUps.length > 0 ? agentFollowUps : null,
         agent_iterations: agentIterations,
+        agent_closing_message: agentClosingMessage,
       };
 
       const response = await fetch('/api/intake', {
@@ -535,7 +536,7 @@ export function useIntakeForm(): UseIntakeFormReturn {
     } finally {
       setIsSubmitting(false);
     }
-  }, [sessionId, answers, clientInfo, uploadedFiles, audioRecording, audioTranscription, fileExtractions, agentFollowUps, agentIterations, getCompletionTime, startTime]);
+  }, [sessionId, answers, clientInfo, uploadedFiles, audioRecording, audioTranscription, fileExtractions, agentFollowUps, agentIterations, agentClosingMessage, getCompletionTime, startTime]);
 
   // Ir directamente a confirmacion (saltando agent)
   const goToConfirmation = useCallback(async (): Promise<void> => {

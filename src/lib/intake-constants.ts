@@ -357,6 +357,7 @@ export const BIGQUERY_SCHEMA: BigQuerySchema = {
     { name: 'audio_transcription', type: 'STRING' },
     { name: 'agent_follow_ups', type: 'JSON' },
     { name: 'agent_iterations', type: 'INTEGER' },
+    { name: 'agent_closing_message', type: 'STRING' },
     { name: 'client_name', type: 'STRING' },
     { name: 'client_email', type: 'STRING' },
     { name: 'client_company', type: 'STRING' },

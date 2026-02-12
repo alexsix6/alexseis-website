@@ -42,7 +42,8 @@ export default async function handler(req, res) {
       file_extractions,
       audio_transcription,
       agent_follow_ups,
-      agent_iterations
+      agent_iterations,
+      agent_closing_message
     } = formData;
 
     // Parse answers/client_info if stringified
@@ -85,6 +86,7 @@ export default async function handler(req, res) {
       audio_transcription: sanitizeString(audio_transcription, 5000) || null,
       agent_follow_ups: agent_follow_ups ? JSON.stringify(agent_follow_ups) : null,
       agent_iterations: parseInt(agent_iterations) || 0,
+      agent_closing_message: sanitizeString(agent_closing_message, 2000) || null,
       client_name: sanitizeString(parsedClientInfo?.name, 200) || null,
       client_email: parsedClientInfo?.email ? sanitizeEmail(parsedClientInfo.email) : null,
       client_company: sanitizeString(parsedClientInfo?.company, 200) || null,
@@ -120,6 +122,7 @@ export default async function handler(req, res) {
           { name: 'audio_transcription', type: 'STRING', mode: 'NULLABLE' },
           { name: 'agent_follow_ups', type: 'STRING', mode: 'NULLABLE' },
           { name: 'agent_iterations', type: 'INTEGER', mode: 'NULLABLE' },
+          { name: 'agent_closing_message', type: 'STRING', mode: 'NULLABLE' },
           { name: 'client_name', type: 'STRING', mode: 'NULLABLE' },
           { name: 'client_email', type: 'STRING', mode: 'NULLABLE' },
           { name: 'client_company', type: 'STRING', mode: 'NULLABLE' },
