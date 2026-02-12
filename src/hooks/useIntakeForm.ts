@@ -17,7 +17,7 @@ import type {
 } from '@/types';
 
 // Helper: Read file as base64 string (without data URL prefix)
-const readFileAsBase64 = (file: File): Promise<string> => {
+const readFileAsBase64 = (data: Blob): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => {
@@ -26,7 +26,7 @@ const readFileAsBase64 = (file: File): Promise<string> => {
       resolve(base64);
     };
     reader.onerror = reject;
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(data);
   });
 };
 
@@ -263,18 +263,18 @@ export function useIntakeForm(): UseIntakeFormReturn {
     setAudioRecording(audioBlob);
   }, []);
 
-  // v3.0: Transcribir audio usando Whisper API
+  // v3.2: Transcribir audio usando Whisper API (base64 JSON, no multipart)
   const transcribeAudio = useCallback(async (audioBlob: Blob): Promise<string | null> => {
     if (!audioBlob) return null;
 
     setIsTranscribing(true);
     try {
-      const formData = new FormData();
-      formData.append('audio', audioBlob, 'recording.webm');
+      const base64 = await readFileAsBase64(audioBlob);
 
       const response = await fetch('/api/transcribe', {
         method: 'POST',
-        body: formData,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ audio: base64 }),
       });
 
       if (!response.ok) {
@@ -294,13 +294,13 @@ export function useIntakeForm(): UseIntakeFormReturn {
 
   // v3.1: Llamar al agente para evaluacion (con extracciones de archivos)
   // explicitFollowUps: pass updated follow-ups directly to avoid stale closure
-  const callAgent = useCallback(async (additionalContext: string | null = null, extractions?: FileExtraction[], explicitFollowUps?: AgentFollowUp[]): Promise<AgentCallResult> => {
+  const callAgent = useCallback(async (additionalContext: string | null = null, extractions?: FileExtraction[], explicitFollowUps?: AgentFollowUp[], explicitTranscription?: string | null): Promise<AgentCallResult> => {
     setAgentStatus('analyzing');
 
     try {
       const payload = {
         answers,
-        audioTranscription,
+        audioTranscription: explicitTranscription !== undefined ? explicitTranscription : audioTranscription,
         previousFollowUps: explicitFollowUps ?? agentFollowUps,
         additionalContext,
         fileExtractions: extractions || fileExtractions,
@@ -431,11 +431,22 @@ export function useIntakeForm(): UseIntakeFormReturn {
     // 3. Mark answers as done (instant)
     updateStep('answers', 'done');
 
-    // 4. Transcribe audio if exists
+    // 4. Transcribe audio if exists (capture result to avoid stale closure)
+    let resolvedTranscription = audioTranscription;
     if (audioRecording && !audioTranscription) {
       updateStep('audio', 'processing');
-      await transcribeAudio(audioRecording);
-      updateStep('audio', 'done');
+      let result = await transcribeAudio(audioRecording);
+
+      // Retry once if transcription is empty or too short (<10 words)
+      if (!result || result.trim().split(/\s+/).length < 10) {
+        const retry = await transcribeAudio(audioRecording);
+        if (retry && retry.trim().split(/\s+/).length > (result?.trim().split(/\s+/).length ?? 0)) {
+          result = retry;
+        }
+      }
+
+      resolvedTranscription = result;
+      updateStep('audio', resolvedTranscription ? 'done' : 'error');
     } else if (audioRecording) {
       updateStep('audio', 'done');
     }
@@ -456,9 +467,9 @@ export function useIntakeForm(): UseIntakeFormReturn {
     setFileExtractions(extractions);
     setIsExtractingFiles(false);
 
-    // 6. Call agent with all context
+    // 6. Call agent with all context (pass transcription explicitly to avoid stale closure)
     updateStep('agent', 'processing');
-    await callAgent(null, extractions);
+    await callAgent(null, extractions, undefined, resolvedTranscription);
     updateStep('agent', 'done');
   }, [answers, audioRecording, audioTranscription, transcribeAudio, callAgent, uploadedFiles, extractSingleFile, updateStep]);
 
