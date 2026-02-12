@@ -153,6 +153,8 @@ export function useIntakeForm(): UseIntakeFormReturn {
   const [agentIterations, setAgentIterations] = useState(0);
   const [currentAgentQuestion, setCurrentAgentQuestion] = useState<string | null>(null);
   const [agentClosingMessage, setAgentClosingMessage] = useState<string | null>(null);
+  // v3.2: Separate agent analysis (real diagnostic for BigQuery, NOT shown to client)
+  const [agentAnalysis, setAgentAnalysis] = useState<string | null>(null);
 
   // Informacion del cliente (opcional)
   const [clientInfo, setClientInfo] = useState<ClientInfo>({
@@ -281,7 +283,11 @@ export function useIntakeForm(): UseIntakeFormReturn {
         throw new Error('Transcription failed');
       }
 
-      const data = await response.json() as { transcription: string };
+      const data = await response.json() as { success: boolean; transcription: string | null; error?: string };
+      if (!data.success || !data.transcription) {
+        console.warn('Transcription failed or hallucination detected:', data.error);
+        return null;
+      }
       setAudioTranscription(data.transcription);
       return data.transcription;
     } catch (error) {
@@ -319,12 +325,14 @@ export function useIntakeForm(): UseIntakeFormReturn {
       const data = await response.json() as {
         status: 'complete' | 'needs_clarification';
         closing_message?: string;
+        analysis?: string;
         follow_up_question?: string;
       };
 
       if (data.status === 'complete') {
         setAgentStatus('complete');
         setAgentClosingMessage(data.closing_message || null);
+        setAgentAnalysis(data.analysis || null);
         return { complete: true, message: data.closing_message };
       } else if (data.status === 'needs_clarification') {
         setAgentStatus('asking');
@@ -513,7 +521,8 @@ export function useIntakeForm(): UseIntakeFormReturn {
         audio_transcription: audioTranscription,
         agent_follow_ups: agentFollowUps.length > 0 ? agentFollowUps : null,
         agent_iterations: agentIterations,
-        agent_closing_message: agentClosingMessage,
+        // v3.2: Save the real analysis to BigQuery, not the polite client message
+        agent_closing_message: agentAnalysis || agentClosingMessage,
       };
 
       const response = await fetch('/api/intake', {
@@ -536,7 +545,7 @@ export function useIntakeForm(): UseIntakeFormReturn {
     } finally {
       setIsSubmitting(false);
     }
-  }, [sessionId, answers, clientInfo, uploadedFiles, audioRecording, audioTranscription, fileExtractions, agentFollowUps, agentIterations, agentClosingMessage, getCompletionTime, startTime]);
+  }, [sessionId, answers, clientInfo, uploadedFiles, audioRecording, audioTranscription, fileExtractions, agentFollowUps, agentIterations, agentClosingMessage, agentAnalysis, getCompletionTime, startTime]);
 
   // Ir directamente a confirmacion (saltando agent)
   const goToConfirmation = useCallback(async (): Promise<void> => {

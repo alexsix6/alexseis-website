@@ -1,6 +1,7 @@
 /**
- * INNATE.data Intake v3.0 - Audio Transcription API
+ * INNATE.data Intake v3.2 - Audio Transcription API
  * Uses OpenAI Whisper for Spanish audio transcription
+ * Includes hallucination detection for known Whisper artifacts
  */
 import OpenAI from 'openai';
 import { applySecurityMiddleware } from './lib/security.js';
@@ -8,6 +9,32 @@ import { applySecurityMiddleware } from './lib/security.js';
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
+// Known Whisper hallucination phrases (silent/corrupted audio)
+const WHISPER_HALLUCINATIONS = [
+  'subtítulos realizados por la comunidad de amara.org',
+  'subtitulos realizados por la comunidad de amara.org',
+  'subtítulos por la comunidad de amara.org',
+  'subtitles by the amara.org community',
+  'thanks for watching',
+  'thank you for watching',
+  'please subscribe',
+  'gracias por ver',
+  'suscríbete',
+  'like and subscribe',
+  'www.mooji.org',
+  'amara.org',
+];
+
+/**
+ * Detect if transcription is a Whisper hallucination
+ */
+function isHallucination(text) {
+  if (!text) return true;
+  const normalized = text.trim().toLowerCase();
+  if (normalized.length < 5) return true;
+  return WHISPER_HALLUCINATIONS.some(h => normalized.includes(h));
+}
 
 export default async function handler(req, res) {
   // Apply shared security middleware
@@ -71,7 +98,17 @@ export default async function handler(req, res) {
       model: 'whisper-1',
       language: 'es',
       response_format: 'text',
+      prompt: 'El cliente describe su infraestructura de datos, sistemas y desafios tecnologicos de su empresa.',
     });
+
+    // Check for known Whisper hallucinations
+    if (isHallucination(transcription)) {
+      return res.status(200).json({
+        success: false,
+        transcription: null,
+        error: 'No se pudo transcribir el audio. Por favor intenta grabar de nuevo hablando mas cerca del microfono.',
+      });
+    }
 
     return res.status(200).json({
       success: true,

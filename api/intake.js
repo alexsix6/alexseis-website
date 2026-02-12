@@ -86,7 +86,7 @@ export default async function handler(req, res) {
       audio_transcription: sanitizeString(audio_transcription, 5000) || null,
       agent_follow_ups: agent_follow_ups ? JSON.stringify(agent_follow_ups) : null,
       agent_iterations: parseInt(agent_iterations) || 0,
-      agent_closing_message: sanitizeString(agent_closing_message, 2000) || null,
+      agent_closing_message: sanitizeString(agent_closing_message, 5000) || null,
       client_name: sanitizeString(parsedClientInfo?.name, 200) || null,
       client_email: parsedClientInfo?.email ? sanitizeEmail(parsedClientInfo.email) : null,
       client_company: sanitizeString(parsedClientInfo?.company, 200) || null,
