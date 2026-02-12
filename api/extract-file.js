@@ -91,8 +91,8 @@ export default async function handler(req, res) {
     // --- PDF ---
     else if (mimeType === 'application/pdf') {
       extractionType = 'document';
-      // Dynamic import to avoid bundling issues in Vercel
-      const pdfParse = (await import('pdf-parse')).default;
+      // Dynamic import from lib to avoid pdf-parse test file issue (v1.1.1)
+      const pdfParse = (await import('pdf-parse/lib/pdf-parse.js')).default;
       const pdfData = await pdfParse(buffer);
       const rawText = pdfData.text;
 

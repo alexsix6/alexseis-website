@@ -286,14 +286,15 @@ export function useIntakeForm(): UseIntakeFormReturn {
   }, []);
 
   // v3.1: Llamar al agente para evaluacion (con extracciones de archivos)
-  const callAgent = useCallback(async (additionalContext: string | null = null, extractions?: FileExtraction[]): Promise<AgentCallResult> => {
+  // explicitFollowUps: pass updated follow-ups directly to avoid stale closure
+  const callAgent = useCallback(async (additionalContext: string | null = null, extractions?: FileExtraction[], explicitFollowUps?: AgentFollowUp[]): Promise<AgentCallResult> => {
     setAgentStatus('analyzing');
 
     try {
       const payload = {
         answers,
         audioTranscription,
-        previousFollowUps: agentFollowUps,
+        previousFollowUps: explicitFollowUps ?? agentFollowUps,
         additionalContext,
         fileExtractions: extractions || fileExtractions,
       };
@@ -346,7 +347,9 @@ export function useIntakeForm(): UseIntakeFormReturn {
       question: currentAgentQuestion || '',
       answer: response,
     };
-    setAgentFollowUps(prev => [...prev, newFollowUp]);
+    // Build complete follow-ups array locally to avoid stale closure
+    const updatedFollowUps = [...agentFollowUps, newFollowUp];
+    setAgentFollowUps(updatedFollowUps);
 
     // Si llegamos al maximo de iteraciones, terminar
     if (newIteration >= AGENT_CONFIG.maxIterations) {
@@ -355,9 +358,9 @@ export function useIntakeForm(): UseIntakeFormReturn {
       return;
     }
 
-    // Llamar al agente de nuevo con la nueva respuesta
-    await callAgent(response);
-  }, [agentIterations, currentAgentQuestion, callAgent]);
+    // Llamar al agente con follow-ups actualizados (no depender del state async)
+    await callAgent(response, undefined, updatedFollowUps);
+  }, [agentIterations, currentAgentQuestion, agentFollowUps, callAgent]);
 
   // v3.0: Saltar pregunta del agente
   const skipAgentQuestion = useCallback((): void => {
