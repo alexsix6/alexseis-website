@@ -40,6 +40,7 @@ const generateSessionId = (): string => {
 // Estados del formulario (v3.0: added AGENT stage)
 export const INTAKE_STAGES: Record<string, IntakeStageType> = {
   LANDING: 'landing',
+  CLIENT_INFO: 'client_info',
   QUESTIONS: 'questions',
   UPLOADS: 'uploads',
   AGENT: 'agent',
@@ -117,6 +118,7 @@ export interface UseIntakeFormReturn {
   answerAgentQuestion: (response: string) => Promise<void>;
   skipAgentQuestion: () => void;
   goToConfirmationFromAgent: () => void;
+  startQuestions: () => void;
 }
 
 export function useIntakeForm(): UseIntakeFormReturn {
@@ -235,8 +237,13 @@ export function useIntakeForm(): UseIntakeFormReturn {
     }
   }, [currentQuestionIndex, stage]);
 
-  // Iniciar cuestionario
+  // Iniciar cuestionario (va a client_info primero)
   const startQuestionnaire = useCallback((): void => {
+    setStage(INTAKE_STAGES.CLIENT_INFO);
+  }, []);
+
+  // De client_info a preguntas
+  const startQuestions = useCallback((): void => {
     setStage(INTAKE_STAGES.QUESTIONS);
     setCurrentQuestionIndex(0);
   }, []);
@@ -632,6 +639,7 @@ export function useIntakeForm(): UseIntakeFormReturn {
     answerAgentQuestion,
     skipAgentQuestion,
     goToConfirmationFromAgent,
+    startQuestions,
   };
 }
 

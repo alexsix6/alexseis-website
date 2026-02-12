@@ -10,6 +10,20 @@
     "video_label": "Primero, conoce como funciona nuestra arquitectura",
     "badge": "Zero-Egress Architecture"
   },
+  "client_info": {
+    "title": "Antes de empezar, cuentanos sobre ti",
+    "subtitle": "Esta informacion nos permite personalizar tu roadmap",
+    "label_name": "Tu nombre",
+    "label_email": "Correo electronico",
+    "label_company": "Empresa",
+    "placeholder_name": "Nombre completo",
+    "placeholder_email": "correo@empresa.com",
+    "placeholder_company": "Nombre de tu empresa",
+    "error_name": "Tu nombre es requerido",
+    "error_email": "Tu correo es requerido",
+    "error_email_invalid": "Ingresa un correo valido",
+    "error_company": "El nombre de tu empresa es requerido"
+  },
   "progress": {
     "template": "Pregunta {{current}} de {{total}}",
     "question": "Pregunta",

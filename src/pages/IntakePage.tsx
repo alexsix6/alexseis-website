@@ -15,6 +15,7 @@ import { usePageMeta } from '@/hooks/usePageMeta';
 
 // Componentes internos
 import IntakeLanding from '@/components/intake/IntakeLanding';
+import IntakeClientInfo from '@/components/intake/IntakeClientInfo';
 import IntakeQuestion from '@/components/intake/IntakeQuestion';
 import IntakeUploads from '@/components/intake/IntakeUploads';
 import IntakeAgent from '@/components/intake/IntakeAgent';
@@ -116,6 +117,24 @@ const IntakePage: React.FC = () => {
               <IntakeLanding
                 onStart={intake.startQuestionnaire}
                 videoConfig={VIDEO_CONFIG}
+              />
+            </motion.div>
+          )}
+
+          {intake.stage === INTAKE_STAGES.CLIENT_INFO && (
+            <motion.div
+              key="client-info"
+              variants={pageVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              transition={{ duration: 0.4 }}
+              className="w-full max-w-2xl"
+            >
+              <IntakeClientInfo
+                clientInfo={intake.clientInfo}
+                setClientInfo={intake.setClientInfo}
+                onContinue={intake.startQuestions}
               />
             </motion.div>
           )}

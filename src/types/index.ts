@@ -53,7 +53,7 @@ export interface ContactFormData {
 }
 
 // ===== INTAKE =====
-export type IntakeStageType = 'landing' | 'questions' | 'uploads' | 'agent' | 'confirmation';
+export type IntakeStageType = 'landing' | 'client_info' | 'questions' | 'uploads' | 'agent' | 'confirmation';
 
 export interface IntakeOption {
   value: string;
