@@ -1,10 +1,10 @@
 {
-  "page_title": "Caso de Exito: Sistema NEURA",
+  "page_title": "Caso de Exito: Ecosistema INNATE.data",
   "page_subtitle": "Evidencia real de lo que la arquitectura INNATE.data puede lograr. Metricas verificables, resultados auditables.",
   "hero_case": {
-    "badge": "Caso Principal — Sistema NEURA",
+    "badge": "Caso Principal — Ecosistema INNATE.data",
     "title": "282M Registros. 30 Herramientas MCP. Zero Egress.",
-    "description": "Sistema NEURA: 3 neuronas IA especializadas (ALBA para estrategia con 282M registros en 1,046 tablas, CREATIA para ejecucion creativa con Imagen 3/Veo 2, AUTO para personalizacion). Arquitectura: MCP Servers → Backend Cloud Run → Tools → Skills → Claude Desktop. Todo dentro del warehouse del cliente.",
+    "description": "Ecosistema INNATE.data: 3 neuronas IA especializadas (La Estratega para analisis con 282M registros en 1,046 tablas, La Ejecutora para ejecucion creativa con Imagen 3/Veo 2, La Orquestadora para automatizacion). Arquitectura: MCP Servers → Backend Cloud Run → Tools → Skills → Claude Desktop. Todo dentro del warehouse del cliente.",
     "quote": "Lo que tomaba 2 dias ahora toma 30 segundos. La segmentacion de 59,378 clientes paso de 3-5 dias a 30 segundos.",
     "quote_author": "Equipo de Operaciones — Cliente Enterprise",
     "metrics": {
@@ -22,7 +22,7 @@
   "supporting_subtitle": "Cada proyecto demuestra un componente clave de la arquitectura INNATE.data.",
   "projects": {
     "creatia": {
-      "title": "CREATIA — Ejecucion Creativa con IA",
+      "title": "La Ejecutora — Ejecucion Creativa con IA",
       "category": "Generacion de Contenido",
       "description": "Motor de ejecucion creativa con 13 herramientas MCP: generacion de copy (Hormozi/Todd Brown), imagenes con Vertex AI Imagen 3, videos con Veo 2, y adaptacion automatica a 11+ plataformas con brand compliance scoring.",
       "results": ["Briefs de 2-3 dias a 60 segundos", "Brand compliance scoring 0-100 automatico"],
@@ -87,7 +87,7 @@
     "filter_all": "Todos"
   },
   "meta": {
-    "title": "Caso de Exito Sistema NEURA | INNATE.data",
+    "title": "Caso de Exito Ecosistema INNATE.data",
     "description": "282M+ registros analizados en segundos. 270% ROI verificado. Caso real de arquitectura zero-egress con INNATE.data."
   }
 }

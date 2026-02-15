@@ -17,7 +17,7 @@
     },
     "achievement": {
       "title": "The Result",
-      "text": "Project ALBA — 282 million records across 1,046 tables analyzed in seconds, zero data egress, 270% ROI. Project CREATIA — 13 creative execution tools with generative AI (Imagen 3, Veo 2) adapting content to 11+ platforms. Proof that the paradigm works at enterprise scale."
+      "text": "The Strategist — 282 million records across 1,046 tables analyzed in seconds, zero data egress, 270% ROI. The Executor — 13 creative execution tools with generative AI (Imagen 3, Veo 2) adapting content to 11+ platforms. Proof that the paradigm works at enterprise scale."
     }
   },
   "values": {
@@ -63,7 +63,7 @@
       },
       {
         "title": "AI & LLMs",
-        "items": ["Claude AI", "Vertex AI", "RAG Pipelines", "ALBA/CREATIA Neurons"]
+        "items": ["Claude AI", "Vertex AI", "RAG Pipelines", "Strategist/Executor Neurons"]
       },
       {
         "title": "Cloud & Deploy",
@@ -77,6 +77,6 @@
   },
   "meta": {
     "title": "About INNATE.data | Alex Seis",
-    "description": "The story behind zero-egress architecture. From enterprise operations to Project ALBA: 282M+ records analyzed in seconds."
+    "description": "The story behind zero-egress architecture. From enterprise operations to The Strategist: 282M+ records analyzed in seconds."
   }
 }

@@ -58,10 +58,10 @@
     "ecosystem": {
       "badge": "Level 3 — INNATE Ecosystem",
       "title": "Ecosistema Multi-Departamento",
-      "description": "Expansion INNATE.data a multiples departamentos: ALBA (estrategia, 282M+ registros) + CREATIA (ejecucion creativa, Imagen 3/Veo 2) + AUTO (personalizacion). SLA enterprise 24/7.",
+      "description": "Expansion INNATE.data a multiples departamentos: La Estratega (analisis, 282M+ registros) + La Ejecutora (ejecucion creativa, Imagen 3/Veo 2) + La Orquestadora (automatizacion). SLA enterprise 24/7.",
       "price": "$100K+",
       "includes": [
-        "Neuronas IA especializadas (ALBA + CREATIA + AUTO)",
+        "Neuronas IA especializadas (Estratega + Ejecutora + Orquestadora)",
         "Integracion con sistemas legacy existentes",
         "Knowledge graph empresarial con GraphRAG",
         "SLA 24/7 con soporte enterprise dedicado",

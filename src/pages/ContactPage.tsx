@@ -172,7 +172,7 @@ const ContactPage: React.FC = () => {
           "availableLanguage": ["Spanish", "English"],
           "serviceType": [
             localizedSchema("Arquitectura Zero-Egress (INNATE Core)", "Zero-Egress Architecture (INNATE Core)"),
-            localizedSchema("Ecosistema Multi-Departamento (ALBA + CREATIA + AUTO)", "Multi-Department Ecosystem (ALBA + CREATIA + AUTO)"),
+            localizedSchema("Ecosistema Multi-Departamento (Estratega + Ejecutora + Orquestadora)", "Multi-Department Ecosystem (Strategist + Executor + Orchestrator)"),
             localizedSchema("MCP Servers + BigQuery Integration", "MCP Servers + BigQuery Integration"),
             localizedSchema("IA Generativa Enterprise con Vertex AI", "Enterprise Generative AI with Vertex AI")
           ]

@@ -76,7 +76,7 @@ const HomePage: React.FC = () => {
         "name": "Alex Seis",
         "jobTitle": localizedSchema("Arquitecto Zero-Egress | INNATE.data", "Zero-Egress Architect | INNATE.data"),
         "expertise": ["Zero-Egress AI", "Enterprise Data Architecture", "MCP Servers", "BigQuery", "Vertex AI", "Cloud Run"],
-        "knowsAbout": ["INNATE.data", "Zero-Egress Architecture", "MCP Servers", "BigQuery", "Claude AI", "Enterprise AI", "NEURA System", "Vertex AI"],
+        "knowsAbout": ["INNATE.data", "Zero-Egress Architecture", "MCP Servers", "BigQuery", "Claude AI", "Enterprise AI", "INNATE.data Ecosystem", "Vertex AI"],
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "PA"
@@ -215,7 +215,7 @@ const HomePage: React.FC = () => {
             {t('home:hero.description')}
           </p>
 
-          {/* METRICS - ALBA verified production data */}
+          {/* METRICS - verified production data */}
           <motion.div
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 max-w-4xl mx-auto"
             variants={metricsVariants}

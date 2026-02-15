@@ -1,10 +1,10 @@
 {
-  "page_title": "Success Story: NEURA System",
+  "page_title": "Success Story: INNATE.data Ecosystem",
   "page_subtitle": "Real evidence of what INNATE.data architecture can achieve. Verifiable metrics, auditable results.",
   "hero_case": {
-    "badge": "Main Case Study — NEURA System",
+    "badge": "Main Case Study — INNATE.data Ecosystem",
     "title": "282M Records. 30 MCP Tools. Zero Egress.",
-    "description": "NEURA System: 3 specialized AI neurons (ALBA for strategy with 282M records across 1,046 tables, CREATIA for creative execution with Imagen 3/Veo 2, AUTO for personalization). Architecture: MCP Servers → Cloud Run Backend → Tools → Skills → Claude Desktop. Everything inside the client's warehouse.",
+    "description": "INNATE.data Ecosystem: 3 specialized AI neurons (The Strategist for analysis with 282M records across 1,046 tables, The Executor for creative execution with Imagen 3/Veo 2, The Orchestrator for automation). Architecture: MCP Servers → Cloud Run Backend → Tools → Skills → Claude Desktop. Everything inside the client's warehouse.",
     "quote": "What took 2 days now takes 30 seconds. Segmenting 59,378 clients went from 3-5 days to 30 seconds.",
     "quote_author": "Operations Team — Enterprise Client",
     "metrics": {
@@ -22,7 +22,7 @@
   "supporting_subtitle": "Each project demonstrates a key component of the INNATE.data architecture.",
   "projects": {
     "creatia": {
-      "title": "CREATIA — AI Creative Execution",
+      "title": "The Executor — AI Creative Execution",
       "category": "Content Generation",
       "description": "Creative execution engine with 13 MCP tools: copy generation (Hormozi/Todd Brown frameworks), images with Vertex AI Imagen 3, videos with Veo 2, and automatic adaptation to 11+ platforms with brand compliance scoring.",
       "results": ["Briefs from 2-3 days to 60 seconds", "Automatic brand compliance scoring 0-100"],
@@ -87,7 +87,7 @@
     "filter_all": "All"
   },
   "meta": {
-    "title": "NEURA System Success Story | INNATE.data",
+    "title": "INNATE.data Ecosystem Success Story",
     "description": "282M+ records analyzed in seconds. 270% verified ROI. Real zero-egress architecture case study with INNATE.data."
   }
 }

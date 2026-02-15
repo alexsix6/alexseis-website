@@ -17,7 +17,7 @@
     },
     "achievement": {
       "title": "El Resultado",
-      "text": "Proyecto ALBA — 282 millones de registros en 1,046 tablas analizados en segundos, zero egreso de datos, 270% ROI. Proyecto CREATIA — 13 herramientas de ejecucion creativa con IA generativa (Imagen 3, Veo 2) adaptando contenido a 11+ plataformas. La prueba de que el paradigma funciona a escala enterprise."
+      "text": "La Estratega — 282 millones de registros en 1,046 tablas analizados en segundos, zero egreso de datos, 270% ROI. La Ejecutora — 13 herramientas de ejecucion creativa con IA generativa (Imagen 3, Veo 2) adaptando contenido a 11+ plataformas. La prueba de que el paradigma funciona a escala enterprise."
     }
   },
   "values": {
@@ -63,7 +63,7 @@
       },
       {
         "title": "IA & LLMs",
-        "items": ["Claude AI", "Vertex AI", "RAG Pipelines", "Neuronas ALBA/CREATIA"]
+        "items": ["Claude AI", "Vertex AI", "RAG Pipelines", "Neuronas Estratega/Ejecutora"]
       },
       {
         "title": "Cloud & Deploy",
@@ -77,6 +77,6 @@
   },
   "meta": {
     "title": "Sobre INNATE.data | Alex Seis",
-    "description": "La historia detras de la arquitectura zero-egress. De operaciones enterprise a Proyecto ALBA: 282M+ registros analizados en segundos."
+    "description": "La historia detras de la arquitectura zero-egress. De operaciones enterprise a La Estratega: 282M+ registros analizados en segundos."
   }
 }

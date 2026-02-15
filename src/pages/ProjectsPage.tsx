@@ -91,10 +91,10 @@ const ProjectsPage: React.FC = () => {
     schemaScript.innerHTML = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "CreativeWork",
-      "name": localizedSchema("Caso de Exito: Sistema NEURA — INNATE.data", "Success Story: NEURA System — INNATE.data"),
+      "name": localizedSchema("Caso de Exito: Ecosistema INNATE.data", "Success Story: INNATE.data Ecosystem"),
       "description": localizedSchema(
-        "Sistema NEURA: ALBA (282M+ registros, 17 MCP tools) + CREATIA (13 herramientas, Imagen 3/Veo 2) + AUTO. 270% ROI verificado con arquitectura zero-egress.",
-        "NEURA System: ALBA (282M+ records, 17 MCP tools) + CREATIA (13 tools, Imagen 3/Veo 2) + AUTO. 270% verified ROI with zero-egress architecture."
+        "Ecosistema INNATE.data: La Estratega (282M+ registros, 17 MCP tools) + La Ejecutora (13 herramientas, Imagen 3/Veo 2) + La Orquestadora. 270% ROI verificado con arquitectura zero-egress.",
+        "INNATE.data Ecosystem: The Strategist (282M+ records, 17 MCP tools) + The Executor (13 tools, Imagen 3/Veo 2) + The Orchestrator. 270% verified ROI with zero-egress architecture."
       ),
       "author": {
         "@type": "Person",
@@ -139,7 +139,7 @@ const ProjectsPage: React.FC = () => {
         </p>
       </motion.div>
 
-      {/* ===== HERO CASE STUDY — PROJECT ALBA ===== */}
+      {/* ===== HERO CASE STUDY ===== */}
       <motion.section
         className="mb-16 md:mb-24 glass-card p-8 md:p-12 rounded-2xl border-accent/30"
         initial={{ opacity: 0, y: 30 }}
