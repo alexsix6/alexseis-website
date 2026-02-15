@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
     const h = t('home:hero.headlines', { returnObjects: true });
     return Array.isArray(h) ? h as string[] : [
       "Zero-Egress Architecture for Enterprise AI",
-      "282M Records Analyzed in Seconds",
+      "694M+ Transactions Analyzed in Seconds",
       "AI That Lives Inside Your Data Warehouse",
       "From 2-Day Reports to Instant Answers"
     ];
@@ -68,8 +68,8 @@ const HomePage: React.FC = () => {
       "@type": "ProfessionalService",
       "name": localizedSchema("INNATE.data - Arquitectura Zero-Egress de IA Empresarial", "INNATE.data - Zero-Egress Enterprise AI Architecture"),
       "description": localizedSchema(
-        "Arquitectura de IA nativa que vive dentro de tu data warehouse. 282M+ registros, 30s respuesta, 270% ROI.",
-        "Native AI architecture that lives inside your data warehouse. 282M+ records, 30s response, 270% ROI."
+        "Arquitectura de IA nativa que vive dentro de tu data warehouse. 694M+ transacciones, 30s respuesta, 270% ROI.",
+        "Native AI architecture that lives inside your data warehouse. 694M+ transactions, 30s response, 270% ROI."
       ),
       "provider": {
         "@type": "Person",

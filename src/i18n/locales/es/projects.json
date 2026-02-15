@@ -3,12 +3,12 @@
   "page_subtitle": "Evidencia real de lo que la arquitectura INNATE.data puede lograr. Metricas verificables, resultados auditables.",
   "hero_case": {
     "badge": "Caso Principal — Ecosistema INNATE.data",
-    "title": "282M Registros. 30 Herramientas MCP. Zero Egress.",
-    "description": "Ecosistema INNATE.data: 3 neuronas IA especializadas (La Estratega para analisis con 282M registros en 1,046 tablas, La Ejecutora para ejecucion creativa con Imagen 3/Veo 2, La Orquestadora para automatizacion). Arquitectura: MCP Servers → Backend Cloud Run → Tools → Skills → Claude Desktop. Todo dentro del warehouse del cliente.",
+    "title": "694M+ Transacciones. 30 Herramientas MCP. Zero Egress.",
+    "description": "Ecosistema INNATE.data: 3 neuronas IA especializadas (La Estratega para analisis con 694M+ transacciones en 1,046 tablas, La Ejecutora para ejecucion creativa con Imagen 3/Veo 2, La Orquestadora para automatizacion). Arquitectura: MCP Servers → Backend Cloud Run → Tools → Skills → Claude Desktop. Todo dentro del warehouse del cliente.",
     "quote": "Lo que tomaba 2 dias ahora toma 30 segundos. La segmentacion de 59,378 clientes paso de 3-5 dias a 30 segundos.",
     "quote_author": "Equipo de Operaciones — Cliente Enterprise",
     "metrics": {
-      "transactions": { "value": "282M+", "label": "Registros" },
+      "transactions": { "value": "694M+", "label": "Transacciones" },
       "time_reduction": { "value": "99.8%", "label": "Reduccion de Tiempo" },
       "roi": { "value": "270%", "label": "ROI Verificado" },
       "payback": { "value": "7.7", "label": "Dias de Payback" },
@@ -62,7 +62,7 @@
     "items": [
       {
         "title": "Metricas Reales",
-        "description": "282M+ registros, 1,046 tablas, 270% ROI, 30s respuesta. No promesas — evidencia verificable."
+        "description": "694M+ transacciones, 1,046 tablas, 270% ROI, 30s respuesta. No promesas — evidencia verificable."
       },
       {
         "title": "Zero-Egress",
@@ -88,6 +88,6 @@
   },
   "meta": {
     "title": "Caso de Exito Ecosistema INNATE.data",
-    "description": "282M+ registros analizados en segundos. 270% ROI verificado. Caso real de arquitectura zero-egress con INNATE.data."
+    "description": "694M+ transacciones analizados en segundos. 270% ROI verificado. Caso real de arquitectura zero-egress con INNATE.data."
   }
 }

@@ -17,7 +17,7 @@
     },
     "achievement": {
       "title": "El Resultado",
-      "text": "La Estratega — 282 millones de registros en 1,046 tablas analizados en segundos, zero egreso de datos, 270% ROI. La Ejecutora — 13 herramientas de ejecucion creativa con IA generativa (Imagen 3, Veo 2) adaptando contenido a 11+ plataformas. La prueba de que el paradigma funciona a escala enterprise."
+      "text": "La Estratega — 694 millones de transacciones en 1,046 tablas analizados en segundos, zero egreso de datos, 270% ROI. La Ejecutora — 13 herramientas de ejecucion creativa con IA generativa (Imagen 3, Veo 2) adaptando contenido a 11+ plataformas. La prueba de que el paradigma funciona a escala enterprise."
     }
   },
   "values": {
@@ -33,7 +33,7 @@
       },
       {
         "title": "Velocidad",
-        "description": "De dias a segundos, verificable. 282M+ registros consultados en segundos. No promesas — metricas reales."
+        "description": "De dias a segundos, verificable. 694M+ transacciones consultados en segundos. No promesas — metricas reales."
       },
       {
         "title": "Evidencia",
@@ -48,7 +48,7 @@
   "stats": {
     "title": "Impacto en Numeros",
     "items": [
-      { "value": "282M+", "label": "Registros en Produccion" },
+      { "value": "694M+", "label": "Transacciones Procesadas" },
       { "value": "270%", "label": "ROI Verificado" },
       { "value": "<60s", "label": "Tiempo de Respuesta" },
       { "value": "15+", "label": "Anos Enterprise" }
@@ -77,6 +77,6 @@
   },
   "meta": {
     "title": "Sobre INNATE.data | Alex Seis",
-    "description": "La historia detras de la arquitectura zero-egress. De operaciones enterprise a La Estratega: 282M+ registros analizados en segundos."
+    "description": "La historia detras de la arquitectura zero-egress. De operaciones enterprise a La Estratega: 694M+ transacciones analizados en segundos."
   }
 }

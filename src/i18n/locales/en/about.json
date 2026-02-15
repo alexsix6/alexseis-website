@@ -33,7 +33,7 @@
       },
       {
         "title": "Speed",
-        "description": "From days to seconds, verifiable. 282M+ records queried in seconds. Not promises — real metrics."
+        "description": "From days to seconds, verifiable. 694M+ transactions queried in seconds. Not promises — real metrics."
       },
       {
         "title": "Evidence",
@@ -48,7 +48,7 @@
   "stats": {
     "title": "Impact in Numbers",
     "items": [
-      { "value": "282M+", "label": "Records in Production" },
+      { "value": "694M+", "label": "Transactions Processed" },
       { "value": "270%", "label": "Verified ROI" },
       { "value": "<60s", "label": "Response Time" },
       { "value": "15+", "label": "Years Enterprise" }
@@ -77,6 +77,6 @@
   },
   "meta": {
     "title": "About INNATE.data | Alex Seis",
-    "description": "The story behind zero-egress architecture. From enterprise operations to The Strategist: 282M+ records analyzed in seconds."
+    "description": "The story behind zero-egress architecture. From enterprise operations to The Strategist: 694M+ transactions analyzed in seconds."
   }
 }

@@ -3,12 +3,12 @@
   "page_subtitle": "Real evidence of what INNATE.data architecture can achieve. Verifiable metrics, auditable results.",
   "hero_case": {
     "badge": "Main Case Study — INNATE.data Ecosystem",
-    "title": "282M Records. 30 MCP Tools. Zero Egress.",
-    "description": "INNATE.data Ecosystem: 3 specialized AI neurons (The Strategist for analysis with 282M records across 1,046 tables, The Executor for creative execution with Imagen 3/Veo 2, The Orchestrator for automation). Architecture: MCP Servers → Cloud Run Backend → Tools → Skills → Claude Desktop. Everything inside the client's warehouse.",
+    "title": "694M+ Transactions. 30 MCP Tools. Zero Egress.",
+    "description": "INNATE.data Ecosystem: 3 specialized AI neurons (The Strategist for analysis with 694M+ transactions across 1,046 tables, The Executor for creative execution with Imagen 3/Veo 2, The Orchestrator for automation). Architecture: MCP Servers → Cloud Run Backend → Tools → Skills → Claude Desktop. Everything inside the client's warehouse.",
     "quote": "What took 2 days now takes 30 seconds. Segmenting 59,378 clients went from 3-5 days to 30 seconds.",
     "quote_author": "Operations Team — Enterprise Client",
     "metrics": {
-      "transactions": { "value": "282M+", "label": "Records" },
+      "transactions": { "value": "694M+", "label": "Transactions" },
       "time_reduction": { "value": "99.8%", "label": "Time Reduction" },
       "roi": { "value": "270%", "label": "Verified ROI" },
       "payback": { "value": "7.7", "label": "Days to Payback" },
@@ -62,7 +62,7 @@
     "items": [
       {
         "title": "Real Metrics",
-        "description": "282M+ records, 1,046 tables, 270% ROI, 30s response. Not promises — verifiable evidence."
+        "description": "694M+ transactions, 1,046 tables, 270% ROI, 30s response. Not promises — verifiable evidence."
       },
       {
         "title": "Zero-Egress",
@@ -88,6 +88,6 @@
   },
   "meta": {
     "title": "INNATE.data Ecosystem Success Story",
-    "description": "282M+ records analyzed in seconds. 270% verified ROI. Real zero-egress architecture case study with INNATE.data."
+    "description": "694M+ transactions analyzed in seconds. 270% verified ROI. Real zero-egress architecture case study with INNATE.data."
   }
 }

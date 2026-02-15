@@ -93,8 +93,8 @@ const ProjectsPage: React.FC = () => {
       "@type": "CreativeWork",
       "name": localizedSchema("Caso de Exito: Ecosistema INNATE.data", "Success Story: INNATE.data Ecosystem"),
       "description": localizedSchema(
-        "Ecosistema INNATE.data: La Estratega (282M+ registros, 17 MCP tools) + La Ejecutora (13 herramientas, Imagen 3/Veo 2) + La Orquestadora. 270% ROI verificado con arquitectura zero-egress.",
-        "INNATE.data Ecosystem: The Strategist (282M+ records, 17 MCP tools) + The Executor (13 tools, Imagen 3/Veo 2) + The Orchestrator. 270% verified ROI with zero-egress architecture."
+        "Ecosistema INNATE.data: La Estratega (694M+ transacciones, 17 MCP tools) + La Ejecutora (13 herramientas, Imagen 3/Veo 2) + La Orquestadora. 270% ROI verificado con arquitectura zero-egress.",
+        "INNATE.data Ecosystem: The Strategist (694M+ transactions, 17 MCP tools) + The Executor (13 tools, Imagen 3/Veo 2) + The Orchestrator. 270% verified ROI with zero-egress architecture."
       ),
       "author": {
         "@type": "Person",

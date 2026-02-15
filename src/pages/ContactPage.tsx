@@ -162,7 +162,7 @@ const ContactPage: React.FC = () => {
       "mainEntity": {
         "@type": "Organization",
         "name": localizedSchema("INNATE.data - Arquitectura Zero-Egress", "INNATE.data - Zero-Egress Architecture"),
-        "description": localizedSchema("Arquitectura zero-egress de IA empresarial. La IA se despliega dentro del data warehouse del cliente. 282M+ registros, 270% ROI verificado.", "Zero-egress enterprise AI architecture. AI deploys inside the client's data warehouse. 282M+ records, 270% verified ROI."),
+        "description": localizedSchema("Arquitectura zero-egress de IA empresarial. La IA se despliega dentro del data warehouse del cliente. 694M+ transacciones, 270% ROI verificado.", "Zero-egress enterprise AI architecture. AI deploys inside the client's data warehouse. 694M+ transactions, 270% verified ROI."),
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+593-983391240",

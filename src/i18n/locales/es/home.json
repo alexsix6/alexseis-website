@@ -4,18 +4,18 @@
     "tagline": "Inteligencia que nace de tus datos",
     "headlines": [
       "Arquitectura Zero-Egress para Enterprise AI",
-      "282M registros analizados en segundos",
+      "694M+ transacciones analizados en segundos",
       "IA que vive dentro de tu Data Warehouse",
       "De 2 dias de reportes a respuestas instantaneas"
     ],
-    "description": "Arquitectura de IA nativa que vive dentro de tu data warehouse. Tus datos nunca salen de tu infraestructura. Resultados verificables: 282M registros en 1,046 tablas, 270% ROI, payback en 7.7 dias.",
+    "description": "Arquitectura de IA nativa que vive dentro de tu data warehouse. Tus datos nunca salen de tu infraestructura. Resultados verificables: 694M+ transacciones en 1,046 tablas, 270% ROI, payback en 7.7 dias.",
     "cta_primary": "Agenda tu Roadmap Gratuito",
     "cta_secondary": "Ver Caso de Exito"
   },
   "metrics": {
     "transactions": {
-      "value": "282M+",
-      "label": "Registros en Produccion",
+      "value": "694M+",
+      "label": "Transacciones Procesadas",
       "detail": "1,046 tablas BigQuery analizadas"
     },
     "speed": {
@@ -78,6 +78,6 @@
   },
   "meta": {
     "title": "INNATE.data | Inteligencia que Nace de tus Datos",
-    "description": "Arquitectura zero-egress de IA empresarial. Tus datos nunca salen. 282M+ registros, 30s respuesta, 270% ROI. Agenda tu roadmap gratuito."
+    "description": "Arquitectura zero-egress de IA empresarial. Tus datos nunca salen. 694M+ transacciones, 30s respuesta, 270% ROI. Agenda tu roadmap gratuito."
   }
 }

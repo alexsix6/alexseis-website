@@ -4,18 +4,18 @@
     "tagline": "Intelligence Born from Your Data",
     "headlines": [
       "Zero-Egress Architecture for Enterprise AI",
-      "282M Records Analyzed in Seconds",
+      "694M+ Transactions Analyzed in Seconds",
       "AI That Lives Inside Your Data Warehouse",
       "From 2-Day Reports to Instant Answers"
     ],
-    "description": "Native AI architecture that lives inside your data warehouse. Your data never leaves your infrastructure. Verified results: 282M records across 1,046 tables, 270% ROI, payback in 7.7 days.",
+    "description": "Native AI architecture that lives inside your data warehouse. Your data never leaves your infrastructure. Verified results: 694M+ transactions across 1,046 tables, 270% ROI, payback in 7.7 days.",
     "cta_primary": "Schedule Your Free Roadmap",
     "cta_secondary": "See Success Story"
   },
   "metrics": {
     "transactions": {
-      "value": "282M+",
-      "label": "Records in Production",
+      "value": "694M+",
+      "label": "Transactions Processed",
       "detail": "1,046 BigQuery tables analyzed"
     },
     "speed": {
@@ -78,6 +78,6 @@
   },
   "meta": {
     "title": "INNATE.data | Intelligence Born from Your Data",
-    "description": "Zero-egress enterprise AI architecture. Your data never leaves. 282M+ records, 30s response, 270% ROI. Schedule your free roadmap."
+    "description": "Zero-egress enterprise AI architecture. Your data never leaves. 694M+ transactions, 30s response, 270% ROI. Schedule your free roadmap."
   }
 }

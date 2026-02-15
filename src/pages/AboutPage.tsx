@@ -77,8 +77,8 @@ const AboutPage: React.FC = () => {
       "name": "Alex Seis",
       "jobTitle": localizedSchema("Arquitecto Zero-Egress | INNATE.data", "Zero-Egress Architect | INNATE.data"),
       "description": localizedSchema(
-        "Creador de INNATE.data — arquitectura zero-egress de IA empresarial. Ecosistema: 282M+ registros, 270% ROI verificado.",
-        "Creator of INNATE.data — zero-egress enterprise AI architecture. Ecosystem: 282M+ records, 270% verified ROI."
+        "Creador de INNATE.data — arquitectura zero-egress de IA empresarial. Ecosistema: 694M+ transacciones, 270% ROI verificado.",
+        "Creator of INNATE.data — zero-egress enterprise AI architecture. Ecosystem: 694M+ transactions, 270% verified ROI."
       ),
       "expertise": ["Zero-Egress AI", "Enterprise Data Architecture", "MCP Servers", "BigQuery", "Vertex AI", "Cloud Run"],
       "knowsAbout": ["INNATE.data", "Zero-Egress Architecture", "MCP Servers", "BigQuery", "Claude AI", "INNATE.data Ecosystem", "Vertex AI"],
